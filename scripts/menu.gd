@@ -3,7 +3,7 @@ extends Control
 var main = preload("res://main.tscn")
 
 func _on_start_pressed():
-	var level = main.instance()
+	var level = main.instantiate()
 	add_child(level)
 	self.hide()
 

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpj2d5ub5ij06"]
+
+[ext_resource type="Script" path="res://player/camera_controller.gd" id="1_0sik8"]
+
+[node name="Camera-Controller" type="Node3D"]
+script = ExtResource("1_0sik8")
+
+[node name="Y_Rot" type="Node3D" parent="."]
+
+[node name="X_Rot" type="Node3D" parent="Y_Rot"]
+
+[node name="Camera3D" type="Camera3D" parent="Y_Rot/X_Rot"]
