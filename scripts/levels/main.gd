@@ -3,8 +3,8 @@ extends Node3D
 @onready var level1 = preload("res://buildings/BuildingLVL1.tscn")
 
 func _ready():
-	for x in range(floor((Settings.width/2)) * -1, Settings.width - floor(Settings.width/2)):
-		for z in range(floor((Settings.length/2)) * -1, Settings.length - floor(Settings.length/2)):
+	for x in range(floor((Settings.width/2.0)) * -1, Settings.width - floor(Settings.width/2.0)):
+		for z in range(floor((Settings.length/2.0)) * -1, Settings.length - floor(Settings.length/2.0)):
 			randomize()
 			if randi() % 2  == 0:
 				var lvl1 = level1.instantiate()

@@ -114,6 +114,10 @@ shift={
 name_num_separator=2
 name_casing=2
 
+[physics]
+
+common/physics_ticks_per_second=90
+
 [rendering]
 
 environment/defaults/default_environment="res://default_env.tres"
