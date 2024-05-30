@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://c4dh81532ky1c" path="res://buildings/floor.tres" id="2"]
 [ext_resource type="Script" path="res://scripts/levels/main.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://c35y74v6txvxh" path="res://textures/kloofendal_43d_clear_8k.hdr" id="3_ujnbn"]
-[ext_resource type="PackedScene" uid="uid://cpj2d5ub5ij06" path="res://player/camera-controller.tscn" id="4_c0clc"]
+[ext_resource type="PackedScene" uid="uid://boxrw6byaxd6o" path="res://player/camera_controller.tscn" id="4_c0clc"]
 
 [sub_resource type="BoxMesh" id="1"]
 material = ExtResource("2")
