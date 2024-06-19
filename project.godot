@@ -27,6 +27,10 @@ window/size/viewport_width=1250
 window/size/viewport_height=720
 window/stretch/aspect="expand"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [global]
 
 definition=false
