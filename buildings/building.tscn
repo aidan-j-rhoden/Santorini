@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl4lkchcb6ru1"]
+
+[ext_resource type="PackedScene" uid="uid://dplb8vent86dr" path="res://buildings/building.glb" id="1_rtyqe"]
+[ext_resource type="Script" path="res://scripts/building/building.gd" id="2_r6wqw"]
+
+[node name="building" instance=ExtResource("1_rtyqe")]
+script = ExtResource("2_r6wqw")
+
+[node name="Lvl2" parent="Lvl1" index="0"]
+visible = false
+
+[node name="Lvl3" parent="Lvl1/Lvl2" index="0"]
+visible = false
+
+[node name="Lvl4" parent="Lvl1/Lvl2/Lvl3" index="0"]
+visible = false
