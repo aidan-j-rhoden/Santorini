@@ -18,7 +18,7 @@ func _input(event: InputEvent) -> void:
 		if Input.is_action_pressed("shift"):
 			# get the angle of the mouse movement relative to the screen
 			# then apply that to the camera-controler node location, with the angle paralel to the camera
-			var movement_vector:Vector2 = Vector2(event.relative.x, event.relative.y)
+			var movement_vector:Vector2 = Vector2(-event.relative.x, event.relative.y)
 			#var distance = sqrt((event.relative.x ** 2) + (event.relative.y ** 2))
 			print(movement_vector)
 			movement_vector *= CAMERA_MOVEMENT_SPEED * ((Camera.position.z + 1) / 4)
@@ -29,6 +29,8 @@ func _input(event: InputEvent) -> void:
 			y_rot.global_position = Position_Target.global_position
 		else:
 			y_rot.global_rotation_degrees.y += float(-event.relative.x) * CAMERA_ROT_SPEED
+			if y_rot.global_rotation_degrees.y > 360:
+				y_rot.global_rotation_degrees.y = 0
 			x_rot.global_rotation_degrees.x = clamp(x_rot.global_rotation_degrees.x + float(-event.relative.y) * CAMERA_ROT_SPEED, -80, 50)
 
 	if Input.is_action_just_pressed("quit"):
