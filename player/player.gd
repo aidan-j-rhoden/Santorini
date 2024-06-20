@@ -2,7 +2,9 @@ extends CharacterBody3D
 
 const CAMERA_ROT_SPEED = 0.2
 const SPEED = 5.0
+const CROUCH_SPEED = 2.5
 const JUMP_VELOCITY = 4.5
+const CROUCH_JUMP_VELOCITY = 2.5
 
 @onready var camera = $Camera3D
 var xrot = 0.0
@@ -36,14 +38,21 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		if crouched:
+			velocity.y = CROUCH_JUMP_VELOCITY
+		else:
+			velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		if not crouched:
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+		else:
+			velocity.x = direction.x * CROUCH_SPEED
+			velocity.z = direction.z * CROUCH_SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)

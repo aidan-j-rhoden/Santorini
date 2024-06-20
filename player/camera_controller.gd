@@ -1,5 +1,5 @@
 extends Node3D
-const CAMERA_ROT_SPEED:float = 0.8
+const CAMERA_ROT_SPEED:float = 0.3
 const CAMERA_MOVEMENT_SPEED:float = 0.1
 
 @onready var x_rot = $"Y_Rot/X_Rot"
