@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddrbtqxkhbi34"]
+[gd_scene load_steps=9 format=3 uid="uid://ddrbtqxkhbi34"]
 
 [ext_resource type="Material" uid="uid://c4dh81532ky1c" path="res://buildings/floor.tres" id="2"]
 [ext_resource type="Script" path="res://scripts/levels/main.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://c35y74v6txvxh" path="res://textures/kloofendal_43d_clear_8k.hdr" id="3_ujnbn"]
-[ext_resource type="PackedScene" uid="uid://boxrw6byaxd6o" path="res://player/camera_controller.tscn" id="4_c0clc"]
 
 [sub_resource type="BoxMesh" id="1"]
 material = ExtResource("2")
@@ -25,6 +24,8 @@ ambient_light_source = 3
 reflected_light_source = 2
 ssr_enabled = true
 ssao_enabled = true
+ssil_enabled = true
+ssil_radius = 20.0
 sdfgi_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.01
@@ -43,11 +44,14 @@ shape = SubResource("2")
 
 [node name="omni_light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.0475, 0)
+visible = false
 shadow_enabled = true
 omni_range = 58.1247
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2x6yl")
 
-[node name="Camera-Controller" parent="." instance=ExtResource("4_c0clc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
+[node name="Players" type="Node3D" parent="."]
+
+[node name="Cameras" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.4993, 0)

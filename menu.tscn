@@ -30,9 +30,9 @@ text = "Settings"
 [node name="container" type="HBoxContainer" parent="home"]
 layout_mode = 0
 offset_left = 537.0
-offset_top = 236.0
-offset_right = 737.0
-offset_bottom = 260.0
+offset_top = 300.0
+offset_right = 796.0
+offset_bottom = 331.0
 
 [node name="label" type="Label" parent="home/container"]
 layout_mode = 2
@@ -46,6 +46,19 @@ expand_to_text_length = true
 [node name="join" type="Button" parent="home/container"]
 layout_mode = 2
 text = "Join"
+
+[node name="gamemode" type="OptionButton" parent="home"]
+offset_left = 96.0
+offset_top = 159.0
+offset_right = 407.0
+offset_bottom = 190.0
+selected = 1
+item_count = 3
+popup/item_0/text = "Deathmatch"
+popup/item_1/text = "Intellectual Deathmatch"
+popup/item_1/id = 1
+popup/item_2/text = "Intellectual Deathmatch with a Sicalian"
+popup/item_2/id = 2
 
 [node name="settings" type="Control" parent="."]
 visible = false
@@ -108,14 +121,6 @@ offset_right = 1030.0
 offset_bottom = 153.0
 text = "exit"
 
-[node name="check_box" type="CheckBox" parent="settings"]
-layout_mode = 0
-offset_left = 593.0
-offset_top = 365.0
-offset_right = 659.0
-offset_bottom = 389.0
-text = "Floor?"
-
 [node name="graphics_level" type="OptionButton" parent="settings"]
 layout_mode = 0
 offset_left = 855.0
@@ -142,5 +147,4 @@ text = "Graphics level:"
 [connection signal="value_changed" from="settings/width" to="settings" method="_on_width_value_changed"]
 [connection signal="value_changed" from="settings/length" to="settings" method="_on_length_value_changed"]
 [connection signal="pressed" from="settings/exit" to="." method="_on_exit_pressed"]
-[connection signal="toggled" from="settings/check_box" to="settings" method="_on_check_box_toggled"]
 [connection signal="item_selected" from="settings/graphics_level" to="settings" method="_on_graphics_level_item_selected"]

@@ -33,9 +33,6 @@ func _input(event: InputEvent) -> void:
 				y_rot.global_rotation_degrees.y = 0
 			x_rot.global_rotation_degrees.x = clamp(x_rot.global_rotation_degrees.x + float(-event.relative.y) * CAMERA_ROT_SPEED, -80, 50)
 
-	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
-
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("zoom-in"):
