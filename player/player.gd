@@ -22,13 +22,6 @@ func _input(event):
 		yrot += float(-event.relative.x) * CAMERA_ROT_SPEED
 		camera.rotation_degrees.x = clamp(xrot, -80, 89.9)
 		self.rotation_degrees.y = yrot 
-	if Input.is_action_just_pressed("Crouch"):
-		if not crouched:
-			$AnimationPlayer.play("Crouch")
-			crouched = true
-		else:
-			$AnimationPlayer.play_backwards("Crouch")
-			crouched = false
 
 
 func _physics_process(delta: float) -> void:
@@ -56,5 +49,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+	if Input.is_action_just_pressed("Crouch"):
+		if not crouched:
+			$AnimationPlayer.play("Crouch")
+			crouched = true
+		else:
+			$AnimationPlayer.play_backwards("Crouch")
+			crouched = false
 
 	move_and_slide()
