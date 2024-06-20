@@ -48,6 +48,7 @@ layout_mode = 2
 text = "Join"
 
 [node name="gamemode" type="OptionButton" parent="home"]
+layout_mode = 0
 offset_left = 96.0
 offset_top = 159.0
 offset_right = 407.0

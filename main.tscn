@@ -44,7 +44,6 @@ shape = SubResource("2")
 
 [node name="omni_light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.0475, 0)
-visible = false
 shadow_enabled = true
 omni_range = 58.1247
 
@@ -52,6 +51,7 @@ omni_range = 58.1247
 environment = SubResource("Environment_2x6yl")
 
 [node name="Players" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
 [node name="Cameras" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.4993, 0)
