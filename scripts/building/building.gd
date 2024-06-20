@@ -1,11 +1,15 @@
 extends Node3D
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if randi() % 2 == 0:
-		$Lvl1/Lvl2.visible = true
+		pass
 		if randi() % 2 == 0:
-			$Lvl1/Lvl2/Lvl3.visible = true
-			$Lvl1/Lvl2/Lvl3/Lvl4.visible = false
+			pass
 			if randi() % 2 == 0:
-				$Lvl1/Lvl2/Lvl3/Lvl4.visible = true
+				pass
+			else:
+				$Lvl1/Lvl2/Lvl3/Lvl4.queue_free()
+		else:
+			$Lvl1/Lvl2/Lvl3.queue_free()
+	else:
+		$Lvl1/Lvl2.queue_free()
