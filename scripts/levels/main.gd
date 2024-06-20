@@ -10,7 +10,7 @@ func _ready():
 				var level = building.instantiate()
 				level.position = Vector3(x * 15, 0, z * 15)
 				level.rotation_degrees = Vector3(0, randi() % 4 * 90, 0)
-				add_child(lvl1, true)
+				add_child(level, true)
 	if Settings.have_floor:
 		pass
 	else:

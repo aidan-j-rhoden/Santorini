@@ -1,10 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://boxrw6byaxd6o"]
+[gd_scene load_steps=2 format=3 uid="uid://boxrw6byaxd6o"]
 
 [ext_resource type="Script" path="res://player/camera_controller.gd" id="1_rr467"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_mu1b0"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_pw683"]
 
 [node name="CameraController" type="Node3D"]
 script = ExtResource("1_rr467")
@@ -15,13 +11,4 @@ script = ExtResource("1_rr467")
 
 [node name="Camera3D" type="Camera3D" parent="Y_Rot/X_Rot"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Y_Rot"]
-visible = false
-mesh = SubResource("BoxMesh_mu1b0")
-skeleton = NodePath("../..")
-
 [node name="Position_Target" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Position_Target"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_pw683")
