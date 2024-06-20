@@ -1,3 +1,5 @@
 .import/
 .godot/
 buildings/*.glb.import
+/**/*.blend
+/**/*.blend1
