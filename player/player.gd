@@ -6,6 +6,13 @@ const CROUCH_SPEED = 2.5
 const JUMP_VELOCITY = 4.5
 const CROUCH_JUMP_VELOCITY = 2.5
 
+var top_fall_speed = 0.0
+var health = 100.0
+var dead:bool = false
+
+#hud stuff
+@onready var healthbar = $HUD/Health
+
 @onready var camera = $Camera3D
 var xrot = 0.0
 var yrot = 0.0
@@ -17,45 +24,66 @@ func _ready():
 
 
 func _input(event):
-	if event is InputEventMouseMotion:
-		xrot += float(-event.relative.y) * CAMERA_ROT_SPEED
-		yrot += float(-event.relative.x) * CAMERA_ROT_SPEED
-		camera.rotation_degrees.x = clamp(xrot, -80, 89.9)
-		self.rotation_degrees.y = yrot 
+	if not dead:
+		if event is InputEventMouseMotion:
+			xrot += float(-event.relative.y) * CAMERA_ROT_SPEED
+			yrot += float(-event.relative.x) * CAMERA_ROT_SPEED
+			camera.rotation_degrees.x = clamp(xrot, -80, 89.9)
+			self.rotation_degrees.y = yrot 
 
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		if crouched:
-			velocity.y = CROUCH_JUMP_VELOCITY
-		else:
-			velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	var input_dir := Input.get_vector("left", "right", "forward", "backward")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		if not crouched:
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
-		else:
-			velocity.x = direction.x * CROUCH_SPEED
-			velocity.z = direction.z * CROUCH_SPEED
+		if abs(velocity.y) > top_fall_speed:
+			top_fall_speed = abs(velocity.y)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		if top_fall_speed != 0.0:
+			health -= remap(clamp(top_fall_speed - JUMP_VELOCITY, 0, INF), 0, 25, 0, 100)
+			top_fall_speed = 0.0
 
-	if Input.is_action_just_pressed("Crouch"):
-		if not crouched:
-			$AnimationPlayer.play("Crouch")
-			crouched = true
+	if not dead:
+		# Handle jump.
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			if crouched:
+				velocity.y += CROUCH_JUMP_VELOCITY
+			else:
+				velocity.y += JUMP_VELOCITY
+
+		# Get the input direction and handle the movement/deceleration.
+		var input_dir := Input.get_vector("left", "right", "forward", "backward")
+		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if direction:
+			if not crouched:
+				velocity.x = direction.x * SPEED
+				velocity.z = direction.z * SPEED
+			else:
+				velocity.x = direction.x * CROUCH_SPEED
+				velocity.z = direction.z * CROUCH_SPEED
 		else:
-			$AnimationPlayer.play_backwards("Crouch")
-			crouched = false
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
 
+		if Input.is_action_just_pressed("Crouch"):
+			if not crouched:
+				$AnimationPlayer.play("Crouch")
+				crouched = true
+			else:
+				$AnimationPlayer.play_backwards("Crouch")
+				crouched = false
+	print(velocity)
 	move_and_slide()
+
+
+func _process(delta: float) -> void:
+	healthbar.value = health
+	if health <= 0:
+		die()
+
+
+func die():
+	if not dead:
+		dead = true
+		$HUD/DeathCanvas.visible = true
+		$HUD/DeathCanvas/AnimationPlayer.play("die")

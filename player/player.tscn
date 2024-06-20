@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhao4agt1wogb"]
+[gd_scene load_steps=9 format=3 uid="uid://dhao4agt1wogb"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ly1ca"]
 
@@ -144,6 +144,27 @@ _data = {
 "RESET": SubResource("Animation_uo5j1")
 }
 
+[sub_resource type="Animation" id="Animation_07lft"]
+resource_name = "die"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 0, 0, 0.588235)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rtdva"]
+_data = {
+"die": SubResource("Animation_07lft")
+}
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_ly1ca")
 
@@ -159,4 +180,74 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664626, 0)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_gk77t")
+}
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Crosshair" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="top" type="ColorRect" parent="HUD/Crosshair"]
+layout_mode = 0
+offset_left = 23.0
+offset_right = 27.0
+offset_bottom = 16.0
+
+[node name="bottom" type="ColorRect" parent="HUD/Crosshair"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 34.0
+offset_right = 27.0
+offset_bottom = 50.0
+
+[node name="left" type="ColorRect" parent="HUD/Crosshair"]
+layout_mode = 0
+offset_top = 23.0
+offset_right = 16.0
+offset_bottom = 27.0
+
+[node name="right" type="ColorRect" parent="HUD/Crosshair"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 27.0
+
+[node name="center" type="ColorRect" parent="HUD/Crosshair"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 23.0
+offset_right = 27.0
+offset_bottom = 27.0
+
+[node name="Health" type="ProgressBar" parent="HUD"]
+offset_left = 19.0
+offset_top = 17.0
+offset_right = 176.0
+offset_bottom = 44.0
+value = 1.0
+rounded = true
+
+[node name="DeathCanvas" type="ColorRect" parent="HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/DeathCanvas"]
+libraries = {
+"": SubResource("AnimationLibrary_rtdva")
 }
