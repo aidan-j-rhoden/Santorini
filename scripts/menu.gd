@@ -1,6 +1,6 @@
 extends Control
 
-var main = preload("res://main.tscn")
+var main = preload("res://levels/main.tscn")
 @onready var gamemode = $home/gamemode
 @onready var player = preload("res://player/player.tscn")
 

@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddrbtqxkhbi34"]
+
+[ext_resource type="Script" path="res://scripts/levels/main.gd" id="1_aq87o"]
+[ext_resource type="PackedScene" uid="uid://g7hplppbb7m1" path="res://levels/grounds/ground.glb" id="3_6tau7"]
+[ext_resource type="Texture2D" uid="uid://c35y74v6txvxh" path="res://textures/kloofendal_43d_clear_8k.hdr" id="3_vc3yn"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_bou2r"]
+panorama = ExtResource("3_vc3yn")
+energy_multiplier = 1.5
+
+[sub_resource type="Sky" id="Sky_dyxnh"]
+sky_material = SubResource("PanoramaSkyMaterial_bou2r")
+
+[sub_resource type="Environment" id="Environment_2x6yl"]
+background_mode = 2
+sky = SubResource("Sky_dyxnh")
+ambient_light_source = 3
+reflected_light_source = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+ssil_radius = 20.0
+sdfgi_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.015
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7citn"]
+size = Vector3(79.3618, 4.98193, 80)
+
+[node name="level" type="Node3D"]
+script = ExtResource("1_aq87o")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2x6yl")
+
+[node name="Players" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Cameras" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.4993, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.940122, 0.24101, -0.24101, 0, 0.707107, 0.707107, 0.340839, -0.664766, 0.664766, 0, 20, 0)
+light_energy = 1.5
+light_indirect_energy = 1.5
+shadow_enabled = true
+
+[node name="ground" parent="." instance=ExtResource("3_6tau7")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54126, -1.99097, 0.271484)
+shape = SubResource("BoxShape3D_7citn")
