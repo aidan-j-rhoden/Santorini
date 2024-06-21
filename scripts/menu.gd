@@ -20,3 +20,8 @@ func _on_settings_pressed():
 
 func _on_exit_pressed():
 	$settings.visible = false
+
+
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("quit"):
+		get_tree().quit()
