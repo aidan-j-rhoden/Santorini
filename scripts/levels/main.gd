@@ -24,8 +24,4 @@ func _ready():
 					level.position = Vector3(x * 15, 0, z * 15)
 					level.rotation_degrees = Vector3(0, randi() % 4 * 90, 0)
 					add_child(level, true)
-
-
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
+		$Guides.visible = true
