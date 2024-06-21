@@ -36,11 +36,17 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		print(velocity.y)
 		if abs(velocity.y) > top_fall_speed:
 			top_fall_speed = abs(velocity.y)
 	else:
 		if top_fall_speed != 0.0:
-			health -= remap(clamp(top_fall_speed - JUMP_VELOCITY, 0, INF), 0, 25, 0, 100)
+			if top_fall_speed > 14.0:
+				die()
+			elif top_fall_speed > 9:
+				health -= remap(clamp(top_fall_speed - JUMP_VELOCITY, 0, INF), 0, 12, 0, 100)
+			elif 5.0 < top_fall_speed and top_fall_speed < 9.0:
+				health -= remap(clamp(top_fall_speed - JUMP_VELOCITY, 0, INF), 0, 15, 0, 50)
 			top_fall_speed = 0.0
 
 	if not dead:
@@ -72,11 +78,14 @@ func _physics_process(delta: float) -> void:
 			else:
 				$AnimationPlayer.play_backwards("Crouch")
 				crouched = false
-	print(velocity)
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+
 	move_and_slide()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	healthbar.value = health
 	if health <= 0:
 		die()
