@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhao4agt1wogb"]
+[gd_scene load_steps=10 format=3 uid="uid://dhao4agt1wogb"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ly1ca"]
+[ext_resource type="Script" path="res://player/hud.gd" id="2_8or5v"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6mwvw"]
 radius = 0.3
@@ -183,6 +184,7 @@ libraries = {
 }
 
 [node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("2_8or5v")
 
 [node name="Crosshair" type="Control" parent="HUD"]
 layout_mode = 3
@@ -251,3 +253,121 @@ color = Color(1, 1, 1, 0)
 libraries = {
 "": SubResource("AnimationLibrary_rtdva")
 }
+
+[node name="Settings" type="CanvasLayer" parent="HUD"]
+layer = 2
+visible = false
+
+[node name="Transparent" type="ColorRect" parent="HUD/Settings"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.407843)
+
+[node name="ColorRect" type="ColorRect" parent="HUD/Settings"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -550.0
+offset_top = -350.0
+offset_right = 550.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.4158, 0.42, 0.399, 1)
+
+[node name="Container" type="VBoxContainer" parent="HUD/Settings/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 500.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Crosshair_Color" type="HBoxContainer" parent="HUD/Settings/ColorRect/Container"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HUD/Settings/ColorRect/Container/Crosshair_Color"]
+layout_mode = 2
+text = "Crosshair color: "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Settings/ColorRect/Container/Crosshair_Color"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Labels" type="VBoxContainer" parent="HUD/Settings/ColorRect/Container/Crosshair_Color/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Red" type="Label" parent="HUD/Settings/ColorRect/Container/Crosshair_Color/HBoxContainer/Labels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "Red:"
+
+[node name="Green" type="Label" parent="HUD/Settings/ColorRect/Container/Crosshair_Color/HBoxContainer/Labels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "Green:"
+
+[node name="Blue" type="Label" parent="HUD/Settings/ColorRect/Container/Crosshair_Color/HBoxContainer/Labels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+text = "Blue:"
+
+[node name="Sliders" type="VBoxContainer" parent="HUD/Settings/ColorRect/Container/Crosshair_Color/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="RSlider" type="HSlider" parent="HUD/Settings/ColorRect/Container/Crosshair_Color/HBoxContainer/Sliders"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 255.0
+value = 255.0
+rounded = true
+
+[node name="GSlider" type="HSlider" parent="HUD/Settings/ColorRect/Container/Crosshair_Color/HBoxContainer/Sliders"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 255.0
+rounded = true
+
+[node name="BSlider" type="HSlider" parent="HUD/Settings/ColorRect/Container/Crosshair_Color/HBoxContainer/Sliders"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 255.0
+rounded = true
+
+[node name="Button" type="Button" parent="HUD/Settings/ColorRect/Container"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button2" type="Button" parent="HUD/Settings/ColorRect/Container"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button3" type="Button" parent="HUD/Settings/ColorRect/Container"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button4" type="Button" parent="HUD/Settings/ColorRect/Container"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="value_changed" from="HUD/Settings/ColorRect/Container/Crosshair_Color/HBoxContainer/Sliders/RSlider" to="HUD" method="_on_r_slider_value_changed"]
+[connection signal="value_changed" from="HUD/Settings/ColorRect/Container/Crosshair_Color/HBoxContainer/Sliders/GSlider" to="HUD" method="_on_g_slider_value_changed"]
+[connection signal="value_changed" from="HUD/Settings/ColorRect/Container/Crosshair_Color/HBoxContainer/Sliders/BSlider" to="HUD" method="_on_b_slider_value_changed"]

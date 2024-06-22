@@ -12,6 +12,7 @@ var dead:bool = false
 
 #hud stuff
 @onready var healthbar = $HUD/Health
+@onready var settings = $HUD/Settings
 
 @onready var camera = $Camera3D
 var xrot = 0.0
@@ -24,15 +25,22 @@ func _ready():
 
 
 func _input(event):
-	if not dead:
+	if not dead and settings.visible == false:
 		if event is InputEventMouseMotion:
 			xrot += float(-event.relative.y) * CAMERA_ROT_SPEED
 			yrot += float(-event.relative.x) * CAMERA_ROT_SPEED
 			camera.rotation_degrees.x = clamp(xrot, -80, 89.9)
-			self.rotation_degrees.y = yrot 
+			self.rotation_degrees.y = yrot
 
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("escape"):
+		if settings.visible == false:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			settings.visible = true
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			settings.visible = false
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -45,8 +53,8 @@ func _physics_process(delta: float) -> void:
 				damage(100)
 			elif top_fall_speed > 9:
 				damage(remap(clamp(top_fall_speed - JUMP_VELOCITY, 0, INF), 0, 12, 0, 100))
-			elif 7.3 < top_fall_speed and top_fall_speed < 7.6:
-				damage(randi_range(1, 5))
+			elif 7.2 < top_fall_speed and top_fall_speed < 7.6:
+				damage(randi_range(1, 4))
 			elif 7.6 < top_fall_speed and top_fall_speed < 9.0:
 				damage(remap(clamp(top_fall_speed - JUMP_VELOCITY, 0, INF), 0, 15, 0, 30))
 			top_fall_speed = 0.0
