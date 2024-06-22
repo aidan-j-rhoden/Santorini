@@ -42,11 +42,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		if top_fall_speed != 0.0:
 			if top_fall_speed > 14.0:
-				die()
+				health = 0
 			elif top_fall_speed > 9:
 				health -= remap(clamp(top_fall_speed - JUMP_VELOCITY, 0, INF), 0, 12, 0, 100)
 			elif 5.0 < top_fall_speed and top_fall_speed < 9.0:
-				health -= remap(clamp(top_fall_speed - JUMP_VELOCITY, 0, INF), 0, 15, 0, 50)
+				health -= remap(clamp(top_fall_speed - JUMP_VELOCITY, 0, INF), 0, 15, 0, 30)
 			top_fall_speed = 0.0
 
 	if not dead:
