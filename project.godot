@@ -16,6 +16,7 @@ config/features=PackedStringArray("4.3")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 boot_splash/image="res://splash_001.png"
 config/icon="res://icon.png"
+boot_splash/minimum_display_time=1000
 
 [autoload]
 
