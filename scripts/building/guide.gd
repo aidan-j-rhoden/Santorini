@@ -25,7 +25,7 @@ func move_up():
 	if level == 0:
 		create_building()
 		$Guide.global_position += Vector3(0.0249, 6.0, -0.1762)
-		$Guide.scale = Vector3(0.57, 1, 0.57)
+		$Guide.scale = Vector3(0.57, 1, 0.55)
 	elif level == 1:
 		get_node("building").get_node("Lvl1").get_node("Lvl2").visible = true
 		get_node("building").get_node("Lvl1").get_node("Lvl2").get_node("Lvl3").visible = false
@@ -34,11 +34,13 @@ func move_up():
 	elif level == 2:
 		get_node("building").get_node("Lvl1").get_node("Lvl2").get_node("Lvl3").visible = true
 		get_node("building").get_node("Lvl1").get_node("Lvl2").get_node("Lvl3").get_node("Lvl4").visible = false
-		$Guide.global_position += Vector3(0.0, 3.5, -0.0)
-		$Guide.scale = Vector3(0.3, 1, 0.3)
+		$Guide.global_position += Vector3(0.0, 3.4, 0.2)
+		$Guide.scale = Vector3(0.3, 0.8, 0.3)
+	elif level == 3:
+		get_node("building").get_node("Lvl1").get_node("Lvl2").get_node("Lvl3").get_node("Lvl4").visible = true
 	level += 1
-	if level > 4:
-		queue_free()
+	if level > 3:
+		$Guide.visible = false
 
 
 func create_building():
