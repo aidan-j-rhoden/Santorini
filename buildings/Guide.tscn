@@ -3,27 +3,25 @@
 [ext_resource type="Script" path="res://scripts/building/guide.gd" id="1_bw8su"]
 [ext_resource type="Material" uid="uid://ds1t3drps4s5l" path="res://materials/transparent_glowing.tres" id="2_klpuy"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_fy6xi"]
+size = Vector3(14, 2, 14)
+
 [sub_resource type="BoxMesh" id="BoxMesh_i0hw6"]
 material = ExtResource("2_klpuy")
 size = Vector3(14, 0.5, 14)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_fy6xi"]
-size = Vector3(14, 2, 14)
-
-[node name="LVL1Guide" type="Node3D"]
+[node name="Guide" type="Node3D"]
 script = ExtResource("1_bw8su")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_i0hw6")
-skeleton = NodePath("../..")
-
-[node name="Lvl1Guide" type="Area3D" parent="."]
-collision_layer = 2049
-collision_mask = 2049
+[node name="Guide" type="Area3D" parent="."]
 input_capture_on_drag = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Lvl1Guide"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Guide"]
 shape = SubResource("BoxShape3D_fy6xi")
 
-[connection signal="mouse_entered" from="Lvl1Guide" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Lvl1Guide" to="." method="_on_mouse_exited"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Guide"]
+mesh = SubResource("BoxMesh_i0hw6")
+skeleton = NodePath("../../..")
+
+[connection signal="mouse_entered" from="Guide" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Guide" to="." method="_on_mouse_exited"]
