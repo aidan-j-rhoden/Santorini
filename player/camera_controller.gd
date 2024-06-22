@@ -19,8 +19,6 @@ func _input(event: InputEvent) -> void:
 			# get the angle of the mouse movement relative to the screen
 			# then apply that to the camera-controler node location, with the angle paralel to the camera
 			var movement_vector:Vector2 = Vector2(-event.relative.x, event.relative.y)
-			#var distance = sqrt((event.relative.x ** 2) + (event.relative.y ** 2))
-			print(movement_vector)
 			movement_vector *= CAMERA_MOVEMENT_SPEED * ((Camera.position.z + 1) / 4)
 
 			Position_Target.translate(Vector3(movement_vector.x * CAMERA_MOVEMENT_SPEED, 0, 0))
