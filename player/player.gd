@@ -42,11 +42,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		if top_fall_speed != 0.0:
 			if top_fall_speed > 14.0:
-				health = 0
+				damage(100)
 			elif top_fall_speed > 9:
-				health -= remap(clamp(top_fall_speed - JUMP_VELOCITY, 0, INF), 0, 12, 0, 100)
-			elif 5.0 < top_fall_speed and top_fall_speed < 9.0:
-				health -= remap(clamp(top_fall_speed - JUMP_VELOCITY, 0, INF), 0, 15, 0, 30)
+				damage(remap(clamp(top_fall_speed - JUMP_VELOCITY, 0, INF), 0, 12, 0, 100))
+			elif 7.3 < top_fall_speed and top_fall_speed < 7.6:
+				damage(randi_range(1, 5))
+			elif 7.6 < top_fall_speed and top_fall_speed < 9.0:
+				damage(remap(clamp(top_fall_speed - JUMP_VELOCITY, 0, INF), 0, 15, 0, 30))
 			top_fall_speed = 0.0
 
 	if not dead:
@@ -91,8 +93,12 @@ func _process(_delta: float) -> void:
 		die()
 
 
+func damage(amount):
+	health -= amount
+
+
 func die():
 	if not dead:
 		dead = true
-		$HUD/DeathCanvas.visible = true
-		$HUD/DeathCanvas/AnimationPlayer.play("die")
+		$HUD/DeathRect.visible = true
+		$HUD/DeathRect/AnimationPlayer.play("die")

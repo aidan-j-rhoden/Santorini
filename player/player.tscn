@@ -239,7 +239,7 @@ offset_bottom = 44.0
 value = 1.0
 rounded = true
 
-[node name="DeathCanvas" type="ColorRect" parent="HUD"]
+[node name="DeathRect" type="ColorRect" parent="HUD"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -247,7 +247,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/DeathCanvas"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/DeathRect"]
 libraries = {
 "": SubResource("AnimationLibrary_rtdva")
 }
