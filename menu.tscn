@@ -9,6 +9,7 @@ anchors_preset = 0
 script = ExtResource("1")
 
 [node name="home" type="Control" parent="."]
+layout_mode = 1
 anchors_preset = 0
 
 [node name="start" type="Button" parent="home"]
@@ -29,9 +30,9 @@ text = "Settings"
 
 [node name="container" type="HBoxContainer" parent="home"]
 layout_mode = 0
-offset_left = 537.0
+offset_left = 500.0
 offset_top = 300.0
-offset_right = 796.0
+offset_right = 759.0
 offset_bottom = 331.0
 
 [node name="label" type="Label" parent="home/container"]
