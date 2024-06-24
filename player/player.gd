@@ -1,10 +1,11 @@
 extends CharacterBody3D
 
-const CAMERA_ROT_SPEED = 0.2
 const SPEED = 5.0
 const CROUCH_SPEED = 2.5
 const JUMP_VELOCITY = 4.5
 const CROUCH_JUMP_VELOCITY = 2.5
+
+@export var CAMERA_ROT_SPEED = 0.2
 
 var top_fall_speed = 0.0
 var health = 100.0

@@ -48,3 +48,7 @@ func _on_b_slider_value_changed(value: float) -> void:
 
 func _on_thickness_value_changed(value: float) -> void:
 	update_crosshair_thickness(value)
+
+
+func _on_sensitivity_value_changed(value: float) -> void:
+	get_parent().CAMERA_ROT_SPEED = remap(value, 1, 100, 0.075, 0.4)

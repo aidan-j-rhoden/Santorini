@@ -254,7 +254,6 @@ libraries = {
 
 [node name="Settings" type="CanvasLayer" parent="HUD"]
 layer = 2
-visible = false
 
 [node name="TransparentBackground" type="ColorRect" parent="HUD/Settings"]
 anchors_preset = 15
@@ -298,6 +297,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="HUD/Settings/Background/Container/Crosshair_Color"]
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 text = "Crosshair color: "
 
@@ -311,16 +311,19 @@ layout_mode = 2
 alignment = 1
 
 [node name="Red" type="Label" parent="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer/Labels"]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "Red:"
 
 [node name="Green" type="Label" parent="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer/Labels"]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 text = "Green:"
 
 [node name="Blue" type="Label" parent="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer/Labels"]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 1, 1)
 text = "Blue:"
@@ -355,6 +358,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="HUD/Settings/Background/Container/Crosshair_Thickness"]
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 text = "Crosshair Thickness: "
 
@@ -366,9 +370,21 @@ min_value = 1.0
 max_value = 16.0
 value = 4.0
 
-[node name="Button2" type="Button" parent="HUD/Settings/Background/Container"]
+[node name="Mouse_Sensitivity" type="HBoxContainer" parent="HUD/Settings/Background/Container"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HUD/Settings/Background/Container/Mouse_Sensitivity"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "Mouse Sensitivity: "
+
+[node name="sensitivity" type="HSlider" parent="HUD/Settings/Background/Container/Mouse_Sensitivity"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 80.0
 
 [node name="Button3" type="Button" parent="HUD/Settings/Background/Container"]
 layout_mode = 2
@@ -382,3 +398,4 @@ size_flags_vertical = 3
 [connection signal="value_changed" from="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer/Sliders/GSlider" to="HUD" method="_on_g_slider_value_changed"]
 [connection signal="value_changed" from="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer/Sliders/BSlider" to="HUD" method="_on_b_slider_value_changed"]
 [connection signal="value_changed" from="HUD/Settings/Background/Container/Crosshair_Thickness/thickness" to="HUD" method="_on_thickness_value_changed"]
+[connection signal="value_changed" from="HUD/Settings/Background/Container/Mouse_Sensitivity/sensitivity" to="HUD" method="_on_sensitivity_value_changed"]
