@@ -59,7 +59,7 @@ item_count = 3
 popup/item_0/text = "Deathmatch"
 popup/item_1/text = "Intellectual Deathmatch"
 popup/item_1/id = 1
-popup/item_2/text = "Intellectual Deathmatch with a Sicalian"
+popup/item_2/text = "Intellectual Deathmatch with a Sicilian"
 popup/item_2/id = 2
 
 [node name="settings" type="Control" parent="."]
