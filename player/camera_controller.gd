@@ -7,8 +7,10 @@ const CAMERA_MOVEMENT_SPEED:float = 0.1
 @onready var Camera = $Y_Rot/X_Rot/Camera3D
 @onready var Position_Target = $Position_Target
 
+@export var player:int
+
 func _ready() -> void:
-	pass
+	$Control/Label.text = "Player " + str(player)
 
 
 func _input(event: InputEvent) -> void:

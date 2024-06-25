@@ -12,3 +12,13 @@ script = ExtResource("1_rr467")
 [node name="Camera3D" type="Camera3D" parent="Y_Rot/X_Rot"]
 
 [node name="Position_Target" type="Node3D" parent="."]
+
+[node name="Control" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="Control"]
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 69.0
+offset_bottom = 33.0
+theme_override_font_sizes/font_size = 30
+text = "Player 1"

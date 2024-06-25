@@ -19,7 +19,9 @@ func _ready():
 
 	if Settings.gamemode == 1:
 		build_guides()
-		$Cameras.add_child(Camera.instantiate())
+		var player_cam = Camera.instantiate()
+		player_cam.player = 1
+		$Cameras.add_child(player_cam)
 
 
 func build_guides():
