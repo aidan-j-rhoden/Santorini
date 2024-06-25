@@ -11,10 +11,11 @@ const CAMERA_MOVEMENT_SPEED:float = 0.1
 
 func _ready() -> void:
 	$Control/Label.text = "Player " + str(player)
+	$Control.visible = false
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion and Input.is_action_pressed("middle-mouse"):
+	if event is InputEventMouseMotion and Input.is_action_pressed("middle-mouse") and Camera.current:
 		Position_Target.global_position = y_rot.global_position
 		Position_Target.global_rotation = Camera.global_rotation
 		if Input.is_action_pressed("shift"):
@@ -35,8 +36,16 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("zoom-in"):
-		Camera.position.z += 50 * delta * ((Camera.position.z + 1) / 4)
-	if Input.is_action_just_pressed("zoom-out"):
-		Camera.position.z -= 50 * delta * ((Camera.position.z + 1) / 4)
-	Camera.position.z = clamp(Camera.position.z, 0, 500)
+	if Camera.current:
+		if Input.is_action_just_pressed("zoom-in"):
+			Camera.position.z += 50 * delta * ((Camera.position.z + 1) / 4)
+		if Input.is_action_just_pressed("zoom-out"):
+			Camera.position.z -= 50 * delta * ((Camera.position.z + 1) / 4)
+		Camera.position.z = clamp(Camera.position.z, 0, 500)
+	else:
+		$Control.visible = false
+
+
+func set_current():
+	Camera.current = true
+	$Control.visible = true

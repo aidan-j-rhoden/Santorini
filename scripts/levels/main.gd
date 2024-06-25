@@ -5,6 +5,11 @@ extends Node3D
 @onready var Camera = preload("res://player/camera_controller.tscn")
 @onready var guide = preload("res://buildings/Guide.tscn")
 
+var current_player = 1
+var previous_player = 2
+var player1_cam
+var player2_cam
+
 func _ready():
 	if Settings.gamemode == 0:
 		$Grid.visible = false
@@ -19,9 +24,31 @@ func _ready():
 
 	if Settings.gamemode == 1:
 		build_guides()
-		var player_cam = Camera.instantiate()
-		player_cam.player = 1
-		$Cameras.add_child(player_cam)
+		current_player = 1
+
+		player1_cam = Camera.instantiate()
+		player2_cam = Camera.instantiate()
+		player1_cam.player = 1
+		player2_cam.player = 2
+
+		$Cameras.add_child(player1_cam)
+		$Cameras.add_child(player2_cam)
+
+
+func _process(_delta: float) -> void:
+	if previous_player == current_player:
+		change_player()
+		if previous_player == 1:
+			previous_player = 2
+		else:
+			previous_player = 2
+
+
+func change_player():
+	if current_player == 1:
+		player1_cam.set_current()
+	else:
+		player2_cam.set_current()
 
 
 func build_guides():
