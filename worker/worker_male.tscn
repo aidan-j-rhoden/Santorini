@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://bkb1m6yre6atw"]
+
+[ext_resource type="Script" path="res://worker/worker.gd" id="1_di2g5"]
+[ext_resource type="Material" uid="uid://ds1t3drps4s5l" path="res://materials/transparent_glowing.tres" id="2_atki6"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_k80i6"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7hhtl"]
+top_radius = 0.1
+bottom_radius = 0.05
+height = 1.0
+radial_segments = 12
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0crme"]
+top_radius = 0.25
+bottom_radius = 0.25
+height = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qdlqk"]
+radius = 1.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_wnkyl"]
+material = ExtResource("2_atki6")
+radius = 1.5
+height = 3.0
+
+[node name="WorkerMale" type="Node3D"]
+script = ExtResource("1_di2g5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_k80i6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0, 1, 0.543875, 0.163701, 0.615756)
+mesh = SubResource("CylinderMesh_7hhtl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D2"]
+transform = Transform3D(-2.98023e-08, 1, 0, -1, -2.98023e-08, 0, 0, 0, 1, -0.00898533, 0.461762, 0)
+mesh = SubResource("CylinderMesh_0crme")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_qdlqk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+mesh = SubResource("SphereMesh_wnkyl")
+
+[connection signal="mouse_entered" from="Area3D" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area3D" to="." method="_on_mouse_exited"]
