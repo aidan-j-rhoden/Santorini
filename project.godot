@@ -125,6 +125,10 @@ escape={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_7="Stairs"
+
 [node]
 
 name_num_separator=2
