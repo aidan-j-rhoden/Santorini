@@ -37,6 +37,7 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	if Camera.current:
+		$Control.visible = true
 		if Input.is_action_just_pressed("zoom-in"):
 			Camera.position.z += 50 * delta * ((Camera.position.z + 1) / 4)
 		if Input.is_action_just_pressed("zoom-out"):
