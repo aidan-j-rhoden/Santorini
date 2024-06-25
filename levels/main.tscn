@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddrbtqxkhbi34"]
+[gd_scene load_steps=9 format=3 uid="uid://ddrbtqxkhbi34"]
 
 [ext_resource type="Script" path="res://scripts/levels/main.gd" id="1_aq87o"]
 [ext_resource type="Environment" uid="uid://bekiwxqt2tf0d" path="res://levels/enviroment.tres" id="2_vxgrb"]
 [ext_resource type="PackedScene" uid="uid://g7hplppbb7m1" path="res://levels/grounds/ground.glb" id="3_6tau7"]
+[ext_resource type="PackedScene" uid="uid://bkb1m6yre6atw" path="res://worker/worker_male.tscn" id="3_ka1dm"]
 [ext_resource type="Material" path="res://materials/LightPlastic.material" id="4_sbkts"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_naaym"]
@@ -23,6 +24,13 @@ environment = ExtResource("2_vxgrb")
 
 [node name="Players" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+
+[node name="P1_W" type="Node3D" parent="Players"]
+
+[node name="WorkerMale" parent="Players/P1_W" instance=ExtResource("3_ka1dm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 15)
+
+[node name="P2_W" type="Node3D" parent="Players"]
 
 [node name="Cameras" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.4993, 0)

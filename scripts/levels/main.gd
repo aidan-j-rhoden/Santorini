@@ -4,6 +4,7 @@ extends Node3D
 @onready var player = preload("res://player/player.tscn")
 @onready var Camera = preload("res://player/camera_controller.tscn")
 @onready var guide = preload("res://buildings/Guide.tscn")
+@onready var worker_male = preload("res://worker/worker_male.tscn")
 
 var current_player = 1
 var previous_player = 2
