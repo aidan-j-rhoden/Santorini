@@ -35,13 +35,12 @@ func _ready():
 		$Cameras.add_child(player2_cam)
 
 
-func _process(_delta: float) -> void:
-	if previous_player == current_player:
-		change_player()
-		if previous_player == 1:
-			previous_player = 2
-		else:
-			previous_player = 2
+func player_took_action():
+	if current_player == 1:
+		current_player = 2
+	else:
+		current_player = 1
+	change_player()
 
 
 func change_player():
