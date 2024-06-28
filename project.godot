@@ -21,6 +21,7 @@ boot_splash/minimum_display_time=1000
 [autoload]
 
 Settings="*res://scripts/settings.gd"
+Globals="*res://scripts/globals.gd"
 
 [display]
 
