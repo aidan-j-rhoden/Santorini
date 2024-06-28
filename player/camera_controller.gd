@@ -43,6 +43,8 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("zoom-out"):
 			Camera.position.z -= 50 * delta * ((Camera.position.z + 1) / 4)
 		Camera.position.z = clamp(Camera.position.z, 0, 500)
+		if Input.is_action_just_pressed("left-mouse") or Input.is_action_just_pressed("right-mouse"):
+			get_parent().get_parent().player_took_action()
 	else:
 		$Control.visible = false
 
