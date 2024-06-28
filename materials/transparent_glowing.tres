@@ -7,4 +7,4 @@ vertex_color_is_srgb = true
 albedo_color = Color(0.14902, 0.603922, 0.92549, 0.737255)
 emission_enabled = true
 emission = Color(0.0622741, 0.300104, 1, 1)
-emission_energy_multiplier = 10.0
+emission_energy_multiplier = 5.0
