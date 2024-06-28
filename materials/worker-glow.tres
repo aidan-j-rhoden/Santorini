@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cwip18ffq3h5x"]
+
+[resource]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.878431, 0.415686, 0.152941, 0.705882)
+emission_enabled = true
+emission = Color(0.96545, 0.52751, 0.305628, 1)
+emission_energy_multiplier = 4.68429
+disable_receive_shadows = true

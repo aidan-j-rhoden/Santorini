@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkb1m6yre6atw"]
+[gd_scene load_steps=12 format=3 uid="uid://bkb1m6yre6atw"]
 
 [ext_resource type="Script" path="res://worker/worker.gd" id="1_di2g5"]
-[ext_resource type="Material" uid="uid://ds1t3drps4s5l" path="res://materials/transparent_glowing.tres" id="2_atki6"]
+[ext_resource type="Material" uid="uid://cwip18ffq3h5x" path="res://materials/worker-glow.tres" id="2_yadlq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_k80i6"]
 
@@ -16,13 +16,103 @@ top_radius = 0.25
 bottom_radius = 0.25
 height = 0.5
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_qdlqk"]
-radius = 1.5
+[sub_resource type="BoxShape3D" id="BoxShape3D_c5brd"]
+size = Vector3(3, 1, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_wnkyl"]
-material = ExtResource("2_atki6")
-radius = 1.5
-height = 3.0
+[sub_resource type="BoxMesh" id="BoxMesh_udgkb"]
+material = ExtResource("2_yadlq")
+size = Vector3(3, 0.25, 3)
+
+[sub_resource type="Animation" id="Animation_7lcwd"]
+resource_name = "ready"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.878431, 0.415686, 0.152941, 0.470588), Color(0.878431, 0.415686, 0.152941, 0.705882)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:mesh:material:emission")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.878431, 0.415686, 0.152941, 1), Color(0.96545, 0.52751, 0.305628, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:mesh:material:emission_energy_multiplier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 5.0]
+}
+
+[sub_resource type="Animation" id="Animation_8jucv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.878431, 0.415686, 0.152941, 0.470588)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:mesh:material:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="Animation" id="Animation_dfx72"]
+resource_name = "waiting"
+length = 0.75
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [5.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o2snj"]
+_data = {
+"RESET": SubResource("Animation_8jucv"),
+"ready": SubResource("Animation_7lcwd"),
+"waiting": SubResource("Animation_dfx72")
+}
 
 [node name="WorkerMale" type="Node3D"]
 script = ExtResource("1_di2g5")
@@ -39,12 +129,38 @@ transform = Transform3D(-2.98023e-08, 1, 0, -1, -2.98023e-08, 0, 0, 0, 1, -0.008
 mesh = SubResource("CylinderMesh_0crme")
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.854744, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("SphereShape3D_qdlqk")
+shape = SubResource("BoxShape3D_c5brd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
-mesh = SubResource("SphereMesh_wnkyl")
+mesh = SubResource("BoxMesh_udgkb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area3D"]
+libraries = {
+"": SubResource("AnimationLibrary_o2snj")
+}
+
+[node name="Control" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="Control"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -540.0
+offset_top = -50.0
+offset_right = 540.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Left click to move, right click to build"
+horizontal_alignment = 1
 
 [connection signal="mouse_entered" from="Area3D" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Area3D" to="." method="_on_mouse_exited"]
+[connection signal="animation_finished" from="Area3D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
