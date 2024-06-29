@@ -59,9 +59,11 @@ func _on_mouse_entered() -> void:
 				return
 
 			if Globals.stage == "fight":
-				var my_2d_pos:Vector2 = Vector2((abs(global_position.x) / 15.0), (abs(global_position.y) / 15.0))
-				var his_2d_pos:Vector2 = Vector2(abs(Globals.worker_positions[worker].x) / 15.0, abs(Globals.worker_positions[worker].y) / 15.0)
-				if my_2d_pos.distance_to(his_2d_pos) > sqrt(2):
+				var thing = (abs(global_position.x / 15.0 - Globals.worker_positions[worker].x / 15.0) + abs(global_position.y / 15.0 - Globals.worker_positions[worker].y / 15.0))
+				print(thing)
+				if (0 < thing and thing < 3):
+					mouse_inside = true
+				else:
 					return
 		mouse_inside = true
 
