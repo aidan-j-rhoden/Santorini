@@ -4,25 +4,25 @@
 [ext_resource type="Material" uid="uid://cwip18ffq3h5x" path="res://materials/worker-glow.tres" id="2_yadlq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_k80i6"]
-radius = 2.5
-height = 10.0
+radius = 1.5
+height = 5.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_7hhtl"]
-bottom_radius = 0.25
-height = 5.0
+top_radius = 0.25
+bottom_radius = 0.2
+height = 2.5
 radial_segments = 12
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_0crme"]
-top_radius = 1.25
-bottom_radius = 1.25
-height = 2.5
+top_radius = 0.75
+bottom_radius = 0.75
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c5brd"]
-size = Vector3(15, 5, 15)
+size = Vector3(7, 5, 7)
 
 [sub_resource type="BoxMesh" id="BoxMesh_udgkb"]
 material = ExtResource("2_yadlq")
-size = Vector3(15, 1.25, 15)
+size = Vector3(7, 1.25, 7)
 
 [sub_resource type="Animation" id="Animation_8jucv"]
 length = 0.001
@@ -119,16 +119,16 @@ _data = {
 script = ExtResource("1_di2g5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.51834, 0)
 mesh = SubResource("CapsuleMesh_k80i6")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0, 1, 0.544, 0.164, 3.616)
+transform = Transform3D(0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0, 1, 0.544, 0.00472927, 1.75821)
 mesh = SubResource("CylinderMesh_7hhtl")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D2"]
-transform = Transform3D(-2.98023e-08, 1, 0, -1, -2.98023e-08, 0, 0, 0, 1, -0.135577, 2.56623, 0)
+transform = Transform3D(-2.98023e-08, 1, 0, -1, -2.98023e-08, 0, 0, 0, 1, -0.0269723, 1.81244, 0)
 mesh = SubResource("CylinderMesh_0crme")
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -162,8 +162,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
-text = "Left click to move, right click to build
-Escape to cancel selection"
+text = "Left click to move, Escape to cancel selection"
 horizontal_alignment = 1
 
 [connection signal="mouse_entered" from="Area3D" to="." method="_on_mouse_entered"]

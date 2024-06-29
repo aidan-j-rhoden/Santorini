@@ -52,11 +52,13 @@ func I_got_clicked(here):
 	if current_player == 1:
 		player1_workers_amount += 1
 		var wkr = worker_male.instantiate()
+		wkr.player = 1
 		$Players/P1_W.add_child(wkr)
 		wkr.global_position = here
 	elif current_player == 2:
 		player2_workers_amount += 1
 		var wkr = worker_male.instantiate()
+		wkr.player = 2
 		$Players/P2_W.add_child(wkr)
 		wkr.global_position = here
 	if player2_workers_amount == 2 and player1_workers_amount == 2:
