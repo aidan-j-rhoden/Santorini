@@ -53,8 +53,16 @@ func create_building():
 
 func _on_mouse_entered() -> void:
 		for worker in Globals.worker_positions.keys():
+			if Globals.worker_positions[worker] == null:
+				continue
 			if Globals.worker_positions[worker] == global_position:
 				return
+
+			if Globals.stage == "fight":
+				var my_2d_pos:Vector2 = Vector2((abs(global_position.x) / 15.0), (abs(global_position.y) / 15.0))
+				var his_2d_pos:Vector2 = Vector2(abs(Globals.worker_positions[worker].x) / 15.0, abs(Globals.worker_positions[worker].y) / 15.0)
+				if my_2d_pos.distance_to(his_2d_pos) > sqrt(2):
+					return
 		mouse_inside = true
 
 
