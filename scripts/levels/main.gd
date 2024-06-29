@@ -52,15 +52,19 @@ func I_got_clicked(here):
 	if current_player == 1:
 		player1_workers_amount += 1
 		var wkr = worker_male.instantiate()
+		wkr.name = "p1wkr" + str(player1_workers_amount)
 		wkr.player = 1
 		$Players/P1_W.add_child(wkr)
 		wkr.global_position = here
+		Globals.worker_positions[wkr.name] = here
 	elif current_player == 2:
 		player2_workers_amount += 1
 		var wkr = worker_male.instantiate()
+		wkr.name = "p2wkr" + str(player2_workers_amount)
 		wkr.player = 2
 		$Players/P2_W.add_child(wkr)
 		wkr.global_position = here
+		Globals.worker_positions[wkr.name] = here
 	if player2_workers_amount == 2 and player1_workers_amount == 2:
 		Globals.stage = "fight"
 	player_took_action()
@@ -80,3 +84,4 @@ func build_guides():
 				guide_instance.position = Vector3(x * 15, 0, z * 15)
 				guide_instance.rotation_degrees = Vector3(0, randi() % 4 * 90, 0)
 				get_node("Guides").add_child(guide_instance, true)
+				Globals.guide_positions[guide_instance.name] = guide_instance.global_position

@@ -8,14 +8,6 @@ func _ready() -> void:
 	$Guide/MeshInstance3D.visible = false
 
 
-func _on_mouse_entered() -> void:
-	mouse_inside = true
-
-
-func _on_mouse_exited() -> void:
-	mouse_inside = false
-
-
 func _physics_process(_delta: float) -> void:
 	if mouse_inside and not Input.is_action_pressed("middle-mouse"):
 		$Guide/MeshInstance3D.visible = true
@@ -57,3 +49,14 @@ func create_building():
 	add_child(building, true)
 	building.global_position = self.global_position
 	building.rotation_degrees.y = randi_range(0, 3) * 90
+
+
+func _on_mouse_entered() -> void:
+		for worker in Globals.worker_positions.keys():
+			if Globals.worker_positions[worker] == global_position:
+				return
+		mouse_inside = true
+
+
+func _on_mouse_exited() -> void:
+	mouse_inside = false
