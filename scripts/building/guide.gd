@@ -59,10 +59,10 @@ func _on_mouse_entered() -> void:
 				return
 
 			if Globals.stage == "fight":
-				var thing = (abs(global_position.x / 15.0 - Globals.worker_positions[worker].x / 15.0) + abs(global_position.y / 15.0 - Globals.worker_positions[worker].y / 15.0))
-				print(thing)
-				if (0 < thing and thing < 3):
-					mouse_inside = true
+				var distance = global_position.distance_to(Globals.worker_positions[worker])
+				print(distance/15.0)
+				if (0 < distance/15.0 and distance/15.0 < 3):
+					break
 				else:
 					return
 		mouse_inside = true

@@ -81,7 +81,6 @@ func build_guides():
 	for x in range(floor((Settings.width/2.0)) * -1, Settings.width - floor(Settings.width/2.0)):
 			for z in range(floor((Settings.length/2.0)) * -1, Settings.length - floor(Settings.length/2.0)):
 				var guide_instance = guide.instantiate()
-				guide_instance.position = Vector3(x * 15, 0, z * 15)
-				guide_instance.rotation_degrees = Vector3(0, randi() % 4 * 90, 0)
 				get_node("Guides").add_child(guide_instance, true)
+				guide_instance.global_position = Vector3(x * 15, 0, z * 15)
 				Globals.guide_positions[guide_instance.name] = guide_instance.global_position
