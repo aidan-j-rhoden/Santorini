@@ -8,8 +8,12 @@ extends Node3D
 
 var current_player = 1
 var previous_player = 2
+
 var player1_cam
+var player1_workers_amount = 0
+
 var player2_cam
+var player2_workers_amount = 0
 
 func _ready():
 	if Settings.gamemode == 0:
@@ -42,6 +46,22 @@ func player_took_action():
 	else:
 		current_player = 1
 	change_player()
+
+
+func I_got_clicked(here):
+	if current_player == 1:
+		player1_workers_amount += 1
+		var wkr = worker_male.instantiate()
+		$Players/P1_W.add_child(wkr)
+		wkr.global_position = here
+	elif current_player == 2:
+		player2_workers_amount += 1
+		var wkr = worker_male.instantiate()
+		$Players/P2_W.add_child(wkr)
+		wkr.global_position = here
+	if player2_workers_amount == 2 and player1_workers_amount == 2:
+		Globals.stage = "fight"
+	player_took_action()
 
 
 func change_player():

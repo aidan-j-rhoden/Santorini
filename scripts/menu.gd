@@ -4,6 +4,10 @@ var main = preload("res://levels/main.tscn")
 @onready var gamemode = $home/gamemode
 @onready var player = preload("res://player/player.tscn")
 
+func _ready() -> void:
+	Globals.stage = "setup"
+
+
 func _on_start_pressed():
 	Settings.gamemode = gamemode.selected
 	if gamemode.selected == 2:

@@ -23,8 +23,11 @@ func _physics_process(_delta: float) -> void:
 		$Guide/MeshInstance3D.visible = false
 	if $Guide/MeshInstance3D.visible:
 		if Input.is_action_just_pressed("left-mouse"):
-			move_up()
-			get_parent().get_parent().player_took_action()
+			if Globals.stage == "setup":
+				get_parent().get_parent().I_got_clicked(global_position)
+			else:
+				move_up()
+				get_parent().get_parent().player_took_action()
 
 
 func move_up():
