@@ -52,23 +52,27 @@ func create_building():
 
 
 func _on_mouse_entered() -> void:
-	var worker_dict
+	var worker_dict:Dictionary
+	var occupied_spaces:Array
+
+	for wkr in Globals.p1_worker_positions:
+		occupied_spaces.append(Globals.p1_worker_positions[wkr])
+	for wkr in Globals.p2_worker_positions:
+		occupied_spaces.append(Globals.p2_worker_positions[wkr])
+
 	if Globals.current_player == 1:
 		worker_dict = Globals.p1_worker_positions
 	else:
 		worker_dict = Globals.p2_worker_positions
+	
+	if global_position in occupied_spaces: # The space is occupied
+		return
 
 	for worker in worker_dict.keys():
-		print("    " + str(worker))
 		if worker_dict[worker] == null:
 			continue
-		if worker_dict[worker] == global_position:
-			print("Occupied space")
-			return
-
 		if Globals.stage == "fight":
 			var distance = global_position.distance_to(worker_dict[worker])
-			print(global_position, worker_dict[worker], global_position.distance_to(worker_dict[worker]))
 			if distance/15.0 < 1.5:
 				if 0 < distance/15.0:
 					mouse_inside = true
@@ -80,5 +84,5 @@ func _on_mouse_entered() -> void:
 		mouse_inside = true
 
 
-func _on_mouse_exited() -> void:
+func _on_mouse_exited() -> void: # This one's much simplier, eh?
 	mouse_inside = false
