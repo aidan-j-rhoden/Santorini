@@ -3,13 +3,19 @@
 [ext_resource type="Script" path="res://scripts/levels/main.gd" id="1_aq87o"]
 [ext_resource type="Environment" uid="uid://bekiwxqt2tf0d" path="res://levels/enviroment.tres" id="2_vxgrb"]
 [ext_resource type="PackedScene" uid="uid://g7hplppbb7m1" path="res://levels/grounds/ground.glb" id="3_6tau7"]
-[ext_resource type="Material" path="res://materials/LightPlastic.material" id="4_sbkts"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_naaym"]
 size = Vector3(79.9462, 6.56543, 79)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7dos"]
+resource_name = "LightPlastic"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.54666, 0.54666, 0.54666, 1)
+roughness = 0.676
+emission_enabled = true
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_o41lh"]
-material = ExtResource("4_sbkts")
+material = SubResource("StandardMaterial3D_q7dos")
 height = 75.0
 
 [sub_resource type="FogMaterial" id="FogMaterial_r00t1"]
