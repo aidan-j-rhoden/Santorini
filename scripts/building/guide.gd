@@ -52,19 +52,31 @@ func create_building():
 
 
 func _on_mouse_entered() -> void:
-		for worker in Globals.worker_positions.keys():
-			if Globals.worker_positions[worker] == null:
-				continue
-			if Globals.worker_positions[worker] == global_position:
-				return
+	var worker_dict
+	if Globals.current_player == 1:
+		worker_dict = Globals.p1_worker_positions
+	else:
+		worker_dict = Globals.p2_worker_positions
 
-			if Globals.stage == "fight":
-				var distance = global_position.distance_to(Globals.worker_positions[worker])
-				print(distance/15.0)
-				if (0 < distance/15.0 and distance/15.0 < 3):
-					break
-				else:
+	for worker in worker_dict.keys():
+		print("    " + str(worker))
+		if worker_dict[worker] == null:
+			continue
+		if worker_dict[worker] == global_position:
+			print("Occupied space")
+			return
+
+		if Globals.stage == "fight":
+			var distance = global_position.distance_to(worker_dict[worker])
+			print(global_position, worker_dict[worker], global_position.distance_to(worker_dict[worker]))
+			if distance/15.0 < 1.5:
+				if 0 < distance/15.0:
+					mouse_inside = true
 					return
+			else:
+				continue
+
+	if Globals.stage == "setup":
 		mouse_inside = true
 
 

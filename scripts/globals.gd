@@ -3,4 +3,7 @@ extends Node
 @export var stage:String = "setup"
 @export var guide_positions:Dictionary = {}
 
-@export var worker_positions:Dictionary = {"p1wkr1" = null, "p1wkr2" = null, "p2wkr1" = null, "p2wkr2" = null}
+@export var current_player:int = 1
+
+@export var p1_worker_positions:Dictionary = {"p1wkr1" = null, "p1wkr2" = null}
+@export var p2_worker_positions:Dictionary = {"p2wkr1" = null, "p2wkr2" = null}

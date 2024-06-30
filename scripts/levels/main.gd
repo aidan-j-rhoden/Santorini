@@ -6,9 +6,6 @@ extends Node3D
 @onready var guide = preload("res://buildings/Guide.tscn")
 @onready var worker_male = preload("res://worker/worker_male.tscn")
 
-var current_player = 1
-var previous_player = 2
-
 var player1_cam
 var player1_workers_amount = 0
 
@@ -29,7 +26,7 @@ func _ready():
 
 	if Settings.gamemode == 1:
 		build_guides()
-		current_player = 1
+		Globals.current_player = 1
 
 		player1_cam = Camera.instantiate()
 		player2_cam = Camera.instantiate()
@@ -41,37 +38,37 @@ func _ready():
 
 
 func player_took_action():
-	if current_player == 1:
-		current_player = 2
+	if Globals.current_player == 1:
+		Globals.current_player = 2
 	else:
-		current_player = 1
+		Globals.current_player = 1
 	change_player()
 
 
 func I_got_clicked(here):
-	if current_player == 1:
+	if Globals.current_player == 1:
 		player1_workers_amount += 1
 		var wkr = worker_male.instantiate()
 		wkr.name = "p1wkr" + str(player1_workers_amount)
 		wkr.player = 1
 		$Players/P1_W.add_child(wkr)
 		wkr.global_position = here
-		Globals.worker_positions[wkr.name] = here
-	elif current_player == 2:
+		Globals.p1_worker_positions[wkr.name] = here
+	elif Globals.current_player == 2:
 		player2_workers_amount += 1
 		var wkr = worker_male.instantiate()
 		wkr.name = "p2wkr" + str(player2_workers_amount)
 		wkr.player = 2
 		$Players/P2_W.add_child(wkr)
 		wkr.global_position = here
-		Globals.worker_positions[wkr.name] = here
+		Globals.p2_worker_positions[wkr.name] = here
 	if player2_workers_amount == 2 and player1_workers_amount == 2:
 		Globals.stage = "fight"
 	player_took_action()
 
 
 func change_player():
-	if current_player == 1:
+	if Globals.current_player == 1:
 		player1_cam.set_current()
 	else:
 		player2_cam.set_current()
