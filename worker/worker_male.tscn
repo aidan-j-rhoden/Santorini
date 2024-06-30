@@ -18,11 +18,11 @@ top_radius = 0.75
 bottom_radius = 0.75
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c5brd"]
-size = Vector3(7, 5, 7)
+size = Vector3(12, 3, 12)
 
 [sub_resource type="BoxMesh" id="BoxMesh_udgkb"]
 material = ExtResource("2_yadlq")
-size = Vector3(7, 1.25, 7)
+size = Vector3(12, 1.25, 12)
 
 [sub_resource type="Animation" id="Animation_8jucv"]
 length = 0.001

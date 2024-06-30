@@ -39,7 +39,8 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_mouse_entered() -> void:
-	mouse_inside = true
+	if Globals.stage == "fight":
+		mouse_inside = true
 
 
 func _on_mouse_exited() -> void:
