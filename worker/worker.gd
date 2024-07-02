@@ -23,9 +23,11 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left-mouse") and mouse_inside:
 		waiting_orders = true
 		$Control.visible = true
+		Globals.current_worker = global_position
 	if waiting_orders and Input.is_action_just_pressed("escape"):
 		waiting_orders =  false
 		$Control.visible = false
+		Globals.current_worker = Vector3.ZERO
 
 
 func _physics_process(_delta: float) -> void:
@@ -34,12 +36,19 @@ func _physics_process(_delta: float) -> void:
 			$Area3D/MeshInstance3D.visible = true
 		elif not waiting_orders:
 			$Area3D/MeshInstance3D.visible = false
-		if waiting_orders and not $Area3D/AnimationPlayer.is_playing():
-			$Area3D/AnimationPlayer.play("ready")
+		if waiting_orders:
+			if $Area3D/AnimationPlayer.is_playing():
+				$Area3D/AnimationPlayer.play("ready")
+			if Globals.move_here != Vector3.ZERO:
+				global_position = Globals.move_here
+				Globals.move_here = Vector3()
+				Globals.current_worker = Vector3.ZERO
+				waiting_orders = false
+				$Control.visible = false
 
 
 func _on_mouse_entered() -> void:
-	if Globals.stage == "fight":
+	if Globals.stage == "fight" and Globals.current_player == player:
 		mouse_inside = true
 
 
@@ -48,6 +57,5 @@ func _on_mouse_exited() -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	print("finished")
 	if anim_name == "ready":
 		$Area3D/AnimationPlayer.play("waiting")

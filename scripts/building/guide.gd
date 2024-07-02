@@ -18,8 +18,11 @@ func _physics_process(_delta: float) -> void:
 			if Globals.stage == "setup":
 				get_parent().get_parent().I_got_clicked(global_position)
 			else:
-				move_up()
-				get_parent().get_parent().player_took_action()
+				if Globals.current_worker != Vector3.ZERO:
+					Globals.move_here = global_position
+				else:
+					move_up()
+					get_parent().get_parent().player_took_action()
 
 
 func move_up():
@@ -54,6 +57,7 @@ func create_building():
 func _on_mouse_entered() -> void:
 	var worker_dict:Dictionary
 	var occupied_spaces:Array
+	var workers
 
 	for wkr in Globals.p1_worker_positions:
 		occupied_spaces.append(Globals.p1_worker_positions[wkr])
@@ -68,15 +72,18 @@ func _on_mouse_entered() -> void:
 	if global_position in occupied_spaces: # The space is occupied
 		return
 
-	for worker in worker_dict.keys():
+	workers = worker_dict.keys()
+
+	if Globals.current_worker != Vector3.ZERO:
+		if _close_enough(Globals.current_worker):
+			return
+
+	for worker in workers:
 		if worker_dict[worker] == null:
 			continue
 		if Globals.stage == "fight":
-			var distance = global_position.distance_to(worker_dict[worker])
-			if distance/15.0 < 1.5:
-				if 0 < distance/15.0:
-					mouse_inside = true
-					return
+			if _close_enough(worker_dict[worker]):
+				return
 			else:
 				continue
 
@@ -86,3 +93,12 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void: # This one's much simplier, eh?
 	mouse_inside = false
+
+
+func _close_enough(target) -> bool:
+	var distance = global_position.distance_to(target)
+	if distance/15.0 < 1.5:
+		if 0 < distance/15.0:
+			mouse_inside = true
+			return true
+	return false
