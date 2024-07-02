@@ -45,6 +45,11 @@ func _physics_process(_delta: float) -> void:
 				Globals.current_worker = Vector3.ZERO
 				waiting_orders = false
 				$Control.visible = false
+				if player == 1:
+					Globals.p1_worker_positions[name] = global_position
+				elif player == 2:
+					Globals.p2_worker_positions[name] = global_position
+				get_parent().get_parent().get_parent().player_took_action()
 
 
 func _on_mouse_entered() -> void:

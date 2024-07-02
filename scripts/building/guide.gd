@@ -19,7 +19,12 @@ func _physics_process(_delta: float) -> void:
 				get_parent().get_parent().I_got_clicked(global_position)
 			else:
 				if Globals.current_worker != Vector3.ZERO:
-					Globals.move_here = global_position
+					if level == 0:
+						Globals.move_here = global_position
+					elif level == 1:
+						Globals.move_here = global_position + Vector3(0, 4.3, 0)
+					elif level == 2:
+						Globals.move_here = global_position + Vector3(0, 3.4, 0)
 				else:
 					move_up()
 					get_parent().get_parent().player_took_action()
@@ -76,6 +81,7 @@ func _on_mouse_entered() -> void:
 
 	if Globals.current_worker != Vector3.ZERO:
 		if _close_enough(Globals.current_worker):
+			mouse_inside = true
 			return
 
 	for worker in workers:
@@ -83,9 +89,8 @@ func _on_mouse_entered() -> void:
 			continue
 		if Globals.stage == "fight":
 			if _close_enough(worker_dict[worker]):
+				mouse_inside = true
 				return
-			else:
-				continue
 
 	if Globals.stage == "setup":
 		mouse_inside = true
@@ -99,6 +104,5 @@ func _close_enough(target) -> bool:
 	var distance = global_position.distance_to(target)
 	if distance/15.0 < 1.5:
 		if 0 < distance/15.0:
-			mouse_inside = true
 			return true
 	return false
