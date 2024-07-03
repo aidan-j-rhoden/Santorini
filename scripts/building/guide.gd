@@ -62,7 +62,6 @@ func create_building():
 func _on_mouse_entered() -> void:
 	var worker_dict:Dictionary
 	var occupied_spaces:Array
-	var workers
 
 	for wkr in Globals.p1_worker_positions:
 		occupied_spaces.append(Globals.p1_worker_positions[wkr])
@@ -73,18 +72,16 @@ func _on_mouse_entered() -> void:
 		worker_dict = Globals.p1_worker_positions
 	else:
 		worker_dict = Globals.p2_worker_positions
-	
+
 	if global_position in occupied_spaces: # The space is occupied
 		return
-
-	workers = worker_dict.keys()
 
 	if Globals.current_worker != Vector3.ZERO:
 		if _close_enough(Globals.current_worker):
 			mouse_inside = true
-			return
+		return
 
-	for worker in workers:
+	for worker in worker_dict.keys():
 		if worker_dict[worker] == null:
 			continue
 		if Globals.stage == "fight":
