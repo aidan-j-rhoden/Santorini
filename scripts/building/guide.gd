@@ -19,12 +19,8 @@ func _physics_process(_delta: float) -> void:
 				get_parent().get_parent().I_got_clicked(global_position)
 			else:
 				if Globals.current_worker != Vector3.ZERO:
-					if level == 0:
-						Globals.move_here = global_position
-					elif level == 1:
-						Globals.move_here = global_position + Vector3(0, 4.3, 0)
-					elif level == 2:
-						Globals.move_here = global_position + Vector3(0, 3.4, 0)
+					Globals.move_here[0] = $Guide.global_position
+					Globals.move_here[1] = level
 				else:
 					move_up()
 					get_parent().get_parent().player_took_action()

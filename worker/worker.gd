@@ -37,11 +37,11 @@ func _physics_process(_delta: float) -> void:
 		elif not waiting_orders:
 			$Area3D/MeshInstance3D.visible = false
 		if waiting_orders:
-			if $Area3D/AnimationPlayer.is_playing():
+			if not $Area3D/AnimationPlayer.is_playing():
 				$Area3D/AnimationPlayer.play("ready")
-			if Globals.move_here != Vector3.ZERO:
-				global_position = Globals.move_here
-				Globals.move_here = Vector3()
+			if Globals.move_here[0] != Vector3.ZERO:
+				global_position = Globals.move_here[0]
+				Globals.move_here[0] = Vector3()
 				Globals.current_worker = Vector3.ZERO
 				waiting_orders = false
 				$Control.visible = false
@@ -54,6 +54,11 @@ func _physics_process(_delta: float) -> void:
 
 func _on_mouse_entered() -> void:
 	if Globals.stage == "fight" and Globals.current_player == player:
+		if Globals.current_worker != Vector3.ZERO:
+			if waiting_orders:
+				mouse_inside = true
+			else:
+				return
 		mouse_inside = true
 
 
