@@ -6,6 +6,7 @@ extends Node3D
 @export var player:int
 var mouse_inside:bool = false
 var waiting_orders: bool = false
+var level = 0
 
 func _ready() -> void:
 	$Area3D/MeshInstance3D.visible = false
@@ -22,11 +23,11 @@ func _ready() -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left-mouse") and mouse_inside:
 		waiting_orders = true
-		$Control.visible = true
+		$Control/Label.visible = true
 		Globals.current_worker = global_position
 	if waiting_orders and Input.is_action_just_pressed("escape"):
 		waiting_orders =  false
-		$Control.visible = false
+		$Control/Label.visible = false
 		Globals.current_worker = Vector3.ZERO
 
 
@@ -42,14 +43,27 @@ func _physics_process(_delta: float) -> void:
 			if Globals.move_here[0] != Vector3.ZERO:
 				global_position = Globals.move_here[0]
 				Globals.move_here[0] = Vector3()
+				level = Globals.move_here[1]
+				print(level)
 				Globals.current_worker = Vector3.ZERO
 				waiting_orders = false
-				$Control.visible = false
+				$Control/Label.visible = false
 				if player == 1:
 					Globals.p1_worker_positions[name] = global_position
 				elif player == 2:
 					Globals.p2_worker_positions[name] = global_position
 				get_parent().get_parent().get_parent().player_took_action()
+
+
+func _process(_delta: float) -> void:
+	if level >= 3:
+		win()
+		level = 0
+
+
+func win():
+	print("Player " + str(player) + " won!")
+	$Control/Win/AnimationPlayer.play("win")
 
 
 func _on_mouse_entered() -> void:

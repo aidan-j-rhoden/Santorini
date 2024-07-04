@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bkb1m6yre6atw"]
+[gd_scene load_steps=16 format=3 uid="uid://bkb1m6yre6atw"]
 
 [ext_resource type="Script" path="res://worker/worker.gd" id="1_di2g5"]
 [ext_resource type="Material" uid="uid://cwip18ffq3h5x" path="res://materials/worker-glow.tres" id="2_yadlq"]
@@ -115,6 +115,84 @@ _data = {
 "waiting": SubResource("Animation_dfx72")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q80yk"]
+particle_flag_disable_z = true
+angle_min = -45.0
+angle_max = 45.0
+direction = Vector3(0, -1, 0)
+spread = 25.0
+initial_velocity_min = 500.0
+initial_velocity_max = 600.0
+gravity = Vector3(0, 500, 0)
+damping_min = 100.0
+damping_max = 100.0
+scale_min = 10.0
+scale_max = 40.0
+color = Color(0.153084, 0.498327, 0.853783, 1)
+hue_variation_min = -0.5
+hue_variation_max = -2.23517e-08
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bog2s"]
+particle_flag_disable_z = true
+angle_min = -45.0
+angle_max = 45.0
+direction = Vector3(0, -1, 0)
+spread = 25.0
+initial_velocity_min = 500.0
+initial_velocity_max = 600.0
+gravity = Vector3(0, 500, 0)
+damping_min = 100.0
+damping_max = 100.0
+scale_min = 10.0
+scale_max = 40.0
+color = Color(0.153084, 0.498327, 0.853783, 1)
+hue_variation_min = -0.5
+hue_variation_max = -2.23517e-08
+
+[sub_resource type="Animation" id="Animation_mpwdv"]
+resource_name = "win"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control2/GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jobl3"]
+_data = {
+"win": SubResource("Animation_mpwdv")
+}
+
 [node name="WorkerMale" type="Node3D"]
 script = ExtResource("1_di2g5")
 
@@ -147,9 +225,9 @@ libraries = {
 }
 
 [node name="Control" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Label" type="Label" parent="Control"]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -163,6 +241,64 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Left click to move, Escape to cancel selection"
+horizontal_alignment = 1
+
+[node name="Win" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Control/Win"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Control/Win/Control"]
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_q80yk")
+lifetime = 5.0
+one_shot = true
+explosiveness = 0.95
+
+[node name="Control2" type="Control" parent="Control/Win"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Control/Win/Control2"]
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_bog2s")
+lifetime = 5.0
+one_shot = true
+explosiveness = 0.95
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Win"]
+libraries = {
+"": SubResource("AnimationLibrary_jobl3")
+}
+
+[node name="Label" type="Label" parent="Control/Win"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "You won!"
 horizontal_alignment = 1
 
 [connection signal="mouse_entered" from="Area3D" to="." method="_on_mouse_entered"]
