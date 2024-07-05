@@ -115,11 +115,11 @@ _data = {
 "waiting": SubResource("Animation_dfx72")
 }
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q80yk"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mlr2b"]
 particle_flag_disable_z = true
 angle_min = -45.0
 angle_max = 45.0
-direction = Vector3(0, -1, 0)
+direction = Vector3(1, -1, 0)
 spread = 25.0
 initial_velocity_min = 500.0
 initial_velocity_max = 600.0
@@ -136,7 +136,7 @@ hue_variation_max = -2.23517e-08
 particle_flag_disable_z = true
 angle_min = -45.0
 angle_max = 45.0
-direction = Vector3(0, -1, 0)
+direction = Vector3(-1, -1, 0)
 spread = 25.0
 initial_velocity_min = 500.0
 initial_velocity_max = 600.0
@@ -244,6 +244,7 @@ text = "Left click to move, Escape to cancel selection"
 horizontal_alignment = 1
 
 [node name="Win" type="Control" parent="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -261,8 +262,9 @@ offset_right = 40.0
 grow_vertical = 0
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Control/Win/Control"]
+emitting = false
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_q80yk")
+process_material = SubResource("ParticleProcessMaterial_mlr2b")
 lifetime = 5.0
 one_shot = true
 explosiveness = 0.95
@@ -280,6 +282,7 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Control/Win/Control2"]
+emitting = false
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_bog2s")
 lifetime = 5.0

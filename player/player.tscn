@@ -242,6 +242,7 @@ value = 1.0
 rounded = true
 
 [node name="DeathRect" type="ColorRect" parent="HUD"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -256,7 +257,6 @@ libraries = {
 
 [node name="Settings" type="CanvasLayer" parent="HUD"]
 layer = 2
-visible = false
 
 [node name="TransparentBackground" type="ColorRect" parent="HUD/Settings"]
 anchors_preset = 15

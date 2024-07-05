@@ -20,7 +20,6 @@ func _physics_process(_delta: float) -> void:
 			else:
 				if Globals.current_worker != Vector3.ZERO:
 					Globals.move_here[0] = $Guide.global_position
-					Globals.move_here[1] = level
 				else:
 					move_up()
 					get_parent().get_parent().player_took_action()
@@ -45,7 +44,7 @@ func move_up():
 		get_node("building").get_node("Lvl1").get_node("Lvl2").get_node("Lvl3").get_node("Lvl4").visible = true
 	level += 1
 	if level > 3:
-		$Guide.visible = false
+		queue_free()
 
 
 func create_building():
@@ -74,7 +73,8 @@ func _on_mouse_entered() -> void:
 
 	if Globals.current_worker != Vector3.ZERO:
 		if _close_enough(Globals.current_worker):
-			mouse_inside = true
+			if Globals.current_worker[1] >= level - 1:
+				mouse_inside = true
 		return
 
 	for worker in worker_dict.keys():
