@@ -24,11 +24,12 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left-mouse") and mouse_inside:
 		waiting_orders = true
 		$Control/Label.visible = true
-		Globals.current_worker = global_position
+		Globals.current_worker[0] = global_position
+		Globals.current_worker[1] = level
 	if waiting_orders and Input.is_action_just_pressed("escape"):
 		waiting_orders =  false
 		$Control/Label.visible = false
-		Globals.current_worker = Vector3.ZERO
+		Globals.current_worker[0] = Vector3.ZERO
 
 
 func _physics_process(_delta: float) -> void:
@@ -45,7 +46,8 @@ func _physics_process(_delta: float) -> void:
 				global_position = Globals.move_here[0]
 				level = Globals.move_here[1]
 				Globals.move_here = [Vector3.ZERO, 0]
-				Globals.current_worker = Vector3.ZERO
+				Globals.current_worker[0] = Vector3.ZERO
+				Globals.current_worker[1] = 0
 				waiting_orders = false
 				$Control/Label.visible = false
 				if player == 1:
@@ -68,7 +70,7 @@ func win():
 
 func _on_mouse_entered() -> void:
 	if Globals.stage == "fight" and Globals.current_player == player:
-		if Globals.current_worker != Vector3.ZERO:
+		if Globals.current_worker[0] != Vector3.ZERO:
 			if waiting_orders:
 				mouse_inside = true
 			else:

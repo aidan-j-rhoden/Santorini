@@ -18,7 +18,7 @@ func _physics_process(_delta: float) -> void:
 			if Globals.stage == "setup":
 				get_parent().get_parent().I_got_clicked(global_position)
 			else:
-				if Globals.current_worker != Vector3.ZERO:
+				if Globals.current_worker[0] != Vector3.ZERO:
 					Globals.move_here[0] = $Guide.global_position
 				else:
 					move_up()
@@ -44,7 +44,7 @@ func move_up():
 		get_node("building").get_node("Lvl1").get_node("Lvl2").get_node("Lvl3").get_node("Lvl4").visible = true
 	level += 1
 	if level > 3:
-		queue_free()
+		$Guide.hide()
 
 
 func create_building():
@@ -71,8 +71,8 @@ func _on_mouse_entered() -> void:
 	if global_position in occupied_spaces: # The space is occupied
 		return
 
-	if Globals.current_worker != Vector3.ZERO:
-		if _close_enough(Globals.current_worker):
+	if Globals.current_worker[0] != Vector3.ZERO:
+		if _close_enough(Globals.current_worker[0]) and level > 4:
 			if Globals.current_worker[1] >= level - 1:
 				mouse_inside = true
 		return
