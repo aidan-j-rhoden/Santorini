@@ -10,7 +10,7 @@ size = Vector3(79.9462, 6.56543, 79)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7dos"]
 resource_name = "LightPlastic"
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.54666, 0.54666, 0.54666, 1)
+albedo_color = Color(0.230315, 0.230315, 0.230315, 1)
 roughness = 0.676
 emission_enabled = true
 
