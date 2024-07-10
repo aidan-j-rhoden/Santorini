@@ -257,6 +257,7 @@ libraries = {
 
 [node name="Settings" type="CanvasLayer" parent="HUD"]
 layer = 2
+visible = false
 
 [node name="TransparentBackground" type="ColorRect" parent="HUD/Settings"]
 anchors_preset = 15
