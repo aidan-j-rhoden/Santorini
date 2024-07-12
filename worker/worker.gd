@@ -30,6 +30,7 @@ func _input(_event: InputEvent) -> void:
 		waiting_orders =  false
 		$Control/Label.visible = false
 		Globals.current_worker[0] = Vector3.ZERO
+		Globals.current_worker[1] = 0
 
 
 func _physics_process(_delta: float) -> void:
@@ -41,7 +42,6 @@ func _physics_process(_delta: float) -> void:
 		if waiting_orders:
 			if not $Area3D/AnimationPlayer.is_playing():
 				$Area3D/AnimationPlayer.play("ready")
-			Globals.move_here[1] = level
 			if Globals.move_here[0] != Vector3.ZERO:
 				global_position = Globals.move_here[0]
 				level = Globals.move_here[1]
