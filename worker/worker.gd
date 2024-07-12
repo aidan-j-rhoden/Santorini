@@ -14,7 +14,7 @@ func _ready() -> void:
 		$MeshInstance3D.set_surface_override_material(0, p1mat)
 		$MeshInstance3D/MeshInstance3D2.set_surface_override_material(0, p1mat)
 		$MeshInstance3D/MeshInstance3D2/MeshInstance3D.set_surface_override_material(0, p1mat)
-	else:
+	elif player == 2:
 		$MeshInstance3D.set_surface_override_material(0, p2mat)
 		$MeshInstance3D/MeshInstance3D2.set_surface_override_material(0, p2mat)
 		$MeshInstance3D/MeshInstance3D2/MeshInstance3D.set_surface_override_material(0, p2mat)
@@ -71,10 +71,7 @@ func win():
 func _on_mouse_entered() -> void:
 	if Globals.stage == "fight" and Globals.current_player == player:
 		if Globals.current_worker[0] != Vector3.ZERO:
-			if waiting_orders:
-				mouse_inside = true
-			else:
-				return
+			return
 		mouse_inside = true
 
 
