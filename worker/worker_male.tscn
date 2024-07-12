@@ -244,7 +244,6 @@ text = "Left click to move, Escape to cancel selection"
 horizontal_alignment = 1
 
 [node name="Win" type="Control" parent="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -262,6 +261,7 @@ offset_right = 40.0
 grow_vertical = 0
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Control/Win/Control"]
+position = Vector2(40, 0)
 emitting = false
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_mlr2b")
@@ -295,6 +295,7 @@ libraries = {
 }
 
 [node name="Label" type="Label" parent="Control/Win"]
+visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
