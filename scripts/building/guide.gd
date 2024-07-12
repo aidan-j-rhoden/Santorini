@@ -18,7 +18,7 @@ func _physics_process(_delta: float) -> void:
 			if Globals.stage == "setup":
 				get_parent().get_parent().I_got_clicked(global_position)
 			else:
-				if Globals.current_worker[0] != Vector3.ZERO:
+				if Globals.current_worker[0] != Vector3.INF:
 					Globals.move_here = [$Guide.global_position, level]
 				else:
 					move_up()
@@ -71,7 +71,7 @@ func _on_mouse_entered() -> void:
 	if global_position in occupied_spaces: # The space is occupied
 		return
 
-	if Globals.current_worker[0] != Vector3.ZERO:
+	if Globals.current_worker[0] != Vector3.INF:
 		if _close_enough(Globals.current_worker[0]) and level < 4:
 			if Globals.current_worker[1] >= level - 1:
 				mouse_inside = true

@@ -29,7 +29,7 @@ func _input(_event: InputEvent) -> void:
 	if waiting_orders and Input.is_action_just_pressed("escape"):
 		waiting_orders =  false
 		$Control/Label.visible = false
-		Globals.current_worker[0] = Vector3.ZERO
+		Globals.current_worker[0] = Vector3.INF
 		Globals.current_worker[1] = 0
 
 
@@ -42,11 +42,11 @@ func _physics_process(_delta: float) -> void:
 		if waiting_orders:
 			if not $Area3D/AnimationPlayer.is_playing():
 				$Area3D/AnimationPlayer.play("ready")
-			if Globals.move_here[0] != Vector3.ZERO:
+			if Globals.move_here[0] != Vector3.INF:
 				global_position = Globals.move_here[0]
 				level = Globals.move_here[1]
-				Globals.move_here = [Vector3.ZERO, 0]
-				Globals.current_worker[0] = Vector3.ZERO
+				Globals.move_here = [Vector3.INF, 0]
+				Globals.current_worker[0] = Vector3.INF
 				Globals.current_worker[1] = 0
 				waiting_orders = false
 				$Control/Label.visible = false
@@ -70,7 +70,7 @@ func win():
 
 func _on_mouse_entered() -> void:
 	if Globals.stage == "fight" and Globals.current_player == player:
-		if Globals.current_worker[0] != Vector3.ZERO:
+		if Globals.current_worker[0] != Vector3.INF:
 			return
 		mouse_inside = true
 
