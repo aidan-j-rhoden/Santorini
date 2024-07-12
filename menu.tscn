@@ -8,52 +8,52 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1")
 
-[node name="home" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 0
+[node name="home" type="CanvasLayer" parent="."]
 
-[node name="start" type="Button" parent="home"]
-layout_mode = 0
-offset_left = 529.0
-offset_top = 495.0
-offset_right = 747.0
-offset_bottom = 559.0
-text = "Start"
+[node name="VBoxContainer" type="VBoxContainer" parent="home"]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -625.0
+offset_top = -360.0
+offset_right = 625.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
-[node name="settings" type="Button" parent="home"]
-layout_mode = 0
-offset_left = 1111.0
-offset_top = 40.0
-offset_right = 1204.0
-offset_bottom = 62.0
+[node name="HSeparator" type="HSeparator" parent="home/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="home/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VSeparator" type="VSeparator" parent="home/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="settings" type="Button" parent="home/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
 text = "Settings"
 
-[node name="container" type="HBoxContainer" parent="home"]
-layout_mode = 0
-offset_left = 500.0
-offset_top = 300.0
-offset_right = 759.0
-offset_bottom = 331.0
-
-[node name="label" type="Label" parent="home/container"]
+[node name="VSeparator2" type="VSeparator" parent="home/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Enter an address:"
+size_flags_horizontal = 3
 
-[node name="line_edit" type="LineEdit" parent="home/container"]
+[node name="HSeparator2" type="HSeparator" parent="home/VBoxContainer"]
 layout_mode = 2
-text = "127.0.0.1"
-expand_to_text_length = true
+size_flags_vertical = 3
 
-[node name="join" type="Button" parent="home/container"]
+[node name="gamemode" type="OptionButton" parent="home/VBoxContainer"]
 layout_mode = 2
-text = "Join"
-
-[node name="gamemode" type="OptionButton" parent="home"]
-layout_mode = 0
-offset_left = 96.0
-offset_top = 159.0
-offset_right = 407.0
-offset_bottom = 190.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
 selected = 1
 item_count = 3
 popup/item_0/text = "Deathmatch"
@@ -61,6 +61,42 @@ popup/item_1/text = "Intellectual Deathmatch"
 popup/item_1/id = 1
 popup/item_2/text = "Intellectual Deathmatch with a Sicilian"
 popup/item_2/id = 2
+
+[node name="HSeparator3" type="HSeparator" parent="home/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="container" type="HBoxContainer" parent="home/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="label" type="Label" parent="home/VBoxContainer/container"]
+layout_mode = 2
+text = "Enter an address:"
+
+[node name="line_edit" type="LineEdit" parent="home/VBoxContainer/container"]
+layout_mode = 2
+text = "127.0.0.1"
+expand_to_text_length = true
+
+[node name="join" type="Button" parent="home/VBoxContainer/container"]
+layout_mode = 2
+text = "Join"
+
+[node name="HSeparator4" type="HSeparator" parent="home/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="start" type="Button" parent="home/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 75
+text = "  Start  "
+
+[node name="HSeparator5" type="HSeparator" parent="home/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="settings" type="Control" parent="."]
 visible = false
@@ -144,8 +180,8 @@ offset_right = -3.0
 offset_bottom = 21.0
 text = "Graphics level:"
 
-[connection signal="pressed" from="home/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="home/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="home/VBoxContainer/HBoxContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="home/VBoxContainer/start" to="." method="_on_start_pressed"]
 [connection signal="value_changed" from="settings/width" to="settings" method="_on_width_value_changed"]
 [connection signal="value_changed" from="settings/length" to="settings" method="_on_length_value_changed"]
 [connection signal="pressed" from="settings/exit" to="." method="_on_exit_pressed"]

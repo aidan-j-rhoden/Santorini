@@ -1,7 +1,7 @@
 extends Control
 
 var main = preload("res://levels/main.tscn")
-@onready var gamemode = $home/gamemode
+@onready var gamemode = $home/VBoxContainer/gamemode
 @onready var player = preload("res://player/player.tscn")
 
 func _ready() -> void:
@@ -15,7 +15,7 @@ func _on_start_pressed():
 
 	var level = main.instantiate()
 	add_child(level)
-	self.hide()
+	$home.hide()
 
 
 func _on_settings_pressed():
