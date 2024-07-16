@@ -54,7 +54,9 @@ func _physics_process(_delta: float) -> void:
 					Globals.p1_worker_positions[name] = global_position
 				elif player == 2:
 					Globals.p2_worker_positions[name] = global_position
-				get_parent().get_parent().get_parent().player_took_action()
+				Globals.moved_and_built[0] = true
+	elif Globals.stage == "win":
+		$Area3D/MeshInstance3D.visible = false
 
 
 func _process(_delta: float) -> void:
@@ -64,12 +66,13 @@ func _process(_delta: float) -> void:
 
 
 func win():
+	Globals.stage = "win"
 	print("Player " + str(player) + " won!")
 	$Control/Win/AnimationPlayer.play("win")
 
 
 func _on_mouse_entered() -> void:
-	if Globals.stage == "fight" and Globals.current_player == player:
+	if Globals.stage == "fight" and Globals.current_player == player and not Globals.moved_and_built[0]:
 		if Globals.current_worker[0] != Vector3.INF:
 			return
 		mouse_inside = true

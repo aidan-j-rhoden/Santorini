@@ -38,6 +38,7 @@ func _ready():
 
 
 func player_took_action():
+	Globals.moved_and_built = [false, false]
 	if Globals.current_player == 1:
 		Globals.current_player = 2
 	else:
