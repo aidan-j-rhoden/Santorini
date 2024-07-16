@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 var width:int = 5
 var length:int = 5
