@@ -40,7 +40,7 @@ size_flags_horizontal = 3
 [node name="settings" type="Button" parent="home/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Settings"
+text = "  Settings  "
 
 [node name="VSeparator2" type="VSeparator" parent="home/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -54,6 +54,8 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+alignment = 1
 selected = 1
 item_count = 3
 popup/item_0/text = "Deathmatch"
@@ -98,73 +100,113 @@ text = "  Start  "
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="settings" type="Control" parent="."]
+[node name="settings" type="CanvasLayer" parent="."]
 visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 script = ExtResource("2")
 
 [node name="color_rect" type="ColorRect" parent="settings"]
-layout_mode = 0
-offset_left = 224.0
-offset_top = 102.0
-offset_right = 1066.0
-offset_bottom = 616.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 500.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.313726, 0.247059, 0.2, 1)
 
-[node name="width" type="SpinBox" parent="settings"]
-layout_mode = 0
-offset_left = 632.0
-offset_top = 289.0
-offset_right = 706.0
-offset_bottom = 313.0
-min_value = 1.0
-max_value = 10.0
-value = 5.0
-rounded = true
+[node name="VBoxContainer" type="VBoxContainer" parent="settings"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
-[node name="label" type="Label" parent="settings/width"]
-layout_mode = 0
-offset_left = -126.0
-offset_top = 6.0
-offset_right = -11.0
-offset_bottom = 29.0
-text = "Width of arena:"
+[node name="HSeparator7" type="HSeparator" parent="settings/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
-[node name="length" type="SpinBox" parent="settings"]
-layout_mode = 0
-offset_left = 632.0
-offset_top = 252.0
-offset_right = 715.062
-offset_bottom = 283.0
-min_value = 1.0
-max_value = 10.0
-value = 5.0
-rounded = true
+[node name="HSeparator" type="HSeparator" parent="settings/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
-[node name="label" type="Label" parent="settings/length"]
-layout_mode = 0
-offset_left = -132.0
-offset_top = 6.0
-offset_right = -5.0
-offset_bottom = 29.0
-text = "Length of arena:"
+[node name="HBoxContainer3" type="HBoxContainer" parent="settings/VBoxContainer"]
+layout_mode = 2
 
-[node name="exit" type="Button" parent="settings"]
-layout_mode = 0
-offset_left = 994.0
-offset_top = 133.0
-offset_right = 1030.0
-offset_bottom = 153.0
+[node name="VSeparator3" type="VSeparator" parent="settings/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSeparator" type="VSeparator" parent="settings/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="exit" type="Button" parent="settings/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 25
 text = "exit"
 
-[node name="graphics_level" type="OptionButton" parent="settings"]
-layout_mode = 0
-offset_left = 855.0
-offset_top = 293.0
-offset_right = 951.0
-offset_bottom = 313.0
+[node name="VSeparator2" type="VSeparator" parent="settings/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator2" type="HSeparator" parent="settings/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="settings/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="label" type="Label" parent="settings/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Width of arena:"
+
+[node name="width" type="SpinBox" parent="settings/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 5.0
+rounded = true
+
+[node name="HSeparator3" type="HSeparator" parent="settings/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="settings/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="label" type="Label" parent="settings/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Length of arena:"
+
+[node name="length" type="SpinBox" parent="settings/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 5.0
+rounded = true
+
+[node name="HSeparator4" type="HSeparator" parent="settings/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="settings/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="label" type="Label" parent="settings/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Graphics level:"
+
+[node name="graphics_level" type="OptionButton" parent="settings/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
 item_count = 3
 popup/item_0/text = "Low"
 popup/item_1/text = "Medium"
@@ -172,17 +214,17 @@ popup/item_1/id = 1
 popup/item_2/text = "High"
 popup/item_2/id = 2
 
-[node name="label" type="Label" parent="settings/graphics_level"]
-layout_mode = 0
-offset_left = -116.0
-offset_top = -2.0
-offset_right = -3.0
-offset_bottom = 21.0
-text = "Graphics level:"
+[node name="HSeparator6" type="HSeparator" parent="settings/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSeparator5" type="HSeparator" parent="settings/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [connection signal="pressed" from="home/VBoxContainer/HBoxContainer/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="home/VBoxContainer/start" to="." method="_on_start_pressed"]
-[connection signal="value_changed" from="settings/width" to="settings" method="_on_width_value_changed"]
-[connection signal="value_changed" from="settings/length" to="settings" method="_on_length_value_changed"]
-[connection signal="pressed" from="settings/exit" to="." method="_on_exit_pressed"]
-[connection signal="item_selected" from="settings/graphics_level" to="settings" method="_on_graphics_level_item_selected"]
+[connection signal="pressed" from="settings/VBoxContainer/HBoxContainer3/exit" to="." method="_on_exit_pressed"]
+[connection signal="value_changed" from="settings/VBoxContainer/HBoxContainer/width" to="settings" method="_on_width_value_changed"]
+[connection signal="value_changed" from="settings/VBoxContainer/HBoxContainer2/length" to="settings" method="_on_length_value_changed"]
+[connection signal="item_selected" from="settings/VBoxContainer/VBoxContainer2/graphics_level" to="settings" method="_on_graphics_level_item_selected"]

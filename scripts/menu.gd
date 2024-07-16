@@ -19,11 +19,14 @@ func _on_start_pressed():
 
 
 func _on_settings_pressed():
-	$settings.visible = not $settings.visible
+	$settings.visible = true
+	$home.visible = false
 
 
 func _on_exit_pressed():
 	$settings.visible = false
+	$home.visible = true
+	
 
 
 func _input(_event: InputEvent) -> void:
