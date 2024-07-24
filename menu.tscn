@@ -25,36 +25,41 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="home/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="home/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 800
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="home/VBoxContainer/MarginContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="home/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="VSeparator" type="VSeparator" parent="home/VBoxContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="home/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="settings" type="Button" parent="home/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "  Settings  "
-
-[node name="VSeparator2" type="VSeparator" parent="home/VBoxContainer/HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="home/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HSeparator2" type="HSeparator" parent="home/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="gamemode" type="OptionButton" parent="home/VBoxContainer"]
+[node name="settings" type="Button" parent="home/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 3
 theme_override_font_sizes/font_size = 20
+text = "  Settings  "
+
+[node name="GamemodeMargin" type="MarginContainer" parent="home/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_bottom = 75
+
+[node name="gamemode" type="OptionButton" parent="home/VBoxContainer/GamemodeMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
 alignment = 1
 selected = 1
 item_count = 3
@@ -64,41 +69,39 @@ popup/item_1/id = 1
 popup/item_2/text = "Intellectual Deathmatch with a Sicilian"
 popup/item_2/id = 2
 
-[node name="HSeparator3" type="HSeparator" parent="home/VBoxContainer"]
+[node name="NetworkMargin" type="MarginContainer" parent="home/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
 
-[node name="container" type="HBoxContainer" parent="home/VBoxContainer"]
+[node name="container" type="HBoxContainer" parent="home/VBoxContainer/NetworkMargin"]
 layout_mode = 2
 alignment = 1
 
-[node name="label" type="Label" parent="home/VBoxContainer/container"]
+[node name="label" type="Label" parent="home/VBoxContainer/NetworkMargin/container"]
 layout_mode = 2
 text = "Enter an address:"
 
-[node name="line_edit" type="LineEdit" parent="home/VBoxContainer/container"]
+[node name="line_edit" type="LineEdit" parent="home/VBoxContainer/NetworkMargin/container"]
 layout_mode = 2
 text = "127.0.0.1"
 expand_to_text_length = true
 
-[node name="join" type="Button" parent="home/VBoxContainer/container"]
+[node name="join" type="Button" parent="home/VBoxContainer/NetworkMargin/container"]
 layout_mode = 2
 text = "Join"
 
-[node name="HSeparator4" type="HSeparator" parent="home/VBoxContainer"]
+[node name="StartMargin" type="MarginContainer" parent="home/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_bottom = 50
 
-[node name="start" type="Button" parent="home/VBoxContainer"]
+[node name="start" type="Button" parent="home/VBoxContainer/StartMargin"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 75
 text = "  Start  "
-
-[node name="HSeparator5" type="HSeparator" parent="home/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
 
 [node name="settings" type="CanvasLayer" parent="."]
 visible = false
@@ -222,8 +225,8 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[connection signal="pressed" from="home/VBoxContainer/HBoxContainer/settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="home/VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="home/VBoxContainer/MarginContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="home/VBoxContainer/StartMargin/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="settings/VBoxContainer/HBoxContainer3/exit" to="." method="_on_exit_pressed"]
 [connection signal="value_changed" from="settings/VBoxContainer/HBoxContainer/width" to="settings" method="_on_width_value_changed"]
 [connection signal="value_changed" from="settings/VBoxContainer/HBoxContainer2/length" to="settings" method="_on_length_value_changed"]
