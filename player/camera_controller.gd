@@ -12,6 +12,8 @@ const CAMERA_MOVEMENT_SPEED:float = 0.1
 func _ready() -> void:
 	$Control/Label.text = "Player " + str(player)
 	$Control.visible = false
+	Camera.position.z = 20
+	x_rot.global_rotation_degrees.x = -20
 
 
 func _input(event: InputEvent) -> void:
