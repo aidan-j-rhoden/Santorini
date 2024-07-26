@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddrbtqxkhbi34"]
+[gd_scene load_steps=7 format=3 uid="uid://ddrbtqxkhbi34"]
 
 [ext_resource type="Script" path="res://scripts/levels/main.gd" id="1_aq87o"]
 [ext_resource type="Environment" uid="uid://bekiwxqt2tf0d" path="res://levels/enviroment.tres" id="2_vxgrb"]
@@ -17,9 +17,6 @@ emission_enabled = true
 [sub_resource type="CylinderMesh" id="CylinderMesh_o41lh"]
 material = SubResource("StandardMaterial3D_q7dos")
 height = 75.0
-
-[sub_resource type="FogMaterial" id="FogMaterial_r00t1"]
-height_falloff = 0.1
 
 [node name="level" type="Node3D"]
 script = ExtResource("1_aq87o")
@@ -102,12 +99,5 @@ transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.371
 mesh = SubResource("CylinderMesh_o41lh")
 
 [node name="Guides" type="Node3D" parent="."]
-
-[node name="Fogs" type="Node3D" parent="."]
-
-[node name="FogVolume" type="FogVolume" parent="Fogs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -49.683, 0)
-size = Vector3(500, 100, 500)
-material = SubResource("FogMaterial_r00t1")
 
 [node name="Buildings" type="Node3D" parent="."]
