@@ -15,16 +15,17 @@ var player2_workers_amount = 0
 
 func _ready():
 	if Settings.gamemode == 0:
-		build("grass")
 		$Grid.visible = false
 		get_node("Players").add_child(player.instantiate())
 		for x in range(floor((Settings.width/2.0)) * -1, Settings.width - floor(Settings.width/2.0)):
 			for z in range(floor((Settings.length/2.0)) * -1, Settings.length - floor(Settings.length/2.0)):
 				if randi() % 3 < 2:
 					var level = building.instantiate()
-					level.position = Vector3(x * 15, 0, z * 15)
-					level.rotation_degrees = Vector3(0, randi() % 4 * 90, 0)
 					get_node("Buildings").add_child(level, true)
+					level.global_position = Vector3(x * 15, 0.0, z * 15)
+					level.rotation_degrees = Vector3(0, randi() % 4 * 90, 0)
+
+		build("grass")
 
 	if Settings.gamemode == 1:
 		build("guides")
@@ -86,6 +87,13 @@ func build(item):
 					guide_instance.global_position = Vector3(x * 15, 0.0, z * 15)
 					Globals.guide_positions[guide_instance.name] = guide_instance.global_position
 				elif item == "grass":
+					var occupied = false
+					for child in $Buildings.get_children():
+						if child.global_position == Vector3(x * 15, 0.0, z * 15):
+							occupied = true
+							break
+					if occupied:
+						continue
 					var grass_instance = grass.instantiate()
 					get_node("Props/Vegitation").add_child(grass_instance, true)
 					grass_instance.global_position = Vector3(x * 15, 0.01, z * 15)
