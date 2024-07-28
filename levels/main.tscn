@@ -36,7 +36,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.4993, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.940122, 0.24101, -0.24101, 0, 0.707107, 0.707107, 0.340839, -0.664766, 0.664766, 0, 20, 0)
-light_energy = 1.5
 shadow_enabled = true
 sky_mode = 1
 
@@ -101,3 +100,7 @@ mesh = SubResource("CylinderMesh_o41lh")
 [node name="Guides" type="Node3D" parent="."]
 
 [node name="Buildings" type="Node3D" parent="."]
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="Vegitation" type="Node3D" parent="Props"]

@@ -4,6 +4,7 @@ extends Node3D
 @onready var player = preload("res://player/player.tscn")
 @onready var Camera = preload("res://player/camera_controller.tscn")
 @onready var guide = preload("res://buildings/Guide.tscn")
+@onready var grass = preload("res://Props/Vegetation/grassystuff.tscn")
 @onready var worker_male = preload("res://worker/worker_male.tscn")
 
 var player1_cam
@@ -14,6 +15,7 @@ var player2_workers_amount = 0
 
 func _ready():
 	if Settings.gamemode == 0:
+		build("grass")
 		$Grid.visible = false
 		get_node("Players").add_child(player.instantiate())
 		for x in range(floor((Settings.width/2.0)) * -1, Settings.width - floor(Settings.width/2.0)):
@@ -25,7 +27,7 @@ func _ready():
 					get_node("Buildings").add_child(level, true)
 
 	if Settings.gamemode == 1:
-		build_guides()
+		build("guides")
 		Globals.current_player = 1
 
 		player1_cam = Camera.instantiate()
@@ -75,10 +77,16 @@ func change_player():
 		player2_cam.set_current()
 
 
-func build_guides():
+func build(item):
 	for x in range(floor((Settings.width/2.0)) * -1, Settings.width - floor(Settings.width/2.0)):
 			for z in range(floor((Settings.length/2.0)) * -1, Settings.length - floor(Settings.length/2.0)):
-				var guide_instance = guide.instantiate()
-				get_node("Guides").add_child(guide_instance, true)
-				guide_instance.global_position = Vector3(x * 15, 0.0, z * 15)
-				Globals.guide_positions[guide_instance.name] = guide_instance.global_position
+				if item == "guides":
+					var guide_instance = guide.instantiate()
+					get_node("Guides").add_child(guide_instance, true)
+					guide_instance.global_position = Vector3(x * 15, 0.0, z * 15)
+					Globals.guide_positions[guide_instance.name] = guide_instance.global_position
+				elif item == "grass":
+					var grass_instance = grass.instantiate()
+					get_node("Props/Vegitation").add_child(grass_instance, true)
+					grass_instance.global_position = Vector3(x * 15, 0.01, z * 15)
+					Globals.guide_positions[grass_instance.name] = grass_instance.global_position
