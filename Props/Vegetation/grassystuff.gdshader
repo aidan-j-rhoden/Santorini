@@ -16,7 +16,7 @@ void vertex() {
 void fragment() {
 	vec3 noiseLevel = texture(noise, worldPos.xz / noiseScale).rgb;
 	ALBEDO = mix(color2, color, UV.y/0.5) * mix(color2, color, noiseLevel.r);
-	
+
 	if (!FRONT_FACING) {
 		NORMAL = -NORMAL;
 	}
