@@ -16,6 +16,7 @@ var player2_workers_amount = 0
 func _ready():
 	if Settings.gamemode == 0:
 		$Grid.visible = false
+		$Cameras/TopDown.queue_free()
 		get_node("Players").add_child(player.instantiate())
 		for x in range(floor((Settings.width/2.0)) * -1, Settings.width - floor(Settings.width/2.0)):
 			for z in range(floor((Settings.length/2.0)) * -1, Settings.length - floor(Settings.length/2.0)):

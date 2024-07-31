@@ -19,6 +19,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_start_pressed():
+	$home.hide()
 	await get_tree().create_timer(0.5).timeout
 	Settings.gamemode = gamemode.selected
 	if gamemode.selected == 2:
@@ -26,7 +27,6 @@ func _on_start_pressed():
 
 	var level = main.instantiate()
 	add_child(level)
-	$home.hide()
 	$game.show()
 
 
