@@ -18,10 +18,11 @@ func _physics_process(_delta: float) -> void:
 			if Globals.stage == "setup":
 				get_parent().get_parent().I_got_clicked(global_position)
 			else:
-				if Globals.current_worker[0] != Vector3.INF:
+				if Globals.current_worker[0] != Vector3.INF and not Globals.moved_and_built[0]:
 					Globals.move_here = [$Guide.global_position, level]
 				else:
 					Globals.moved_and_built[1] = true
+					Globals.current_worker[0] = Vector3.INF
 					move_up()
 					get_parent().get_parent().player_took_action()
 
@@ -80,13 +81,9 @@ func _on_mouse_entered() -> void:
 		if global_position in occupied_spaces: # The space is occupied
 			return
 
-		for worker in worker_dict.keys():
-			if worker_dict[worker] == null:
-				continue
-			if Globals.stage == "fight":
-				if _close_enough(worker_dict[worker]):
-					mouse_inside = true
-					return
+		if _close_enough(Globals.current_worker[0]):
+			mouse_inside = true
+			return
 
 	if Globals.stage == "setup":
 		mouse_inside = true

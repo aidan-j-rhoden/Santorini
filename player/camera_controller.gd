@@ -10,7 +10,7 @@ const CAMERA_MOVEMENT_SPEED:float = 0.1
 @export var player:int
 
 func _ready() -> void:
-	$Control/Label.text = "Player " + str(player)
+	$Control/MarginContainer/Label.text = "Player " + str(player)
 	$Control.visible = false
 
 	Camera.position.z = 20

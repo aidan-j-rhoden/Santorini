@@ -23,14 +23,18 @@ func _ready() -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left-mouse") and mouse_inside:
 		waiting_orders = true
-		$Control/Label.visible = true
+		$Control/MoveHint.show()
 		Globals.current_worker[0] = global_position
 		Globals.current_worker[1] = level
 	if waiting_orders and Input.is_action_just_pressed("escape"):
 		waiting_orders =  false
-		$Control/Label.visible = false
+		$Control/MoveHint.hide()
 		Globals.current_worker[0] = Vector3.INF
 		Globals.current_worker[1] = 0
+	if Globals.moved_and_built[0] and Globals.current_player == player:
+		$Control/BuildHint.show()
+	else:
+		$Control/BuildHint.hide()
 
 
 func _physics_process(_delta: float) -> void:
@@ -45,11 +49,14 @@ func _physics_process(_delta: float) -> void:
 			if Globals.move_here[0] != Vector3.INF:
 				global_position = Globals.move_here[0]
 				level = Globals.move_here[1]
+
 				Globals.move_here = [Vector3.INF, 0]
-				Globals.current_worker[0] = Vector3.INF
+				Globals.current_worker[0] = global_position
 				Globals.current_worker[1] = 0
+				Globals.moved_and_built[0] = true
+
 				waiting_orders = false
-				$Control/Label.visible = false
+				$Control/MoveHint.visible = false
 				if player == 1:
 					Globals.p1_worker_positions[name] = global_position
 				elif player == 2:
