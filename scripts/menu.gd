@@ -4,11 +4,22 @@ var main = preload("res://levels/main.tscn")
 @onready var gamemode = $home/VBoxContainer/GamemodeMargin/gamemode
 @onready var player = preload("res://player/player.tscn")
 
+var faded = false
+
 func _ready() -> void:
 	Globals.stage = "setup"
 
 
+func _process(_delta: float) -> void:
+	if Globals.stage == "fight" and not faded:
+		faded = true
+		$game/VBoxContainer/MarginContainer/Label.text = "Fight!"
+		await get_tree().create_timer(5).timeout
+		$game/AnimationPlayer.play("Fadeout")
+
+
 func _on_start_pressed():
+	await get_tree().create_timer(0.5).timeout
 	Settings.gamemode = gamemode.selected
 	if gamemode.selected == 2:
 		get_tree().quit()
@@ -16,6 +27,7 @@ func _on_start_pressed():
 	var level = main.instantiate()
 	add_child(level)
 	$home.hide()
+	$game.show()
 
 
 func _on_settings_pressed():
@@ -26,7 +38,6 @@ func _on_settings_pressed():
 func _on_exit_pressed():
 	$settings.visible = false
 	$home.visible = true
-	
 
 
 func _input(_event: InputEvent) -> void:

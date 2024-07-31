@@ -72,6 +72,8 @@ func I_got_clicked(here):
 
 
 func change_player():
+	if Globals.stage == "setup":
+		return
 	if Globals.current_player == 1:
 		player1_cam.set_current()
 	else:
