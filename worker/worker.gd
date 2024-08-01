@@ -76,6 +76,7 @@ func win():
 	Globals.stage = "win"
 	print("Player " + str(player) + " won!")
 	$Control/Win/AnimationPlayer.play("win")
+	$Control/BuildHint.hide()
 
 
 func _on_mouse_entered() -> void:
