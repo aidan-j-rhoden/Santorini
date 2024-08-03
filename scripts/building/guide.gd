@@ -17,6 +17,7 @@ func _physics_process(_delta: float) -> void:
 		if Input.is_action_just_pressed("left-mouse"):
 			if Globals.stage == "setup":
 				get_parent().get_parent().I_got_clicked(global_position)
+				mouse_inside = false
 			else:
 				if Globals.current_worker[0] != Vector3.INF and not Globals.moved_and_built[0]:
 					Globals.move_here = [$Guide.global_position, level]
@@ -25,6 +26,7 @@ func _physics_process(_delta: float) -> void:
 					Globals.current_worker[0] = Vector3.INF
 					move_up()
 					get_parent().get_parent().player_took_action()
+					mouse_inside = false
 
 
 func move_up():
@@ -57,10 +59,20 @@ func create_building():
 
 
 func _on_mouse_entered() -> void:
+	if Globals.stage == "won":
+		return
+
 	var worker_dict:Dictionary
 	var occupied_spaces:Array
+	
+	for wkr in Globals.p1_worker_positions:
+		occupied_spaces.append(Globals.p1_worker_positions[wkr])
+	for wkr in Globals.p2_worker_positions:
+		occupied_spaces.append(Globals.p2_worker_positions[wkr])
 
 	if not Globals.moved_and_built[0]:
+		if global_position in occupied_spaces: # The space is occupied
+			return
 		if Globals.current_worker[0] != Vector3.INF:
 			if _close_enough(Globals.current_worker[0]) and level < 4:
 				if Globals.current_worker[1] >= level - 1:
@@ -68,19 +80,12 @@ func _on_mouse_entered() -> void:
 			return
 
 	if Globals.moved_and_built[0]:
-		for wkr in Globals.p1_worker_positions:
-			occupied_spaces.append(Globals.p1_worker_positions[wkr])
-		for wkr in Globals.p2_worker_positions:
-			occupied_spaces.append(Globals.p2_worker_positions[wkr])
-
 		if Globals.current_player == 1:
 			worker_dict = Globals.p1_worker_positions
 		else:
 			worker_dict = Globals.p2_worker_positions
-
 		if global_position in occupied_spaces: # The space is occupied
 			return
-
 		if _close_enough(Globals.current_worker[0]):
 			mouse_inside = true
 			return
