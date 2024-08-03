@@ -73,6 +73,7 @@ func I_got_clicked(here):
 
 
 func change_player():
+	$Control/MarginContainer/Label.text = "Player " + str(Globals.current_player)
 	if Globals.stage == "setup":
 		return
 	if Globals.current_player == 1:

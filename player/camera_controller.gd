@@ -10,9 +10,6 @@ const CAMERA_MOVEMENT_SPEED:float = 0.1
 @export var player:int
 
 func _ready() -> void:
-	$Control/MarginContainer/Label.text = "Player " + str(player)
-	$Control.visible = false
-
 	Camera.position.z = 20
 	x_rot.global_rotation_degrees.x = -20
 
@@ -40,16 +37,12 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	if Camera.current:
-		$Control.visible = true
 		if Input.is_action_just_pressed("zoom-in"):
 			Camera.position.z += 50 * delta * ((Camera.position.z + 1) / 4)
 		if Input.is_action_just_pressed("zoom-out"):
 			Camera.position.z -= 50 * delta * ((Camera.position.z + 1) / 4)
 		Camera.position.z = clamp(Camera.position.z, 0, 500)
-	else:
-		$Control.visible = false
 
 
 func set_current():
 	Camera.current = true
-	$Control.visible = true
