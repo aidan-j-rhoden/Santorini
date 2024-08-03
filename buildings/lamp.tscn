@@ -7,11 +7,11 @@
 [node name="lamp" parent="." instance=ExtResource("1_muq2j")]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="lamp"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.419074, -1.08896, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.419074, -1.12169, 0)
 light_energy = 2.0
 shadow_enabled = true
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="lamp"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.419074, -1.08896, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.419074, -1.12169, 0)
 light_energy = 2.0
 shadow_enabled = true
