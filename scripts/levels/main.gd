@@ -44,7 +44,7 @@ func _ready():
 		$Cameras.add_child(player2_cam)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Globals.stage == "fight" and not faded:
 		faded = true
 		$game/VBoxContainer/MarginContainer/Label.text = "Fight!"
