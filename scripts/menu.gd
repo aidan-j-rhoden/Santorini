@@ -7,6 +7,10 @@ var main = preload("res://levels/main.tscn")
 var faded = false
 
 func _ready() -> void:
+	$home.show()
+	$settings.hide()
+	$game.hide()
+	$info.hide()
 	Globals.stage = "setup"
 
 
@@ -36,3 +40,13 @@ func _on_exit_pressed():
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
+
+
+func _on_info_pressed() -> void:
+	$home.hide()
+	$info.show()
+
+
+func _on_info_close_pressed() -> void:
+	$info.hide()
+	$home.show()

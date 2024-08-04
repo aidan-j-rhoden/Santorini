@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://clgfl4v6hr1y3"]
+[gd_scene load_steps=7 format=3 uid="uid://clgfl4v6hr1y3"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/settings.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bwxwmjr15owoj" path="res://textures/icons/info.svg" id="2_ih6wq"]
 
 [sub_resource type="Animation" id="Animation_hyje8"]
 resource_name = "Fadeout"
@@ -72,27 +73,30 @@ alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="home/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 800
 theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="home/VBoxContainer/MarginContainer"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
+alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="home/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Info" type="Button" parent="home/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Info"
+icon = ExtResource("2_ih6wq")
+alignment = 2
 
-[node name="VSeparator2" type="VSeparator" parent="home/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="home/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+theme_override_constants/margin_left = 750
 
-[node name="settings" type="Button" parent="home/VBoxContainer/MarginContainer"]
+[node name="settings" type="Button" parent="home/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
 theme_override_font_sizes/font_size = 20
 text = "  Settings  "
@@ -109,6 +113,7 @@ theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
 theme_override_font_sizes/font_size = 40
 alignment = 1
 selected = 1
+fit_to_longest_item = false
 item_count = 3
 popup/item_0/text = "Deathmatch"
 popup/item_1/text = "Intellectual Deathmatch"
@@ -306,9 +311,149 @@ libraries = {
 "": SubResource("AnimationLibrary_ubalh")
 }
 
-[connection signal="pressed" from="home/VBoxContainer/MarginContainer/settings" to="." method="_on_settings_pressed"]
+[node name="info" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Background" type="ColorRect" parent="info"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.335201, 0.603974, 0.502532, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="info"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Title" type="Label" parent="info/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "How to play"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="info/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 25
+
+[node name="close" type="Button" parent="info/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 20
+text = "Exit"
+
+[node name="MarginContainer2" type="MarginContainer" parent="info/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 100
+
+[node name="TabContainer" type="TabContainer" parent="info/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+current_tab = 0
+
+[node name="Rules" type="TabBar" parent="info/VBoxContainer/MarginContainer2/TabContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules"]
+layout_mode = 0
+offset_right = 1220.0
+offset_bottom = 298.0
+
+[node name="setup" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Setup:"
+
+[node name="desc-setup" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/VBoxContainer"]
+layout_mode = 2
+text = "asdf
+alsdfh;awej faowie f
+asdfw 9a8hg a
+wfaw9[4 "
+
+[node name="gameplay" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Gameplay:"
+
+[node name="desc-gameplay" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/VBoxContainer"]
+layout_mode = 2
+text = "asdf
+alsdfh;awej faowie f
+asdfw 9a8hg a
+wfaw9[4 "
+
+[node name="winning" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Winning:"
+
+[node name="desc-win" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/VBoxContainer"]
+layout_mode = 2
+text = "asdf
+alsdfh;awej faowie f
+asdfw 9a8hg a
+wfaw9[4 "
+
+[node name="Controls" type="TabBar" parent="info/VBoxContainer/MarginContainer2/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls"]
+layout_mode = 0
+offset_right = 1220.0
+offset_bottom = 298.0
+
+[node name="controls" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Controls:"
+
+[node name="desc-setup" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/VBoxContainer"]
+layout_mode = 2
+text = "Rotate: Middle mouse
+Pan: Shift + Middle mouse
+Zoom: Scroll wheel
+Quit: ` (tilda/backtick)"
+
+[node name="Tips" type="TabBar" parent="info/VBoxContainer/MarginContainer2/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips"]
+layout_mode = 0
+offset_right = 1220.0
+offset_bottom = 298.0
+
+[node name="stragety" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Stragety:"
+
+[node name="desc-stragety" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips/VBoxContainer"]
+layout_mode = 2
+text = "curse u good luck"
+
+[connection signal="pressed" from="home/VBoxContainer/MarginContainer/HBoxContainer/Info" to="." method="_on_info_pressed"]
+[connection signal="pressed" from="home/VBoxContainer/MarginContainer/HBoxContainer/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="home/VBoxContainer/StartMargin/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="settings/VBoxContainer/HBoxContainer3/exit" to="." method="_on_exit_pressed"]
 [connection signal="value_changed" from="settings/VBoxContainer/HBoxContainer/width" to="settings" method="_on_width_value_changed"]
 [connection signal="value_changed" from="settings/VBoxContainer/HBoxContainer2/length" to="settings" method="_on_length_value_changed"]
 [connection signal="item_selected" from="settings/VBoxContainer/VBoxContainer2/graphics_level" to="settings" method="_on_graphics_level_item_selected"]
+[connection signal="pressed" from="info/VBoxContainer/MarginContainer3/close" to="." method="_on_info_close_pressed"]
