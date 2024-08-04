@@ -10,14 +10,6 @@ func _ready() -> void:
 	Globals.stage = "setup"
 
 
-func _process(_delta: float) -> void:
-	if Globals.stage == "fight" and not faded:
-		faded = true
-		$game/VBoxContainer/MarginContainer/Label.text = "Fight!"
-		await get_tree().create_timer(5).timeout
-		$game/AnimationPlayer.play("Fadeout")
-
-
 func _on_start_pressed():
 	$home.hide()
 	await get_tree().create_timer(0.5).timeout
@@ -27,7 +19,8 @@ func _on_start_pressed():
 
 	var level = main.instantiate()
 	add_child(level)
-	$game.show()
+	if Settings.gamemode == 1:
+		level.get_node("game").show()
 
 
 func _on_settings_pressed():

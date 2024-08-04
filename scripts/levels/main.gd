@@ -13,9 +13,12 @@ var player1_workers_amount = 0
 var player2_cam
 var player2_workers_amount = 0
 
+var faded = false
+
 func _ready():
 	if Settings.gamemode == 0:
-		$Grid.visible = false
+		$Control.hide()
+		$Grid.hide()
 		$Cameras/TopDown.queue_free()
 		get_node("Players").add_child(player.instantiate())
 		for x in range(floor((Settings.width/2.0)) * -1, Settings.width - floor(Settings.width/2.0)):
@@ -39,6 +42,14 @@ func _ready():
 
 		$Cameras.add_child(player1_cam)
 		$Cameras.add_child(player2_cam)
+
+
+func _process(delta: float) -> void:
+	if Globals.stage == "fight" and not faded:
+		faded = true
+		$game/VBoxContainer/MarginContainer/Label.text = "Fight!"
+		await get_tree().create_timer(5).timeout
+		$game/AnimationPlayer.play("Fadeout")
 
 
 func player_took_action():
