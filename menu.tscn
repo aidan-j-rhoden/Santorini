@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://clgfl4v6hr1y3"]
+[gd_scene load_steps=10 format=3 uid="uid://clgfl4v6hr1y3"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/settings.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://bwxwmjr15owoj" path="res://textures/icons/info.svg" id="2_ih6wq"]
+[ext_resource type="Texture2D" uid="uid://ctvnmkjkusrrx" path="res://textures/icons/settings.svg" id="3_utat4"]
+[ext_resource type="Texture2D" uid="uid://ruog5qukhbgf" path="res://textures/icons/exit.svg" id="4_xg3hy"]
+[ext_resource type="Theme" uid="uid://1n3uesiqw4kr" path="res://kbd.tres" id="6_b4jil"]
 
 [sub_resource type="Animation" id="Animation_hyje8"]
 resource_name = "Fadeout"
@@ -84,10 +87,15 @@ alignment = 1
 [node name="Info" type="Button" parent="home/VBoxContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+focus_neighbor_left = NodePath("../settings")
+focus_neighbor_top = NodePath("../../../StartMargin/start")
+focus_neighbor_right = NodePath("../settings")
+focus_neighbor_bottom = NodePath("../../../GamemodeMargin/gamemode")
+focus_next = NodePath("../settings")
+focus_previous = NodePath("../../../StartMargin/start")
+theme_override_font_sizes/font_size = 20
 text = "Info"
 icon = ExtResource("2_ih6wq")
-alignment = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="home/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -97,9 +105,16 @@ theme_override_constants/margin_left = 750
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_neighbor_left = NodePath("../Info")
+focus_neighbor_top = NodePath("../Info")
+focus_neighbor_right = NodePath("../../../GamemodeMargin/gamemode")
+focus_neighbor_bottom = NodePath("../../../GamemodeMargin/gamemode")
+focus_next = NodePath("../../../GamemodeMargin/gamemode")
+focus_previous = NodePath("../Info")
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
 theme_override_font_sizes/font_size = 20
 text = "  Settings  "
+icon = ExtResource("3_utat4")
 
 [node name="GamemodeMargin" type="MarginContainer" parent="home/VBoxContainer"]
 layout_mode = 2
@@ -109,6 +124,12 @@ theme_override_constants/margin_bottom = 75
 [node name="gamemode" type="OptionButton" parent="home/VBoxContainer/GamemodeMargin"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../../MarginContainer/HBoxContainer/settings")
+focus_neighbor_top = NodePath("../../MarginContainer/HBoxContainer/settings")
+focus_neighbor_right = NodePath("../../StartMargin/start")
+focus_neighbor_bottom = NodePath("../../StartMargin/start")
+focus_next = NodePath("../../StartMargin/start")
+focus_previous = NodePath("../../MarginContainer/HBoxContainer/settings")
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
 theme_override_font_sizes/font_size = 40
 alignment = 1
@@ -156,6 +177,12 @@ theme_override_constants/margin_bottom = 50
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+focus_neighbor_left = NodePath("../../GamemodeMargin/gamemode")
+focus_neighbor_top = NodePath("../../GamemodeMargin/gamemode")
+focus_neighbor_right = NodePath("../../MarginContainer/HBoxContainer/Info")
+focus_neighbor_bottom = NodePath("../../MarginContainer/HBoxContainer/Info")
+focus_next = NodePath("../../MarginContainer/HBoxContainer/Info")
+focus_previous = NodePath("../../GamemodeMargin/gamemode")
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
 theme_override_font_sizes/font_size = 75
 text = "  Start  "
@@ -312,7 +339,6 @@ libraries = {
 }
 
 [node name="info" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Background" type="ColorRect" parent="info"]
 anchors_preset = 15
@@ -329,27 +355,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer"]
+[node name="MarginTitle" type="MarginContainer" parent="info/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Title" type="Label" parent="info/VBoxContainer/MarginContainer"]
+[node name="Title" type="Label" parent="info/VBoxContainer/MarginTitle"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "How to play"
 horizontal_alignment = 1
 
-[node name="MarginContainer3" type="MarginContainer" parent="info/VBoxContainer"]
+[node name="MarginExit" type="MarginContainer" parent="info/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_right = 25
 
-[node name="close" type="Button" parent="info/VBoxContainer/MarginContainer3"]
+[node name="close" type="Button" parent="info/VBoxContainer/MarginExit"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 20
 text = "Exit"
+icon = ExtResource("4_xg3hy")
 
 [node name="MarginContainer2" type="MarginContainer" parent="info/VBoxContainer"]
 layout_mode = 2
@@ -360,6 +387,7 @@ theme_override_constants/margin_bottom = 100
 
 [node name="TabContainer" type="TabContainer" parent="info/VBoxContainer/MarginContainer2"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 current_tab = 0
 
 [node name="Rules" type="TabBar" parent="info/VBoxContainer/MarginContainer2/TabContainer"]
@@ -367,87 +395,248 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 metadata/_tab_index = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules"]
-layout_mode = 0
-offset_right = 1220.0
-offset_bottom = 298.0
+[node name="ScrollContainer" type="ScrollContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 457.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="setup" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+size_flags_horizontal = 3
+
+[node name="Background" type="ColorRect" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer/MarginContainer"]
+layout_mode = 2
+color = Color(0.3286, 0.522867, 0.62, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="setup" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
 text = "Setup:"
 
-[node name="desc-setup" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/VBoxContainer"]
+[node name="desc-setup" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "asdf
 alsdfh;awej faowie f
-asdfw 9a8hg a
+asdfw 9a8hg
+as'd
+a
+aghwea
+
+
+awge
+ a
 wfaw9[4 "
 
-[node name="gameplay" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/VBoxContainer"]
+[node name="gameplay" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 35
 text = "Gameplay:"
 
-[node name="desc-gameplay" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/VBoxContainer"]
+[node name="desc-gameplay" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "asdf
 alsdfh;awej faowie f
 asdfw 9a8hg a
-wfaw9[4 "
+wfaw9[4 
 
-[node name="winning" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/VBoxContainer"]
+ashdg
+awhgawg
+
+awehgawgawrhg
+awrhgawigh32
+4ph3a
+-9
+gh
+34g"
+
+[node name="winning" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 35
 text = "Winning:"
 
-[node name="desc-win" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/VBoxContainer"]
+[node name="desc-win" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "asdf
-alsdfh;awej faowie f
-asdfw 9a8hg a
-wfaw9[4 "
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Move your worker to the third level of a building, finish your turn by building, and you win!"
 
 [node name="Controls" type="TabBar" parent="info/VBoxContainer/MarginContainer2/TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls"]
-layout_mode = 0
-offset_right = 1220.0
-offset_bottom = 298.0
+[node name="ScrollContainer" type="ScrollContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 457.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="controls" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer"]
+layout_mode = 2
+color = Color(0.3534, 0.57, 0.40394, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="controls" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
 text = "Controls:"
 
-[node name="desc-setup" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/VBoxContainer"]
+[node name="rot" type="HBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Rotate: Middle mouse
-Pan: Shift + Middle mouse
-Zoom: Scroll wheel
-Quit: ` (tilda/backtick)"
+
+[node name="Rotate" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/rot"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Rotate:"
+
+[node name="Label" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/rot"]
+layout_mode = 2
+theme = ExtResource("6_b4jil")
+text = "Middle mouse"
+
+[node name="pan" type="HBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Pan" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/pan"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Pan:"
+
+[node name="Label" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/pan"]
+layout_mode = 2
+theme = ExtResource("6_b4jil")
+text = "Shift + Middle mouse"
+
+[node name="zoom" type="HBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="zoom" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/zoom"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+text = "Zoom:"
+
+[node name="Label" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/zoom"]
+layout_mode = 2
+theme = ExtResource("6_b4jil")
+text = "Scroll wheel"
+
+[node name="quit" type="HBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Quit" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/quit"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Quit:"
+
+[node name="Label" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/quit"]
+layout_mode = 2
+theme = ExtResource("6_b4jil")
+text = "` (tilda/backtick)"
+
+[node name="move" type="HBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="move" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/move"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+text = "Move worker:"
+
+[node name="Label" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/move"]
+layout_mode = 2
+theme = ExtResource("6_b4jil")
+text = "Left click"
+
+[node name="place" type="HBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="put" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/place"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+text = "Place worker:"
+
+[node name="Label" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/place"]
+layout_mode = 2
+theme = ExtResource("6_b4jil")
+text = "Left click"
 
 [node name="Tips" type="TabBar" parent="info/VBoxContainer/MarginContainer2/TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips"]
-layout_mode = 0
-offset_right = 1220.0
-offset_bottom = 298.0
+[node name="ScrollContainer" type="ScrollContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 457.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="stragety" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips/ScrollContainer/MarginContainer"]
+layout_mode = 2
+color = Color(0.211765, 0.270588, 0.309804, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="stragety" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Stragety:"
 
-[node name="desc-stragety" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips/VBoxContainer"]
+[node name="desc-stragety" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "curse u good luck"
+text = "curse u good luck lol noob its already ggs ez no re"
 
 [connection signal="pressed" from="home/VBoxContainer/MarginContainer/HBoxContainer/Info" to="." method="_on_info_pressed"]
 [connection signal="pressed" from="home/VBoxContainer/MarginContainer/HBoxContainer/settings" to="." method="_on_settings_pressed"]
@@ -456,4 +645,4 @@ text = "curse u good luck"
 [connection signal="value_changed" from="settings/VBoxContainer/HBoxContainer/width" to="settings" method="_on_width_value_changed"]
 [connection signal="value_changed" from="settings/VBoxContainer/HBoxContainer2/length" to="settings" method="_on_length_value_changed"]
 [connection signal="item_selected" from="settings/VBoxContainer/VBoxContainer2/graphics_level" to="settings" method="_on_graphics_level_item_selected"]
-[connection signal="pressed" from="info/VBoxContainer/MarginContainer3/close" to="." method="_on_info_close_pressed"]
+[connection signal="pressed" from="info/VBoxContainer/MarginExit/close" to="." method="_on_info_close_pressed"]

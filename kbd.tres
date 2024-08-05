@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://1n3uesiqw4kr"]
+
+[ext_resource type="FontFile" uid="uid://v0o4eq8ph45c" path="res://fonts/Source_Code_Pro/static/SourceCodePro-Regular.ttf" id="1_ft0xa"]
+
+[resource]
+default_font = ExtResource("1_ft0xa")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_outline_color = Color(0.827524, 0.021439, 0.573422, 1)
