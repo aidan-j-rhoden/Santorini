@@ -41,6 +41,10 @@ definition=false
 icon=false
 project=false
 
+[gui]
+
+theme/custom_font="res://fonts/Poppins/Poppins-Regular.ttf"
+
 [input]
 
 forward={

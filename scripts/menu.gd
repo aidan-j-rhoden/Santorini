@@ -50,3 +50,7 @@ func _on_info_pressed() -> void:
 func _on_info_close_pressed() -> void:
 	$info.hide()
 	$home.show()
+
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()

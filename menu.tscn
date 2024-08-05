@@ -61,18 +61,24 @@ color = Color(0.0666667, 0.380392, 0.603922, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="home"]
 clip_contents = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -625.0
-offset_top = -360.0
-offset_right = 625.0
-offset_bottom = 360.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
+
+[node name="QuitMargin" type="MarginContainer" parent="home/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Quit" type="Button" parent="home/VBoxContainer/QuitMargin"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Quit"
+icon = ExtResource("4_xg3hy")
 
 [node name="MarginContainer" type="MarginContainer" parent="home/VBoxContainer"]
 layout_mode = 2
@@ -118,12 +124,14 @@ icon = ExtResource("3_utat4")
 
 [node name="GamemodeMargin" type="MarginContainer" parent="home/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/margin_top = 75
 theme_override_constants/margin_bottom = 75
 
 [node name="gamemode" type="OptionButton" parent="home/VBoxContainer/GamemodeMargin"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 focus_neighbor_left = NodePath("../../MarginContainer/HBoxContainer/settings")
 focus_neighbor_top = NodePath("../../MarginContainer/HBoxContainer/settings")
 focus_neighbor_right = NodePath("../../StartMargin/start")
@@ -236,7 +244,8 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 25
-text = "exit"
+text = "Exit"
+icon = ExtResource("4_xg3hy")
 
 [node name="VSeparator2" type="VSeparator" parent="settings/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
@@ -339,6 +348,7 @@ libraries = {
 }
 
 [node name="info" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Background" type="ColorRect" parent="info"]
 anchors_preset = 15
@@ -358,9 +368,8 @@ grow_vertical = 2
 [node name="MarginExit" type="MarginContainer" parent="info/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
 
 [node name="close" type="Button" parent="info/VBoxContainer/MarginExit"]
 layout_mode = 2
@@ -425,7 +434,7 @@ size_flags_horizontal = 3
 [node name="setup" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
-text = "Setup:"
+text = "Setup"
 
 [node name="desc-setup" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -438,7 +447,7 @@ After placing both of your workers, the game begins!"
 [node name="gameplay" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
-text = "Gameplay:"
+text = "Gameplay"
 
 [node name="desc-gameplay-intro" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -466,13 +475,15 @@ text = "Building"
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "After moving your worker, you must build on any adjacent square, including diagonal.
-Buildings can be four levels high, with the fourth being a cap.  Height does not matter; you can build from the top or the bottom or anywhere between.
-You cannot build on any other worker, or under yourself.  You may build on towers that other players have started."
+Buildings can be four levels high, with the fourth being a cap.
+Worker height does not matter in building.  You can build from the top or the bottom or anywhere between.
+You cannot build on any other worker, or under yourself.
+You may build on towers that other players have started."
 
 [node name="winning" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
-text = "Winning:"
+text = "Winning"
 
 [node name="desc-win" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -654,8 +665,14 @@ text = "Stragety:"
 
 [node name="desc-stragety" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "curse u good luck lol noob its already ggs ez no re"
+text = "Keep an eye on your opponent's workers.  A sneaky win could happen at any moment!
+Try to keep a worker within building distance of any tower that your opponent might be trying to complete.
+Remember, placing a cap is an excellent way of preventing a win.
+Make use of towers that other players have started!  Work smarter, not harder.
+Don't forget that your workers can jump down from any height.
+Always keep your workers mobile.  If one gets stuck, you've lost half of your workforce!"
 
+[connection signal="pressed" from="home/VBoxContainer/QuitMargin/Quit" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="home/VBoxContainer/MarginContainer/HBoxContainer/Info" to="." method="_on_info_pressed"]
 [connection signal="pressed" from="home/VBoxContainer/MarginContainer/HBoxContainer/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="home/VBoxContainer/StartMargin/start" to="." method="_on_start_pressed"]
