@@ -355,21 +355,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginTitle" type="MarginContainer" parent="info/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Title" type="Label" parent="info/VBoxContainer/MarginTitle"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 75
-text = "How to play"
-horizontal_alignment = 1
-
 [node name="MarginExit" type="MarginContainer" parent="info/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 5
 
 [node name="close" type="Button" parent="info/VBoxContainer/MarginExit"]
 layout_mode = 2
@@ -378,24 +369,35 @@ theme_override_font_sizes/font_size = 20
 text = "Exit"
 icon = ExtResource("4_xg3hy")
 
-[node name="MarginContainer2" type="MarginContainer" parent="info/VBoxContainer"]
+[node name="MarginTitle" type="MarginContainer" parent="info/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 40
+
+[node name="Title" type="Label" parent="info/VBoxContainer/MarginTitle"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "How to play"
+horizontal_alignment = 1
+
+[node name="MarginTabs" type="MarginContainer" parent="info/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 100
 
-[node name="TabContainer" type="TabContainer" parent="info/VBoxContainer/MarginContainer2"]
+[node name="TabContainer" type="TabContainer" parent="info/VBoxContainer/MarginTabs"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 22
 current_tab = 0
 
-[node name="Rules" type="TabBar" parent="info/VBoxContainer/MarginContainer2/TabContainer"]
+[node name="Rules" type="TabBar" parent="info/VBoxContainer/MarginTabs/TabContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 metadata/_tab_index = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules"]
+[node name="ScrollContainer" type="ScrollContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -404,81 +406,97 @@ offset_bottom = 457.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Background" type="ColorRect" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer/MarginContainer"]
+[node name="Background" type="ColorRect" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer"]
 layout_mode = 2
 color = Color(0.3286, 0.522867, 0.62, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="setup" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="setup" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Setup:"
 
-[node name="desc-setup" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="desc-setup" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "asdf
-alsdfh;awej faowie f
-asdfw 9a8hg
-as'd
-a
-aghwea
+text = "Each player gets 2 workers for the game.
+Starting with Player 1, each player takes turn placing a worker on an available square.
+You can place your workers as close to each other as you wish, but no two workers can occupy the same square.
+After placing both of your workers, the game begins!"
 
-
-awge
- a
-wfaw9[4 "
-
-[node name="gameplay" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="gameplay" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Gameplay:"
 
-[node name="desc-gameplay" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="desc-gameplay-intro" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "asdf
-alsdfh;awej faowie f
-asdfw 9a8hg a
-wfaw9[4 
+text = "With your workers in place, you can begin building your way to victory!
+Each turn has two steps: Moving, and Building, both of which are mandatory."
 
-ashdg
-awhgawg
+[node name="moving" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Moving"
 
-awehgawgawrhg
-awrhgawigh32
-4ph3a
--9
-gh
-34g"
+[node name="desc-moving" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "After selecting one of your workers, you may move it to any adjacent unoccupied square, including diagonal.
+You can only move your worker UP one story, but you may move it down from as high as you wish."
 
-[node name="winning" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="building" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Building"
+
+[node name="desc-building" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "After moving your worker, you must build on any adjacent square, including diagonal.
+Buildings can be four levels high, with the fourth being a cap.  Height does not matter; you can build from the top or the bottom or anywhere between.
+You cannot build on any other worker, or under yourself.  You may build on towers that other players have started."
+
+[node name="winning" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Winning:"
 
-[node name="desc-win" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="desc-win" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Move your worker to the third level of a building, finish your turn by building, and you win!"
 
-[node name="Controls" type="TabBar" parent="info/VBoxContainer/MarginContainer2/TabContainer"]
+[node name="losing" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Losing"
+
+[node name="desc-lose" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "You lose if the other person wins.
+You lose if you are unable to move a worker on your turn.
+You lose if, after moving a worker, you are unable to build on your turn."
+
+[node name="Controls" type="TabBar" parent="info/VBoxContainer/MarginTabs/TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls"]
+[node name="ScrollContainer" type="ScrollContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -487,16 +505,16 @@ offset_bottom = 457.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ColorRect" type="ColorRect" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer"]
 layout_mode = 2
 color = Color(0.3534, 0.57, 0.40394, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect"]
+[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -505,101 +523,101 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer"]
 layout_mode = 2
 
-[node name="controls" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+[node name="controls" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Controls:"
 
-[node name="rot" type="HBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+[node name="rot" type="HBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Rotate" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/rot"]
+[node name="Rotate" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/rot"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Rotate:"
 
-[node name="Label" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/rot"]
+[node name="Label" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/rot"]
 layout_mode = 2
 theme = ExtResource("6_b4jil")
 text = "Middle mouse"
 
-[node name="pan" type="HBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+[node name="pan" type="HBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Pan" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/pan"]
+[node name="Pan" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/pan"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Pan:"
 
-[node name="Label" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/pan"]
+[node name="Label" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/pan"]
 layout_mode = 2
 theme = ExtResource("6_b4jil")
 text = "Shift + Middle mouse"
 
-[node name="zoom" type="HBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+[node name="zoom" type="HBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="zoom" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/zoom"]
+[node name="zoom" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/zoom"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 text = "Zoom:"
 
-[node name="Label" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/zoom"]
+[node name="Label" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/zoom"]
 layout_mode = 2
 theme = ExtResource("6_b4jil")
 text = "Scroll wheel"
 
-[node name="quit" type="HBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+[node name="quit" type="HBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Quit" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/quit"]
+[node name="Quit" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/quit"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Quit:"
 
-[node name="Label" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/quit"]
+[node name="Label" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/quit"]
 layout_mode = 2
 theme = ExtResource("6_b4jil")
 text = "` (tilda/backtick)"
 
-[node name="move" type="HBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+[node name="move" type="HBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="move" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/move"]
+[node name="move" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/move"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 text = "Move worker:"
 
-[node name="Label" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/move"]
+[node name="Label" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/move"]
 layout_mode = 2
 theme = ExtResource("6_b4jil")
 text = "Left click"
 
-[node name="place" type="HBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+[node name="place" type="HBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="put" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/place"]
+[node name="put" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/place"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 text = "Place worker:"
 
-[node name="Label" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/place"]
+[node name="Label" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/place"]
 layout_mode = 2
 theme = ExtResource("6_b4jil")
 text = "Left click"
 
-[node name="Tips" type="TabBar" parent="info/VBoxContainer/MarginContainer2/TabContainer"]
+[node name="Tips" type="TabBar" parent="info/VBoxContainer/MarginTabs/TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips"]
+[node name="ScrollContainer" type="ScrollContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -608,16 +626,16 @@ offset_bottom = 457.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ColorRect" type="ColorRect" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips/ScrollContainer/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips/ScrollContainer/MarginContainer"]
 layout_mode = 2
 color = Color(0.211765, 0.270588, 0.309804, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect"]
+[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -626,15 +644,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect/MarginContainer"]
 layout_mode = 2
 
-[node name="stragety" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+[node name="stragety" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Stragety:"
 
-[node name="desc-stragety" type="Label" parent="info/VBoxContainer/MarginContainer2/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+[node name="desc-stragety" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "curse u good luck lol noob its already ggs ez no re"
 
