@@ -122,6 +122,17 @@ theme_override_font_sizes/font_size = 20
 text = "  Settings  "
 icon = ExtResource("3_utat4")
 
+[node name="TitleMargin" type="MarginContainer" parent="home/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="Label" type="Label" parent="home/VBoxContainer/TitleMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 75
+text = "Santorini"
+horizontal_alignment = 1
+
 [node name="GamemodeMargin" type="MarginContainer" parent="home/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -139,7 +150,7 @@ focus_neighbor_bottom = NodePath("../../StartMargin/start")
 focus_next = NodePath("../../StartMargin/start")
 focus_previous = NodePath("../../MarginContainer/HBoxContainer/settings")
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 alignment = 1
 selected = 1
 fit_to_longest_item = false
@@ -464,7 +475,7 @@ text = "Moving"
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "After selecting one of your workers, you may move it to any adjacent unoccupied square, including diagonal.
-You can only move your worker UP one story, but you may move it down from as high as you wish."
+You can move your worker up only one story, but you may move it down from as high as you wish."
 
 [node name="building" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -474,7 +485,7 @@ text = "Building"
 [node name="desc-building" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "After moving your worker, you must build on any adjacent square, including diagonal.
+text = "After moving your worker, you must build on any adjacent square, including diagonal.  You must build with the worker you just moved.
 Buildings can be four levels high, with the fourth being a cap.
 Worker height does not matter in building.  You can build from the top or the bottom or anywhere between.
 You cannot build on any other worker, or under yourself.
@@ -595,7 +606,7 @@ text = "Quit:"
 [node name="Label" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/quit"]
 layout_mode = 2
 theme = ExtResource("6_b4jil")
-text = "` (tilda/backtick)"
+text = "Q"
 
 [node name="move" type="HBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
