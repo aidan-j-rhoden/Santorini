@@ -59,7 +59,7 @@ func create_building():
 
 
 func _on_mouse_entered() -> void:
-	if Globals.stage == "won":
+	if Globals.stage == "win":
 		return
 
 	var worker_dict:Dictionary
