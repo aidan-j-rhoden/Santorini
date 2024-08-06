@@ -35,7 +35,7 @@ func _input(event):
 
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("escape"):
+	if Input.is_action_just_pressed("backtick"):
 		if settings.visible == false:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			settings.visible = true
