@@ -70,13 +70,15 @@ func _process(_delta: float) -> void:
 	if level >= 3:
 		win()
 		level = 0
+	if Globals.stage == "win":
+		$Control/MoveHint.hide()
+		$Control/BuildHint.hide()
 
 
 func win():
 	Globals.stage = "win"
 	print("Player " + str(player) + " won!")
 	$Control/Win/AnimationPlayer.play("win")
-	$Control/BuildHint.hide()
 
 
 func _on_mouse_entered() -> void:
