@@ -7,9 +7,9 @@ const CROUCH_JUMP_VELOCITY = 2.5
 
 @export var CAMERA_ROT_SPEED = 0.2
 
-var top_fall_speed = 0.0
-var health = 100.0
-var dead:bool = false
+var top_fall_speed: float = 0.0
+var health: float = 100.0
+var dead: bool = false
 
 #hud stuff
 @onready var healthbar = $HUD/Health

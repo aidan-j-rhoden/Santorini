@@ -3,10 +3,10 @@ extends Node3D
 @onready var p1mat = preload("res://materials/player1worker.tres")
 @onready var p2mat = preload("res://materials/player2worker.tres")
 
-@export var player:int
-var mouse_inside:bool = false
+@export var player: int
+var mouse_inside: bool = false
 var waiting_orders: bool = false
-var level = 0
+var level: int = 0
 
 func _ready() -> void:
 	$Area3D/MeshInstance3D.visible = false

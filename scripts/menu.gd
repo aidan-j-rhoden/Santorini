@@ -4,7 +4,7 @@ var main = preload("res://levels/main.tscn")
 @onready var gamemode = $home/VBoxContainer/GamemodeMargin/gamemode
 @onready var player = preload("res://player/player.tscn")
 
-var faded = false
+var faded: bool = false
 
 func _ready() -> void:
 	$home.show()
