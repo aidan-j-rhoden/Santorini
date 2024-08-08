@@ -13,3 +13,4 @@ extends Node
 @export var moved_and_built: Array = [false, false]
 
 @export var buildable_spaces: int = 0
+@export var avalible_spaces: int = 0
