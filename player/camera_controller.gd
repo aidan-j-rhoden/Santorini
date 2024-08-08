@@ -7,7 +7,7 @@ const CAMERA_MOVEMENT_SPEED:float = 0.1
 @onready var Camera = $Y_Rot/X_Rot/Camera3D
 @onready var Position_Target = $Position_Target
 
-@export var player:int
+@export var player: int
 
 func _ready() -> void:
 	Camera.position.z = 20

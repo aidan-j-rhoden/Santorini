@@ -1,8 +1,8 @@
 extends Node3D
 @onready var Building = preload("res://buildings/building.tscn")
 
-@export var level:int = 0
-var mouse_inside:bool = false
+@export var level: int = 0
+var mouse_inside: bool = false
 
 func _ready() -> void:
 	$Guide/MeshInstance3D.visible = false
