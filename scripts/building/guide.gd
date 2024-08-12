@@ -58,39 +58,45 @@ func create_building():
 	building.rotation_degrees.y = randi_range(0, 3) * 90
 
 
-func avalibility_checks():
-	if Globals.stage == "win":
-		return false
-
-	var worker_dict:Dictionary
-	var occupied_spaces:Array
-
-	for wkr in Globals.p1_worker_positions:
-		occupied_spaces.append(Globals.p1_worker_positions[wkr])
-	for wkr in Globals.p2_worker_positions:
-		occupied_spaces.append(Globals.p2_worker_positions[wkr])
-
-	if not Globals.moved_and_built[0]:
-		if global_position in occupied_spaces: # The space is occupied
-			return false
-		if Globals.current_worker[0] != Vector3.INF:
-			if _close_enough(Globals.current_worker[0]) and level < 4:
-				if Globals.current_worker[1] >= level - 1:
-					return true
+func avalibility_checks(position = null, w_level = null):
+	if level < 4:
+		if position and level:
+			if _close_enough(position) and w_level >= level -1:
+				return true
 			return false
 
-	if Globals.moved_and_built[0]:
-		if Globals.current_player == 1:
-			worker_dict = Globals.p1_worker_positions
-		else:
-			worker_dict = Globals.p2_worker_positions
-		if global_position in occupied_spaces: # The space is occupied
+		if Globals.stage == "win":
 			return false
-		if _close_enough(Globals.current_worker[0]):
+
+		var worker_dict:Dictionary
+		var occupied_spaces:Array
+
+		for wkr in Globals.p1_worker_positions:
+			occupied_spaces.append(Globals.p1_worker_positions[wkr])
+		for wkr in Globals.p2_worker_positions:
+			occupied_spaces.append(Globals.p2_worker_positions[wkr])
+
+		if not Globals.moved_and_built[0]:
+			if global_position in occupied_spaces: # The space is occupied
+				return false
+			if Globals.current_worker[0] != Vector3.INF:
+				if _close_enough(Globals.current_worker[0]):
+					if Globals.current_worker[1] >= level - 1:
+						return true
+				return false
+
+		if Globals.moved_and_built[0]:
+			if Globals.current_player == 1:
+				worker_dict = Globals.p1_worker_positions
+			else:
+				worker_dict = Globals.p2_worker_positions
+			if global_position in occupied_spaces: # The space is occupied
+				return false
+			if _close_enough(Globals.current_worker[0]):
+				return true
+
+		if Globals.stage == "setup":
 			return true
-
-	if Globals.stage == "setup":
-		return true
 
 	return false
 

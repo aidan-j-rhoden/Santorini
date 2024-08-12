@@ -44,13 +44,13 @@ func _ready():
 		$Cameras.add_child(player2_cam)
 
 
-func _physics_process(delta: float) -> void:
-	if Globals.current_worker[0] != Vector3.INF:
-		if not check_for_moveable():
-			get_tree().quit()
-	if Globals.moved_and_built[1]:
-		if not check_for_moveable():
-			get_tree().quit()
+#func _physics_process(_delta: float) -> void:
+	#if Globals.current_worker[0] != Vector3.INF:
+		#if not check_for_moveable():
+			#get_tree().quit()
+	#if Globals.moved_and_built[1]:
+		#if not check_for_moveable():
+			#get_tree().quit()
 
 
 func _process(_delta: float) -> void:
@@ -71,10 +71,10 @@ func check_for_buildable():
 	return true
 
 
-func check_for_moveable():
+func check_for_moveable(position, level):
 	Globals.avalible_spaces = 0
 	for child in $Guides.get_children():
-		if child.avalibility_checks:
+		if child.avalibility_checks(position, level):
 			Globals.avalible_spaces += 1
 	if Globals.avalible_spaces < 1:
 		return false

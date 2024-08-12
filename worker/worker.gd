@@ -85,7 +85,8 @@ func _on_mouse_entered() -> void:
 	if Globals.stage == "fight" and Globals.current_player == player and not Globals.moved_and_built[0]:
 		if Globals.current_worker[0] != Vector3.INF:
 			return
-		mouse_inside = true
+		if get_node("../../..").check_for_moveable(global_position, level):
+			mouse_inside = true
 
 
 func _on_mouse_exited() -> void:
