@@ -71,14 +71,11 @@ func check_for_buildable():
 	return true
 
 
-func check_for_moveable(position, level):
-	Globals.avalible_spaces = 0
+func check_for_moveable(pos, level):
 	for child in $Guides.get_children():
-		if child.avalibility_checks(position, level):
-			Globals.avalible_spaces += 1
-	if Globals.avalible_spaces < 1:
-		return false
-	return true
+		if child.avalibility_checks(pos, level):
+			return true
+	return false
 
 
 func player_took_action():
