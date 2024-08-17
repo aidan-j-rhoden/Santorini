@@ -85,12 +85,18 @@ func _on_mouse_entered() -> void:
 	if Globals.stage == "fight" and Globals.current_player == player and not Globals.moved_and_built[0]:
 		if Globals.current_worker[0] != Vector3.INF:
 			return
-		if get_parent().get_parent().get_parent().check_for_moveable(global_position, level):
+		if can_move():
 			mouse_inside = true
 
 
 func _on_mouse_exited() -> void:
 	mouse_inside = false
+
+
+func can_move() -> bool:
+	if get_parent().get_parent().get_parent().check_for_moveable(global_position, level):
+		return true
+	return false
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

@@ -14,7 +14,7 @@ func _ready() -> void:
 	Globals.stage = "setup"
 
 
-func _on_start_pressed():
+func _on_start_pressed():  
 	$home.hide()
 	await get_tree().create_timer(0.5).timeout
 	Settings.gamemode = gamemode.selected
