@@ -94,9 +94,7 @@ func _on_mouse_exited() -> void:
 
 
 func can_move() -> bool:
-	if get_parent().get_parent().get_parent().check_for_moveable(global_position, level):
-		return true
-	return false
+	return get_parent().get_parent().get_parent().check_for_moveable(global_position, level)
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
