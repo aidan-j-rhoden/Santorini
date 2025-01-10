@@ -80,6 +80,10 @@ func check_for_moveable(pos, level):
 
 func player_took_action():
 	Globals.moved_and_built = [false, false]
+	for child in $Players.get_children():
+		for worker in child.get_children():
+			worker.check_for_win()
+
 	if Globals.current_player == 1:
 		Globals.current_player = 2
 	else:
@@ -110,6 +114,9 @@ func I_got_clicked(here):
 
 
 func change_player():
+	if Globals.stage == "win":
+		return
+
 	$Control/MarginContainer/Label.text = "Player " + str(Globals.current_player)
 	if Globals.stage == "setup":
 		return

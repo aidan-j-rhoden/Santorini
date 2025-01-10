@@ -65,8 +65,8 @@ func avalibility_checks(w_pos = null, w_level = null):
 	if level > 3:
 		return false
 
-	var worker_dict: Dictionary
-	var occupied_spaces: Array
+	var worker_dict: Dictionary = {}
+	var occupied_spaces: Array = []
 	for wkr in Globals.p1_worker_positions:
 		occupied_spaces.append(Globals.p1_worker_positions[wkr])
 	for wkr in Globals.p2_worker_positions:

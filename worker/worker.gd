@@ -66,7 +66,7 @@ func _physics_process(_delta: float) -> void:
 		$Area3D/MeshInstance3D.visible = false
 
 
-func _process(_delta: float) -> void:
+func check_for_win() -> void:
 	if level >= 3:
 		win()
 		level = 0
