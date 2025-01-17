@@ -44,13 +44,11 @@ func _ready():
 		$Cameras.add_child(player2_cam)
 
 
-#func _physics_process(_delta: float) -> void:
-	#if Globals.current_worker[0] != Vector3.INF:
-		#if not check_for_moveable():
-			#get_tree().quit()
-	#if Globals.moved_and_built[1]:
-		#if not check_for_moveable():
-			#get_tree().quit()
+func _physics_process(_delta: float) -> void:
+	if Globals.p1_workers_stuck[0] and Globals.p1_workers_stuck[1]:
+		get_node("Players/P2_W").get_children()[0].win()
+	if Globals.p2_workers_stuck[0] and Globals.p2_workers_stuck[1]: # If both of player two's workers are stuck
+		get_node("Players/P1_W").get_children()[0].win() # player one wins.
 
 
 func _process(_delta: float) -> void:
@@ -93,21 +91,23 @@ func player_took_action():
 
 func I_got_clicked(here):
 	if Globals.current_player == 1:
-		player1_workers_amount += 1
 		var wkr = worker_male.instantiate()
 		wkr.name = "p1wkr" + str(player1_workers_amount)
 		wkr.player = 1
+		wkr.id = player1_workers_amount
 		$Players/P1_W.add_child(wkr)
 		wkr.global_position = here
 		Globals.p1_worker_positions[wkr.name] = here
+		player1_workers_amount += 1
 	elif Globals.current_player == 2:
-		player2_workers_amount += 1
 		var wkr = worker_male.instantiate()
 		wkr.name = "p2wkr" + str(player2_workers_amount)
 		wkr.player = 2
+		wkr.id = player2_workers_amount
 		$Players/P2_W.add_child(wkr)
 		wkr.global_position = here
 		Globals.p2_worker_positions[wkr.name] = here
+		player2_workers_amount += 1
 	if player2_workers_amount == 2 and player1_workers_amount == 2:
 		Globals.stage = "fight"
 	player_took_action()
@@ -115,6 +115,7 @@ func I_got_clicked(here):
 
 func change_player():
 	if Globals.stage == "win":
+		$Control/MarginContainer/Label.hide()
 		return
 
 	$Control/MarginContainer/Label.text = "Player " + str(Globals.current_player)

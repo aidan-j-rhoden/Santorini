@@ -4,6 +4,8 @@ extends Node3D
 @onready var p2mat = preload("res://materials/player2worker.tres")
 
 @export var player: int
+@export var id: int
+
 var mouse_inside: bool = false
 var waiting_orders: bool = false
 var level: int = 0
@@ -18,6 +20,7 @@ func _ready() -> void:
 		$MeshInstance3D.set_surface_override_material(0, p2mat)
 		$MeshInstance3D/MeshInstance3D2.set_surface_override_material(0, p2mat)
 		$MeshInstance3D/MeshInstance3D2/MeshInstance3D.set_surface_override_material(0, p2mat)
+	$Control/Win/HBoxContainer/player.text = str(player)
 
 
 func _input(_event: InputEvent) -> void:
@@ -43,6 +46,13 @@ func _physics_process(_delta: float) -> void:
 			$Area3D/MeshInstance3D.visible = true
 		elif not waiting_orders:
 			$Area3D/MeshInstance3D.visible = false
+			if not can_move():
+				if player == 1:
+					if not Globals.p1_workers_stuck[id]:
+						Globals.p1_workers_stuck[id] = true
+				elif player == 2:
+					if not Globals.p2_workers_stuck[id]:
+						Globals.p2_workers_stuck[id] = true
 		if waiting_orders:
 			if not $Area3D/AnimationPlayer.is_playing():
 				$Area3D/AnimationPlayer.play("ready")

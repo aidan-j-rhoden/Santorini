@@ -59,10 +59,10 @@ func create_building():
 
 
 func avalibility_checks(w_pos = null, w_level = null):
-	if Globals.stage == "win":
+	if Globals.stage == "win": # If someone has won, it can't be used.
 		return false
 
-	if level > 3:
+	if level > 3: # This building has been built to the max level (top plus a cap) and can't be used.
 		return false
 
 	var worker_dict: Dictionary = {}
@@ -71,8 +71,20 @@ func avalibility_checks(w_pos = null, w_level = null):
 		occupied_spaces.append(Globals.p1_worker_positions[wkr])
 	for wkr in Globals.p2_worker_positions:
 		occupied_spaces.append(Globals.p2_worker_positions[wkr])
-	if global_position in occupied_spaces: # The space is occupied
+	if global_position in occupied_spaces: # This space is occupied by another worker
 			return false
+
+	# FIXME
+	# Check if a worker is over or in this square
+	for wkr in Globals.p1_worker_positions:
+		if typeof(Globals.p1_worker_positions[wkr]) == TYPE_VECTOR3:
+			if _close_enough(Globals.p1_worker_positions[wkr], 0.1):
+				return false
+	for wkr in Globals.p2_worker_positions:
+		if typeof(Globals.p2_worker_positions[wkr]) == TYPE_VECTOR3:
+			if _close_enough(Globals.p2_worker_positions[wkr], 0.1):
+				return false
+	# FIXME
 
 	if w_pos != null and w_level != null:
 		if _close_enough(w_pos) and w_level >= level - 1:
@@ -108,11 +120,15 @@ func _on_mouse_exited() -> void:
 	mouse_inside = false
 
 
-func _close_enough(target) -> bool:
+func _close_enough(target, threshhold: float = 1.5) -> bool:
 	var from = global_position * Vector3(1.0, 0.0, 1.0)
 	target *= Vector3(1.0, 0.0, 1.0)
+
+	if from.y != 0 or target.y != 0:
+		get_tree().quit(1)
+
 	var distance = from.distance_to(target)
-	if distance/15.0 < 1.5:
+	if distance/15.0 < threshhold:
 		if 0.0 < distance/15.0:
 			return true
 	return false
