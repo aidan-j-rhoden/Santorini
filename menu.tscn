@@ -509,7 +509,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "You lose if the other person wins.
 You lose if you are unable to move a worker on your turn.
-You lose if, after moving a worker, you are unable to build on your turn. (not yet implemented)"
+You lose if, after moving a worker, you are unable to build on your turn. (this is actually impossible)"
 
 [node name="Controls" type="TabBar" parent="info/VBoxContainer/MarginTabs/TabContainer"]
 visible = false

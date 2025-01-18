@@ -65,7 +65,7 @@ func avalibility_checks(w_pos = null, w_level = null):
 	if level > 3: # This building has been built to the max level (top plus a cap) and can't be used.
 		return false
 
-	var worker_dict: Dictionary = {}
+	var worker_dict: Dictionary = {} # TODO This code is possibibly covered by the next segment, ~77-85 
 	var occupied_spaces: Array = []
 	for wkr in Globals.p1_worker_positions:
 		occupied_spaces.append(Globals.p1_worker_positions[wkr])
@@ -74,7 +74,6 @@ func avalibility_checks(w_pos = null, w_level = null):
 	if global_position in occupied_spaces: # This space is occupied by another worker
 			return false
 
-	# FIXME
 	# Check if a worker is over or in this square
 	for wkr in Globals.p1_worker_positions:
 		if typeof(Globals.p1_worker_positions[wkr]) == TYPE_VECTOR3:
@@ -84,21 +83,20 @@ func avalibility_checks(w_pos = null, w_level = null):
 		if typeof(Globals.p2_worker_positions[wkr]) == TYPE_VECTOR3:
 			if _close_enough(Globals.p2_worker_positions[wkr], 0.1):
 				return false
-	# FIXME
 
 	if w_pos != null and w_level != null:
 		if _close_enough(w_pos) and w_level >= level - 1:
 			return true
 		return false
 
-	if not Globals.moved_and_built[0]:
+	if not Globals.moved_and_built[0]: # The worker has not yet been moved
 		if Globals.current_worker[0] != Vector3.INF:
 			if _close_enough(Globals.current_worker[0]):
 				if Globals.current_worker[1] >= level - 1:
 					return true
 			return false
 
-	if Globals.moved_and_built[0]:
+	if Globals.moved_and_built[0]: # The worker has been moved, and needs to build.
 		if Globals.current_player == 1:
 			worker_dict = Globals.p1_worker_positions
 		else:

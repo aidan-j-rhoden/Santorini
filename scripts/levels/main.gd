@@ -59,14 +59,11 @@ func _process(_delta: float) -> void:
 		$game/AnimationPlayer.play("Fadeout")
 
 
-func check_for_buildable():
-	Globals.buildable_spaces = 0
+func check_for_buildable(pos):
 	for child in $Guides.get_children():
-		if child.avalibility_checks:
-			Globals.buildable_spaces += 1
-	if Globals.buildable_spaces < 1:
-		return false
-	return true
+		if child.avalibility_checks(pos, 3):
+			return true
+	return false
 
 
 func check_for_moveable(pos, level):
