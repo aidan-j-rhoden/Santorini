@@ -72,14 +72,6 @@ func _physics_process(_delta: float) -> void:
 				elif player == 2:
 					Globals.p2_worker_positions[name] = global_position
 
-		if Globals.moved_and_built[0] and Globals.current_worker[0] == global_position:
-			if not can_build():
-				if player == 1:
-					Globals.p1_workers_stuck[0] = true
-					Globals.p1_workers_stuck[1] = true
-				elif player == 2:
-					Globals.p2_workers_stuck[0] = true
-					Globals.p2_workers_stuck[1] = true
 	elif Globals.stage == "win":
 		$Area3D/MeshInstance3D.visible = false
 
@@ -115,8 +107,8 @@ func can_move() -> bool:
 	return get_parent().get_parent().get_parent().check_for_moveable(global_position, level)
 
 
-func can_build() -> bool:
-	return get_parent().get_parent().get_parent().check_for_buildable(global_position)
+#func can_build() -> bool:
+	#return get_parent().get_parent().get_parent().check_for_buildable(global_position)
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
