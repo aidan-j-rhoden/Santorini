@@ -1,8 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddrbtqxkhbi34"]
+[gd_scene load_steps=25 format=3 uid="uid://ddrbtqxkhbi34"]
 
 [ext_resource type="Script" path="res://scripts/levels/main.gd" id="1_aq87o"]
-[ext_resource type="Environment" uid="uid://bekiwxqt2tf0d" path="res://levels/enviroment.tres" id="2_vxgrb"]
+[ext_resource type="Environment" uid="uid://bekiwxqt2tf0d" path="res://levels/enviroment.tres" id="2_n1j7u"]
 [ext_resource type="PackedScene" uid="uid://g7hplppbb7m1" path="res://levels/grounds/ground.glb" id="3_6tau7"]
+[ext_resource type="Script" path="res://addons/sky_3d/src/Sky3D.gd" id="3_qtqw2"]
+[ext_resource type="Shader" path="res://enviroment/water.gdshader" id="4_cb68s"]
+[ext_resource type="Script" path="res://addons/sky_3d/src/TimeOfDay.gd" id="4_f6nvd"]
+[ext_resource type="Script" path="res://addons/sky_3d/src/Skydome.gd" id="5_icv1j"]
+[ext_resource type="PackedScene" uid="uid://dwttaoush1apg" path="res://enviroment/underwaterground.glb" id="6_b7ei6"]
+[ext_resource type="PackedScene" uid="uid://d2qk8wcdo2vrq" path="res://enviroment/mountains.glb" id="6_nkl06"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_4gg2c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_naaym"]
 size = Vector3(79.9462, 6.56543, 79)
@@ -55,11 +63,192 @@ _data = {
 "RESET": SubResource("Animation_8xste")
 }
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ub4vc"]
+noise_type = 3
+frequency = 0.02
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ys8k8"]
+width = 1024
+height = 1024
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_ub4vc")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d7nwj"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g1ql7"]
+width = 2048
+height = 2048
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_d7nwj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gtpfh"]
+render_priority = 0
+shader = ExtResource("4_cb68s")
+shader_parameter/primary_color = Color(0.0986937, 0.614086, 1, 1)
+shader_parameter/secondary_color = Color(4.4184e-05, 0.300662, 0.856934, 1)
+shader_parameter/roughness = 0.02
+shader_parameter/normalmap_a_strength = 0.4
+shader_parameter/normalmap_b_strength = 0.5
+shader_parameter/movement_direction = Vector2(0.2, 0.1)
+shader_parameter/movement_strength = 0.05
+shader_parameter/uv_scale = 1.0
+shader_parameter/depth_distance = 800.0
+shader_parameter/beers_law = 12.0
+shader_parameter/water_transparency = 1.0
+shader_parameter/refraction_strength = 0.02
+shader_parameter/normalmap_a = SubResource("NoiseTexture2D_ys8k8")
+shader_parameter/normalmap_b = SubResource("NoiseTexture2D_g1ql7")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hehm0"]
+material = SubResource("ShaderMaterial_gtpfh")
+size = Vector2(7000, 8000)
+subdivide_width = 128
+subdivide_depth = 128
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jxmkq"]
+albedo_color = Color(0.654902, 0.643137, 0.470588, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6hcj0"]
+material = SubResource("StandardMaterial3D_jxmkq")
+size = Vector2(8000, 8000)
+
 [node name="level" type="Node3D"]
 script = ExtResource("1_aq87o")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("2_vxgrb")
+[node name="Enviroment" type="Node" parent="."]
+
+[node name="Sky3D" type="WorldEnvironment" parent="Enviroment"]
+environment = ExtResource("2_n1j7u")
+camera_attributes = SubResource("CameraAttributesPractical_4gg2c")
+script = ExtResource("3_qtqw2")
+enable_editor_time = false
+minutes_per_day = 20.0
+
+[node name="SunLight" type="DirectionalLight3D" parent="Enviroment/Sky3D"]
+transform = Transform3D(0, -0.625152, 0.780503, -0.814791, 0.4525, 0.362435, -0.579754, -0.635947, -0.509369, 0.780503, 0.362435, -0.509369)
+light_color = Color(0.994497, 0.868763, 0.805758, 1)
+shadow_enabled = true
+directional_shadow_mode = 0
+directional_shadow_fade_start = 0.0
+directional_shadow_max_distance = 8192.0
+
+[node name="MoonLight" type="DirectionalLight3D" parent="Enviroment/Sky3D"]
+transform = Transform3D(0, -0.499216, -0.866477, 0.79439, -0.526305, 0.303228, -0.607408, -0.688321, 0.396572, -0.866477, 0.303228, 0.396573)
+visible = false
+light_color = Color(0.572549, 0.776471, 0.956863, 1)
+light_energy = 0.0
+shadow_enabled = true
+
+[node name="TimeOfDay" type="Node" parent="Enviroment/Sky3D"]
+script = ExtResource("4_f6nvd")
+update_in_editor = false
+dome_path = NodePath("../Skydome")
+system_sync = false
+total_cycle_in_minutes = 20.0
+total_hours = 8.0
+day = 3
+month = 1
+year = 2025
+celestials_calculations = 1
+compute_moon_coords = true
+compute_deep_space_coords = true
+latitude = 16.0
+longitude = 108.0
+utc = 7.0
+celestials_update_time = 0.0
+
+[node name="Skydome" type="Node" parent="Enviroment/Sky3D"]
+script = ExtResource("5_icv1j")
+sky_visible = true
+dome_radius = 10.0
+tonemap_level = 0.0
+exposure = 1.3
+ground_color = Color(0.3, 0.3, 0.3, 1)
+sky_layers = 4
+sky_render_priority = -128
+horizon_level = 0.0
+sun_altitude = 68.7502
+sun_azimuth = 123.129
+sun_disk_color = Color(0.996094, 0.541334, 0.140076, 1)
+sun_disk_intensity = 2.0
+sun_disk_size = 0.015
+sun_light_path = NodePath("../SunLight")
+sun_light_color = Color(1, 1, 1, 1)
+sun_horizon_light_color = Color(0.98, 0.523, 0.294, 1)
+sun_light_energy = 1.0
+moon_altitude = 106.811
+moon_azimuth = 306.363
+moon_color = Color(1, 1, 1, 1)
+moon_size = 0.07
+enable_set_moon_texture = false
+moon_resolution = 2
+moon_light_path = NodePath("../MoonLight")
+moon_light_color = Color(0.572549, 0.776471, 0.956863, 1)
+moon_light_energy = 0.3
+deep_space_euler = Vector3(1.29154, -3.14159, 2.3636)
+background_color = Color(0.709804, 0.709804, 0.709804, 0.854902)
+set_background_texture = false
+stars_field_color = Color(1, 1, 1, 1)
+set_stars_field_texture = false
+stars_scintillation = 0.75
+stars_scintillation_speed = 0.01
+atm_quality = 1
+atm_wavelenghts = Vector3(680, 550, 440)
+atm_darkness = 0.5
+atm_sun_intensity = 18.0
+atm_day_tint = Color(0.807843, 0.909804, 1, 1)
+atm_horizon_light_tint = Color(0.980392, 0.635294, 0.462745, 1)
+atm_enable_moon_scatter_mode = false
+atm_night_tint = Color(0.168627, 0.2, 0.25098, 1)
+atm_level_params = Vector3(1, 0, 0)
+atm_thickness = 0.7
+atm_mie = 0.07
+atm_turbidity = 0.001
+atm_sun_mie_tint = Color(1, 1, 1, 1)
+atm_sun_mie_intensity = 1.0
+atm_sun_mie_anisotropy = 0.8
+atm_moon_mie_tint = Color(0.137255, 0.184314, 0.292196, 1)
+atm_moon_mie_intensity = 0.7
+atm_moon_mie_anisotropy = 0.8
+fog_visible = true
+fog_atm_level_params_offset = Vector3(0, 0, -1)
+fog_density = 0.00015
+fog_rayleigh_depth = 0.116
+fog_mie_depth = 0.0001
+fog_falloff = 3.0
+fog_start = 0.0
+fog_end = 1000.0
+fog_layers = 524288
+fog_render_priority = 123
+clouds_thickness = 1.7
+clouds_coverage = 0.5
+clouds_absorption = 2.0
+clouds_sky_tint_fade = 0.5
+clouds_intensity = 10.0
+clouds_size = 2.0
+clouds_uv = Vector2(0.16, 0.11)
+clouds_direction = Vector2(0.25, 0.25)
+clouds_speed = 0.07
+set_clouds_texture = false
+clouds_cumulus_visible = true
+clouds_cumulus_day_color = Color(0.823529, 0.87451, 1, 1)
+clouds_cumulus_horizon_light_color = Color(0.98, 0.43, 0.15, 1)
+clouds_cumulus_night_color = Color(0.090196, 0.094118, 0.129412, 1)
+clouds_cumulus_thickness = 0.0243
+clouds_cumulus_coverage = 0.55
+clouds_cumulus_absorption = 2.0
+clouds_cumulus_noise_freq = 2.7
+clouds_cumulus_intensity = 1.0
+clouds_cumulus_mie_intensity = 1.0
+clouds_cumulus_mie_anisotropy = 0.206
+clouds_cumulus_size = 0.5
+clouds_cumulus_direction = Vector3(0.25, 0.1, 0.25)
+clouds_cumulus_speed = 0.05
+set_clouds_cumulus_texture = false
+environment = ExtResource("2_n1j7u")
 
 [node name="Players" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
@@ -76,10 +265,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 
 projection = 1
 current = true
 size = 90.0
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.940122, 0.24101, -0.24101, 0, 0.707107, 0.707107, 0.340839, -0.664766, 0.664766, 0, 20, 0)
-shadow_enabled = true
+near = 10.0
+far = 18.0
 
 [node name="ground" parent="." instance=ExtResource("3_6tau7")]
 
@@ -190,3 +377,19 @@ vertical_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_ubalh")
 }
+
+[node name="Set" type="Node3D" parent="."]
+
+[node name="Waterplane" type="MeshInstance3D" parent="Set"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1249.81, -218, -1300.05)
+mesh = SubResource("PlaneMesh_hehm0")
+
+[node name="underwaterground" parent="Set" instance=ExtResource("6_b7ei6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -216, 0)
+
+[node name="mountains" parent="Set" instance=ExtResource("6_nkl06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -281.209, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Set"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 808.157, -355.461, -1252.95)
+mesh = SubResource("PlaneMesh_6hcj0")

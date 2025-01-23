@@ -20,7 +20,8 @@ func _ready():
 		$Control.hide()
 		$Grid.hide()
 		$Cameras/TopDown.queue_free()
-		get_node("Players").add_child(player.instantiate())
+		var char = player.instantiate()
+		get_node("Players").add_child(char)
 		for x in range(floor((Settings.width/2.0)) * -1, Settings.width - floor(Settings.width/2.0)):
 			for z in range(floor((Settings.length/2.0)) * -1, Settings.length - floor(Settings.length/2.0)):
 				if randi() % 3 < 2:
@@ -44,6 +45,13 @@ func _ready():
 		$Cameras.add_child(player2_cam)
 
 
+func _physics_process(_delta: float) -> void:
+	if Globals.p1_workers_stuck[0] and Globals.p1_workers_stuck[1]:
+		get_node("Players/P2_W").get_children()[0].win()
+	if Globals.p2_workers_stuck[0] and Globals.p2_workers_stuck[1]: # If both of player two's workers are stuck
+		get_node("Players/P1_W").get_children()[0].win() # player one wins.
+
+
 func _process(_delta: float) -> void:
 	if Globals.stage == "fight" and not faded:
 		faded = true
@@ -52,8 +60,19 @@ func _process(_delta: float) -> void:
 		$game/AnimationPlayer.play("Fadeout")
 
 
+func check_for_moveable(pos, level):
+	for child in $Guides.get_children():
+		if child.avalibility_checks(pos, level):
+			return true
+	return false
+
+
 func player_took_action():
 	Globals.moved_and_built = [false, false]
+	for child in $Players.get_children():
+		for worker in child.get_children():
+			worker.check_for_win()
+
 	if Globals.current_player == 1:
 		Globals.current_player = 2
 	else:
@@ -63,27 +82,33 @@ func player_took_action():
 
 func I_got_clicked(here):
 	if Globals.current_player == 1:
-		player1_workers_amount += 1
 		var wkr = worker_male.instantiate()
 		wkr.name = "p1wkr" + str(player1_workers_amount)
 		wkr.player = 1
+		wkr.id = player1_workers_amount
 		$Players/P1_W.add_child(wkr)
 		wkr.global_position = here
 		Globals.p1_worker_positions[wkr.name] = here
+		player1_workers_amount += 1
 	elif Globals.current_player == 2:
-		player2_workers_amount += 1
 		var wkr = worker_male.instantiate()
 		wkr.name = "p2wkr" + str(player2_workers_amount)
 		wkr.player = 2
+		wkr.id = player2_workers_amount
 		$Players/P2_W.add_child(wkr)
 		wkr.global_position = here
 		Globals.p2_worker_positions[wkr.name] = here
+		player2_workers_amount += 1
 	if player2_workers_amount == 2 and player1_workers_amount == 2:
 		Globals.stage = "fight"
 	player_took_action()
 
 
 func change_player():
+	if Globals.stage == "win":
+		$Control/MarginContainer/Label.hide()
+		return
+
 	$Control/MarginContainer/Label.text = "Player " + str(Globals.current_player)
 	if Globals.stage == "setup":
 		return

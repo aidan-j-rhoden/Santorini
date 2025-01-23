@@ -12,5 +12,5 @@ extends Node
 
 @export var moved_and_built: Array = [false, false]
 
-@export var buildable_spaces: int = 0
-@export var avalible_spaces: int = 0
+@export var p1_workers_stuck: Array = [false, false]
+@export var p2_workers_stuck: Array = [false, false]

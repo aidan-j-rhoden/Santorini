@@ -58,51 +58,75 @@ func create_building():
 	building.rotation_degrees.y = randi_range(0, 3) * 90
 
 
-func _on_mouse_entered() -> void:
-	if Globals.stage == "win":
-		return
+func avalibility_checks(w_pos = null, w_level = null):
+	if Globals.stage == "win": # If someone has won, it can't be used.
+		return false
 
-	var worker_dict:Dictionary
-	var occupied_spaces:Array
-	
+	if level > 3: # This building has been built to the max level (top plus a cap) and can't be used.
+		return false
+
+	var worker_dict: Dictionary = {} # TODO This code is possibibly covered by the next segment, ~77-85 
+	var occupied_spaces: Array = []
 	for wkr in Globals.p1_worker_positions:
 		occupied_spaces.append(Globals.p1_worker_positions[wkr])
 	for wkr in Globals.p2_worker_positions:
 		occupied_spaces.append(Globals.p2_worker_positions[wkr])
+	if global_position in occupied_spaces: # This space is occupied by another worker
+			return false
 
-	if not Globals.moved_and_built[0]:
-		if global_position in occupied_spaces: # The space is occupied
-			return
+	# Check if a worker is over or in this square
+	for wkr in Globals.p1_worker_positions:
+		if typeof(Globals.p1_worker_positions[wkr]) == TYPE_VECTOR3:
+			if _close_enough(Globals.p1_worker_positions[wkr], 0.1):
+				return false
+	for wkr in Globals.p2_worker_positions:
+		if typeof(Globals.p2_worker_positions[wkr]) == TYPE_VECTOR3:
+			if _close_enough(Globals.p2_worker_positions[wkr], 0.1):
+				return false
+
+	if w_pos != null and w_level != null:
+		if _close_enough(w_pos) and w_level >= level - 1:
+			return true
+		return false
+
+	if not Globals.moved_and_built[0]: # The worker has not yet been moved
 		if Globals.current_worker[0] != Vector3.INF:
-			if _close_enough(Globals.current_worker[0]) and level < 4:
+			if _close_enough(Globals.current_worker[0]):
 				if Globals.current_worker[1] >= level - 1:
-					mouse_inside = true
-			return
+					return true
+			return false
 
-	if Globals.moved_and_built[0]:
+	if Globals.moved_and_built[0]: # The worker has been moved, and needs to build.
 		if Globals.current_player == 1:
 			worker_dict = Globals.p1_worker_positions
 		else:
 			worker_dict = Globals.p2_worker_positions
-		if global_position in occupied_spaces: # The space is occupied
-			return
 		if _close_enough(Globals.current_worker[0]):
-			mouse_inside = true
-			return
+			return true
 
 	if Globals.stage == "setup":
-		mouse_inside = true
+		return true
+
+	return false
 
 
-func _on_mouse_exited() -> void: # This one's much simplier, eh?
+func _on_mouse_entered() -> void:
+	mouse_inside = avalibility_checks()
+
+
+func _on_mouse_exited() -> void:
 	mouse_inside = false
 
 
-func _close_enough(target) -> bool:
+func _close_enough(target, threshhold: float = 1.5) -> bool:
 	var from = global_position * Vector3(1.0, 0.0, 1.0)
 	target *= Vector3(1.0, 0.0, 1.0)
+
+	if from.y != 0 or target.y != 0:
+		get_tree().quit(1)
+
 	var distance = from.distance_to(target)
-	if distance/15.0 < 1.5:
-		if 0 < distance/15.0:
+	if distance/15.0 < threshhold:
+		if 0.0 < distance/15.0:
 			return true
 	return false

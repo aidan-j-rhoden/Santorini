@@ -67,60 +67,38 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="QuitMargin" type="MarginContainer" parent="home/VBoxContainer"]
+[node name="TopMargin" type="MarginContainer" parent="home/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_right = 20
 
-[node name="Quit" type="Button" parent="home/VBoxContainer/QuitMargin"]
+[node name="Quit" type="Button" parent="home/VBoxContainer/TopMargin"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "Quit"
 icon = ExtResource("4_xg3hy")
 
-[node name="MarginContainer" type="MarginContainer" parent="home/VBoxContainer"]
+[node name="settings" type="Button" parent="home/VBoxContainer/TopMargin"]
 layout_mode = 2
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="home/VBoxContainer/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Info" type="Button" parent="home/VBoxContainer/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-focus_neighbor_left = NodePath("../settings")
-focus_neighbor_top = NodePath("../../../StartMargin/start")
-focus_neighbor_right = NodePath("../settings")
-focus_neighbor_bottom = NodePath("../../../GamemodeMargin/gamemode")
-focus_next = NodePath("../settings")
-focus_previous = NodePath("../../../StartMargin/start")
-theme_override_font_sizes/font_size = 20
-text = "Info"
-icon = ExtResource("2_ih6wq")
-
-[node name="MarginContainer" type="MarginContainer" parent="home/VBoxContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 750
-
-[node name="settings" type="Button" parent="home/VBoxContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
 size_flags_vertical = 4
-focus_neighbor_left = NodePath("../Info")
-focus_neighbor_top = NodePath("../Info")
-focus_neighbor_right = NodePath("../../../GamemodeMargin/gamemode")
-focus_neighbor_bottom = NodePath("../../../GamemodeMargin/gamemode")
-focus_next = NodePath("../../../GamemodeMargin/gamemode")
-focus_previous = NodePath("../Info")
+focus_neighbor_left = NodePath("../../BottomMargin/Info")
+focus_neighbor_top = NodePath("../../BottomMargin/Info")
+focus_neighbor_right = NodePath("../../GamemodeMargin/gamemode")
+focus_neighbor_bottom = NodePath("../../GamemodeMargin/gamemode")
+focus_next = NodePath("../../GamemodeMargin/gamemode")
+focus_previous = NodePath("../../BottomMargin/Info")
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
 theme_override_font_sizes/font_size = 20
 text = "  Settings  "
 icon = ExtResource("3_utat4")
+
+[node name="MarginContainer" type="MarginContainer" parent="home/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="TitleMargin" type="MarginContainer" parent="home/VBoxContainer"]
 layout_mode = 2
@@ -136,19 +114,19 @@ horizontal_alignment = 1
 [node name="GamemodeMargin" type="MarginContainer" parent="home/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_top = 75
-theme_override_constants/margin_bottom = 75
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 40
 
 [node name="gamemode" type="OptionButton" parent="home/VBoxContainer/GamemodeMargin"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-focus_neighbor_left = NodePath("../../MarginContainer/HBoxContainer/settings")
-focus_neighbor_top = NodePath("../../MarginContainer/HBoxContainer/settings")
+focus_neighbor_left = NodePath("../../TopMargin/settings")
+focus_neighbor_top = NodePath("../../TopMargin/settings")
 focus_neighbor_right = NodePath("../../StartMargin/start")
 focus_neighbor_bottom = NodePath("../../StartMargin/start")
 focus_next = NodePath("../../StartMargin/start")
-focus_previous = NodePath("../../MarginContainer/HBoxContainer/settings")
+focus_previous = NodePath("../../TopMargin/settings")
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
 theme_override_font_sizes/font_size = 35
 alignment = 1
@@ -198,13 +176,39 @@ size_flags_horizontal = 4
 size_flags_vertical = 3
 focus_neighbor_left = NodePath("../../GamemodeMargin/gamemode")
 focus_neighbor_top = NodePath("../../GamemodeMargin/gamemode")
-focus_neighbor_right = NodePath("../../MarginContainer/HBoxContainer/Info")
-focus_neighbor_bottom = NodePath("../../MarginContainer/HBoxContainer/Info")
-focus_next = NodePath("../../MarginContainer/HBoxContainer/Info")
+focus_neighbor_right = NodePath("../../BottomMargin/Info")
+focus_neighbor_bottom = NodePath("../../BottomMargin/Info")
+focus_next = NodePath("../../BottomMargin/Info")
 focus_previous = NodePath("../../GamemodeMargin/gamemode")
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
 theme_override_font_sizes/font_size = 75
 text = "  Start  "
+
+[node name="BottomMargin" type="MarginContainer" parent="home/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Info" type="Button" parent="home/VBoxContainer/BottomMargin"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_neighbor_left = NodePath("../../TopMargin/settings")
+focus_neighbor_top = NodePath("../../StartMargin/start")
+focus_neighbor_right = NodePath("../../TopMargin/settings")
+focus_neighbor_bottom = NodePath("../../GamemodeMargin/gamemode")
+focus_next = NodePath("../../TopMargin/settings")
+focus_previous = NodePath("../../StartMargin/start")
+theme_override_font_sizes/font_size = 20
+text = "Info"
+icon = ExtResource("2_ih6wq")
+
+[node name="Credits" type="Button" parent="home/VBoxContainer/BottomMargin"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 20
+text = " Credits "
 
 [node name="settings" type="CanvasLayer" parent="."]
 visible = false
@@ -511,7 +515,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "You lose if the other person wins.
 You lose if you are unable to move a worker on your turn.
-You lose if, after moving a worker, you are unable to build on your turn."
+You lose if, after moving a worker, you are unable to build on your turn. (this is actually impossible)"
 
 [node name="Controls" type="TabBar" parent="info/VBoxContainer/MarginTabs/TabContainer"]
 visible = false
@@ -683,10 +687,13 @@ Make use of towers that other players have started!  Work smarter, not harder.
 Don't forget that your workers can jump down from any height.
 Always keep your workers mobile.  If one gets stuck, you've lost half of your workforce!"
 
-[connection signal="pressed" from="home/VBoxContainer/QuitMargin/Quit" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="home/VBoxContainer/MarginContainer/HBoxContainer/Info" to="." method="_on_info_pressed"]
-[connection signal="pressed" from="home/VBoxContainer/MarginContainer/HBoxContainer/settings" to="." method="_on_settings_pressed"]
+[node name="credits" type="CanvasLayer" parent="."]
+visible = false
+
+[connection signal="pressed" from="home/VBoxContainer/TopMargin/Quit" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="home/VBoxContainer/TopMargin/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="home/VBoxContainer/StartMargin/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="home/VBoxContainer/BottomMargin/Info" to="." method="_on_info_pressed"]
 [connection signal="pressed" from="settings/VBoxContainer/HBoxContainer3/exit" to="." method="_on_exit_pressed"]
 [connection signal="value_changed" from="settings/VBoxContainer/HBoxContainer/width" to="settings" method="_on_width_value_changed"]
 [connection signal="value_changed" from="settings/VBoxContainer/HBoxContainer2/length" to="settings" method="_on_length_value_changed"]
