@@ -84,12 +84,12 @@ icon = ExtResource("4_xg3hy")
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
-focus_neighbor_left = NodePath("../../InfoMargin/Info")
-focus_neighbor_top = NodePath("../../InfoMargin/Info")
+focus_neighbor_left = NodePath("../../BottomMargin/Info")
+focus_neighbor_top = NodePath("../../BottomMargin/Info")
 focus_neighbor_right = NodePath("../../GamemodeMargin/gamemode")
 focus_neighbor_bottom = NodePath("../../GamemodeMargin/gamemode")
 focus_next = NodePath("../../GamemodeMargin/gamemode")
-focus_previous = NodePath("../../InfoMargin/Info")
+focus_previous = NodePath("../../BottomMargin/Info")
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
 theme_override_font_sizes/font_size = 20
 text = "  Settings  "
@@ -176,24 +176,24 @@ size_flags_horizontal = 4
 size_flags_vertical = 3
 focus_neighbor_left = NodePath("../../GamemodeMargin/gamemode")
 focus_neighbor_top = NodePath("../../GamemodeMargin/gamemode")
-focus_neighbor_right = NodePath("../../InfoMargin/Info")
-focus_neighbor_bottom = NodePath("../../InfoMargin/Info")
-focus_next = NodePath("../../InfoMargin/Info")
+focus_neighbor_right = NodePath("../../BottomMargin/Info")
+focus_neighbor_bottom = NodePath("../../BottomMargin/Info")
+focus_next = NodePath("../../BottomMargin/Info")
 focus_previous = NodePath("../../GamemodeMargin/gamemode")
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
 theme_override_font_sizes/font_size = 75
 text = "  Start  "
 
-[node name="InfoMargin" type="MarginContainer" parent="home/VBoxContainer"]
+[node name="BottomMargin" type="MarginContainer" parent="home/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Info" type="Button" parent="home/VBoxContainer/InfoMargin"]
+[node name="Info" type="Button" parent="home/VBoxContainer/BottomMargin"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+size_flags_horizontal = 0
 focus_neighbor_left = NodePath("../../TopMargin/settings")
 focus_neighbor_top = NodePath("../../StartMargin/start")
 focus_neighbor_right = NodePath("../../TopMargin/settings")
@@ -203,6 +203,12 @@ focus_previous = NodePath("../../StartMargin/start")
 theme_override_font_sizes/font_size = 20
 text = "Info"
 icon = ExtResource("2_ih6wq")
+
+[node name="Credits" type="Button" parent="home/VBoxContainer/BottomMargin"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 20
+text = " Credits "
 
 [node name="settings" type="CanvasLayer" parent="."]
 visible = false
@@ -681,10 +687,13 @@ Make use of towers that other players have started!  Work smarter, not harder.
 Don't forget that your workers can jump down from any height.
 Always keep your workers mobile.  If one gets stuck, you've lost half of your workforce!"
 
+[node name="credits" type="CanvasLayer" parent="."]
+visible = false
+
 [connection signal="pressed" from="home/VBoxContainer/TopMargin/Quit" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="home/VBoxContainer/TopMargin/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="home/VBoxContainer/StartMargin/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="home/VBoxContainer/InfoMargin/Info" to="." method="_on_info_pressed"]
+[connection signal="pressed" from="home/VBoxContainer/BottomMargin/Info" to="." method="_on_info_pressed"]
 [connection signal="pressed" from="settings/VBoxContainer/HBoxContainer3/exit" to="." method="_on_exit_pressed"]
 [connection signal="value_changed" from="settings/VBoxContainer/HBoxContainer/width" to="settings" method="_on_width_value_changed"]
 [connection signal="value_changed" from="settings/VBoxContainer/HBoxContainer2/length" to="settings" method="_on_length_value_changed"]
