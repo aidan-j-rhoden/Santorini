@@ -131,9 +131,9 @@ minutes_per_day = 20.0
 transform = Transform3D(0, -0.625152, 0.780503, -0.814791, 0.4525, 0.362435, -0.579754, -0.635947, -0.509369, 0.780503, 0.362435, -0.509369)
 light_color = Color(0.994497, 0.868763, 0.805758, 1)
 shadow_enabled = true
-directional_shadow_mode = 0
-directional_shadow_fade_start = 0.0
-directional_shadow_max_distance = 8192.0
+directional_shadow_mode = 1
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 2048.0
 
 [node name="MoonLight" type="DirectionalLight3D" parent="Enviroment/Sky3D"]
 transform = Transform3D(0, -0.499216, -0.866477, 0.79439, -0.526305, 0.303228, -0.607408, -0.688321, 0.396572, -0.866477, 0.303228, 0.396573)

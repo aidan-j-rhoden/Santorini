@@ -1,7 +1,6 @@
 [gd_resource type="Environment" load_steps=3 format=3 uid="uid://bekiwxqt2tf0d"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_mqij1"]
-use_debanding = false
 
 [sub_resource type="Sky" id="Sky_7riii"]
 sky_material = SubResource("PhysicalSkyMaterial_mqij1")
