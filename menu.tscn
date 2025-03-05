@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://clgfl4v6hr1y3"]
 
-[ext_resource type="Script" path="res://scripts/menu.gd" id="1"]
-[ext_resource type="Script" path="res://scripts/settings.gd" id="2"]
+[ext_resource type="Script" uid="uid://dsfe54xhuwa7y" path="res://scripts/menu.gd" id="1"]
+[ext_resource type="Script" uid="uid://mnrufp3gns1x" path="res://scripts/settings.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://bwxwmjr15owoj" path="res://textures/icons/info.svg" id="2_ih6wq"]
 [ext_resource type="Texture2D" uid="uid://ctvnmkjkusrrx" path="res://textures/icons/settings.svg" id="3_utat4"]
 [ext_resource type="Texture2D" uid="uid://ruog5qukhbgf" path="res://textures/icons/exit.svg" id="4_xg3hy"]
@@ -40,8 +40,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ubalh"]
 _data = {
-"Fadeout": SubResource("Animation_hyje8"),
-"RESET": SubResource("Animation_8xste")
+&"Fadeout": SubResource("Animation_hyje8"),
+&"RESET": SubResource("Animation_8xste")
 }
 
 [node name="menu" type="Control"]
@@ -134,6 +134,7 @@ selected = 1
 fit_to_longest_item = false
 item_count = 3
 popup/item_0/text = "Deathmatch"
+popup/item_0/id = 0
 popup/item_1/text = "Intellectual Deathmatch"
 popup/item_1/id = 1
 popup/item_2/text = "Intellectual Deathmatch with a Sicilian"
@@ -320,6 +321,7 @@ text = "Graphics level:"
 layout_mode = 2
 item_count = 3
 popup/item_0/text = "Low"
+popup/item_0/id = 0
 popup/item_1/text = "Medium"
 popup/item_1/id = 1
 popup/item_2/text = "High"
@@ -359,7 +361,7 @@ vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="game"]
 libraries = {
-"": SubResource("AnimationLibrary_ubalh")
+&"": SubResource("AnimationLibrary_ubalh")
 }
 
 [node name="info" type="CanvasLayer" parent="."]

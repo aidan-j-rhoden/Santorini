@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c6x0hj2bant83"]
 
-[ext_resource type="Shader" path="res://enviroment/water.gdshader" id="1_2ivh7"]
+[ext_resource type="Shader" uid="uid://de1yvfy81s4kq" path="res://enviroment/water.gdshader" id="1_2ivh7"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_c04io"]
 noise_type = 2
@@ -24,6 +24,8 @@ shader = ExtResource("1_2ivh7")
 shader_parameter/primary_color = Color(0.12, 0.34, 1, 1)
 shader_parameter/secondary_color = Color(3.65794e-06, 0.405321, 0.549204, 1)
 shader_parameter/roughness = 0.2
+shader_parameter/normalmap_a = SubResource("NoiseTexture2D_14fd0")
+shader_parameter/normalmap_b = SubResource("NoiseTexture2D_jfgsx")
 shader_parameter/normalmap_a_strength = 0.3
 shader_parameter/normalmap_b_strength = 0.4
 shader_parameter/movement_direction = Vector2(0.1, 0.1)
@@ -33,8 +35,6 @@ shader_parameter/depth_distance = 4.0
 shader_parameter/beers_law = 20.0
 shader_parameter/water_transparency = 1.0
 shader_parameter/refraction_strength = 0.08
-shader_parameter/normalmap_a = SubResource("NoiseTexture2D_14fd0")
-shader_parameter/normalmap_b = SubResource("NoiseTexture2D_jfgsx")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xl1jr"]
 material = SubResource("ShaderMaterial_fjpxj")

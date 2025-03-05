@@ -1,14 +1,14 @@
 [gd_scene load_steps=25 format=3 uid="uid://ddrbtqxkhbi34"]
 
-[ext_resource type="Script" path="res://scripts/levels/main.gd" id="1_aq87o"]
+[ext_resource type="Script" uid="uid://b6up1vlhgb8gm" path="res://scripts/levels/main.gd" id="1_aq87o"]
 [ext_resource type="Environment" uid="uid://bekiwxqt2tf0d" path="res://levels/enviroment.tres" id="2_n1j7u"]
 [ext_resource type="PackedScene" uid="uid://g7hplppbb7m1" path="res://levels/grounds/ground.glb" id="3_6tau7"]
-[ext_resource type="Script" path="res://addons/sky_3d/src/Sky3D.gd" id="3_qtqw2"]
-[ext_resource type="Shader" path="res://enviroment/water.gdshader" id="4_cb68s"]
-[ext_resource type="Script" path="res://addons/sky_3d/src/TimeOfDay.gd" id="4_f6nvd"]
-[ext_resource type="Script" path="res://addons/sky_3d/src/Skydome.gd" id="5_icv1j"]
+[ext_resource type="Script" uid="uid://cwja6fc27g1gd" path="res://addons/sky_3d/src/Sky3D.gd" id="3_qtqw2"]
+[ext_resource type="Shader" uid="uid://de1yvfy81s4kq" path="res://enviroment/water.gdshader" id="4_cb68s"]
+[ext_resource type="Script" uid="uid://ctnofoyica00c" path="res://addons/sky_3d/src/TimeOfDay.gd" id="4_f6nvd"]
+[ext_resource type="Script" uid="uid://cvwtiog0dc2ol" path="res://addons/sky_3d/src/Skydome.gd" id="5_icv1j"]
 [ext_resource type="PackedScene" uid="uid://dwttaoush1apg" path="res://enviroment/underwaterground.glb" id="6_b7ei6"]
-[ext_resource type="PackedScene" uid="uid://d2qk8wcdo2vrq" path="res://enviroment/mountains.glb" id="6_nkl06"]
+[ext_resource type="PackedScene" uid="uid://bctho3pirxm8x" path="res://enviroment/enviroment.glb" id="10_rh6u1"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_4gg2c"]
 
@@ -59,8 +59,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ubalh"]
 _data = {
-"Fadeout": SubResource("Animation_hyje8"),
-"RESET": SubResource("Animation_8xste")
+&"Fadeout": SubResource("Animation_hyje8"),
+&"RESET": SubResource("Animation_8xste")
 }
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ub4vc"]
@@ -90,6 +90,8 @@ shader = ExtResource("4_cb68s")
 shader_parameter/primary_color = Color(0.0986937, 0.614086, 1, 1)
 shader_parameter/secondary_color = Color(4.4184e-05, 0.300662, 0.856934, 1)
 shader_parameter/roughness = 0.02
+shader_parameter/normalmap_a = SubResource("NoiseTexture2D_ys8k8")
+shader_parameter/normalmap_b = SubResource("NoiseTexture2D_g1ql7")
 shader_parameter/normalmap_a_strength = 0.4
 shader_parameter/normalmap_b_strength = 0.5
 shader_parameter/movement_direction = Vector2(0.2, 0.1)
@@ -99,8 +101,6 @@ shader_parameter/depth_distance = 800.0
 shader_parameter/beers_law = 12.0
 shader_parameter/water_transparency = 1.0
 shader_parameter/refraction_strength = 0.02
-shader_parameter/normalmap_a = SubResource("NoiseTexture2D_ys8k8")
-shader_parameter/normalmap_b = SubResource("NoiseTexture2D_g1ql7")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hehm0"]
 material = SubResource("ShaderMaterial_gtpfh")
@@ -375,7 +375,7 @@ vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="game"]
 libraries = {
-"": SubResource("AnimationLibrary_ubalh")
+&"": SubResource("AnimationLibrary_ubalh")
 }
 
 [node name="Set" type="Node3D" parent="."]
@@ -387,9 +387,9 @@ mesh = SubResource("PlaneMesh_hehm0")
 [node name="underwaterground" parent="Set" instance=ExtResource("6_b7ei6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -216, 0)
 
-[node name="mountains" parent="Set" instance=ExtResource("6_nkl06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -281.209, 0)
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Set"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 808.157, -355.461, -1252.95)
 mesh = SubResource("PlaneMesh_6hcj0")
+
+[node name="enviroment" parent="Set" instance=ExtResource("10_rh6u1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -281.209, 0)

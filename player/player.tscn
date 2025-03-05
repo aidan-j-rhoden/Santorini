@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dhao4agt1wogb"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_ly1ca"]
-[ext_resource type="Script" path="res://player/hud.gd" id="2_8or5v"]
+[ext_resource type="Script" uid="uid://cw6u47w6rcryy" path="res://player/player.gd" id="1_ly1ca"]
+[ext_resource type="Script" uid="uid://c6p6ovbxlfcwe" path="res://player/hud.gd" id="2_8or5v"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6mwvw"]
 radius = 0.3
@@ -141,8 +141,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gk77t"]
 _data = {
-"Crouch": SubResource("Animation_i31qu"),
-"RESET": SubResource("Animation_uo5j1")
+&"Crouch": SubResource("Animation_i31qu"),
+&"RESET": SubResource("Animation_uo5j1")
 }
 
 [sub_resource type="Animation" id="Animation_07lft"]
@@ -163,7 +163,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rtdva"]
 _data = {
-"die": SubResource("Animation_07lft")
+&"die": SubResource("Animation_07lft")
 }
 
 [node name="Player" type="CharacterBody3D"]
@@ -183,7 +183,7 @@ far = 12000.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_gk77t")
+&"": SubResource("AnimationLibrary_gk77t")
 }
 
 [node name="HUD" type="CanvasLayer" parent="."]
@@ -253,7 +253,7 @@ color = Color(1, 1, 1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/DeathRect"]
 libraries = {
-"": SubResource("AnimationLibrary_rtdva")
+&"": SubResource("AnimationLibrary_rtdva")
 }
 
 [node name="Settings" type="CanvasLayer" parent="HUD"]

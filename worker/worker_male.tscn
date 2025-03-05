@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://bkb1m6yre6atw"]
 
-[ext_resource type="Script" path="res://worker/worker.gd" id="1_di2g5"]
+[ext_resource type="Script" uid="uid://bb3t0di05mgdy" path="res://worker/worker.gd" id="1_di2g5"]
 [ext_resource type="Material" uid="uid://cwip18ffq3h5x" path="res://materials/worker-glow.tres" id="2_yadlq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_k80i6"]
@@ -110,9 +110,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o2snj"]
 _data = {
-"RESET": SubResource("Animation_8jucv"),
-"ready": SubResource("Animation_7lcwd"),
-"waiting": SubResource("Animation_dfx72")
+&"RESET": SubResource("Animation_8jucv"),
+&"ready": SubResource("Animation_7lcwd"),
+&"waiting": SubResource("Animation_dfx72")
 }
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mlr2b"]
@@ -190,7 +190,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jobl3"]
 _data = {
-"win": SubResource("Animation_mpwdv")
+&"win": SubResource("Animation_mpwdv")
 }
 
 [node name="WorkerMale" type="Node3D"]
@@ -221,7 +221,7 @@ mesh = SubResource("BoxMesh_udgkb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Area3D"]
 libraries = {
-"": SubResource("AnimationLibrary_o2snj")
+&"": SubResource("AnimationLibrary_o2snj")
 }
 
 [node name="Control" type="CanvasLayer" parent="."]
@@ -282,10 +282,10 @@ grow_vertical = 0
 position = Vector2(40, 0)
 emitting = false
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_mlr2b")
 lifetime = 5.0
 one_shot = true
 explosiveness = 0.95
+process_material = SubResource("ParticleProcessMaterial_mlr2b")
 
 [node name="Control2" type="Control" parent="Control/Win"]
 layout_mode = 1
@@ -302,14 +302,14 @@ grow_vertical = 0
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Control/Win/Control2"]
 emitting = false
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_bog2s")
 lifetime = 5.0
 one_shot = true
 explosiveness = 0.95
+process_material = SubResource("ParticleProcessMaterial_bog2s")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Win"]
 libraries = {
-"": SubResource("AnimationLibrary_jobl3")
+&"": SubResource("AnimationLibrary_jobl3")
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Win"]

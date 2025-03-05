@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://chefc0uq7effh"]
 
-[ext_resource type="Script" path="res://scripts/building/guide.gd" id="1_bw8su"]
+[ext_resource type="Script" uid="uid://d1blhnjsr2w4h" path="res://scripts/building/guide.gd" id="1_bw8su"]
 [ext_resource type="Material" uid="uid://ds1t3drps4s5l" path="res://materials/transparent_glowing.tres" id="2_klpuy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fy6xi"]
