@@ -10,6 +10,7 @@ script = ExtResource("1_rr467")
 [node name="X_Rot" type="Node3D" parent="Y_Rot"]
 
 [node name="Camera3D" type="Camera3D" parent="Y_Rot/X_Rot"]
-far = 12000.0
+near = 1.0
+far = 11000.0
 
 [node name="Position_Target" type="Node3D" parent="."]

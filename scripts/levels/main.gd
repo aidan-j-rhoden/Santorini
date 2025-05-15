@@ -20,8 +20,8 @@ func _ready():
 		$Control.hide()
 		$Grid.hide()
 		$Cameras/TopDown.queue_free()
-		var char = player.instantiate()
-		get_node("Players").add_child(char)
+		var instanced_char = player.instantiate()
+		get_node("Players").add_child(instanced_char)
 		for x in range(floor((Settings.width/2.0)) * -1, Settings.width - floor(Settings.width/2.0)):
 			for z in range(floor((Settings.length/2.0)) * -1, Settings.length - floor(Settings.length/2.0)):
 				if randi() % 3 < 2:

@@ -152,8 +152,8 @@ common/physics_ticks_per_second=90
 
 textures/vram_compression/import_etc2_astc=true
 lights_and_shadows/directional_shadow/size=8192
-lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5
-lights_and_shadows/positional_shadow/soft_shadow_filter_quality=5
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=4
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=4
 global_illumination/voxel_gi/quality=1
 global_illumination/sdfgi/probe_ray_count=2
 lights_and_shadows/positional_shadow/atlas_size=8192
