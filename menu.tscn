@@ -75,14 +75,14 @@ theme_override_constants/margin_right = 20
 
 [node name="Quit" type="Button" parent="home/VBoxContainer/TopMargin"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 8
 size_flags_vertical = 4
 text = "Quit"
 icon = ExtResource("4_xg3hy")
 
 [node name="settings" type="Button" parent="home/VBoxContainer/TopMargin"]
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 0
 size_flags_vertical = 4
 focus_neighbor_left = NodePath("../../BottomMargin/Info")
 focus_neighbor_top = NodePath("../../BottomMargin/Info")
