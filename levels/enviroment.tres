@@ -19,6 +19,7 @@ ssao_radius = 16.0
 sdfgi_enabled = true
 sdfgi_use_occlusion = true
 sdfgi_min_cell_size = 9.76562
+glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 volumetric_fog_length = 10000.0
