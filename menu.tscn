@@ -92,6 +92,7 @@ focus_next = NodePath("../../GamemodeMargin/gamemode")
 focus_previous = NodePath("../../BottomMargin/Info")
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
 theme_override_font_sizes/font_size = 20
+disabled = true
 text = "  Settings  "
 icon = ExtResource("3_utat4")
 
