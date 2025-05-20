@@ -9,6 +9,9 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if Input.is_action_just_pressed("escape"):
+		mouse_inside = false
+
 	if mouse_inside and not Input.is_action_pressed("middle-mouse"):
 		$Guide/MeshInstance3D.visible = true
 	else:
