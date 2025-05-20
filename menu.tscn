@@ -139,6 +139,7 @@ popup/item_1/text = "Intellectual Deathmatch"
 popup/item_1/id = 1
 popup/item_2/text = "Intellectual Deathmatch with a Sicilian"
 popup/item_2/id = 2
+popup/item_2/disabled = true
 
 [node name="NetworkMargin" type="MarginContainer" parent="home/VBoxContainer"]
 layout_mode = 2
