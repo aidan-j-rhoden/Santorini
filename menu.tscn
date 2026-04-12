@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://clgfl4v6hr1y3"]
+[gd_scene format=3 uid="uid://clgfl4v6hr1y3"]
 
 [ext_resource type="Script" uid="uid://dsfe54xhuwa7y" path="res://scripts/menu.gd" id="1"]
 [ext_resource type="Script" uid="uid://mnrufp3gns1x" path="res://scripts/settings.gd" id="2"]
@@ -44,14 +44,14 @@ _data = {
 &"RESET": SubResource("Animation_8xste")
 }
 
-[node name="menu" type="Control"]
+[node name="menu" type="Control" unique_id=1442492722]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1")
 
-[node name="home" type="CanvasLayer" parent="."]
+[node name="home" type="CanvasLayer" parent="." unique_id=599168787]
 
-[node name="Background" type="ColorRect" parent="home"]
+[node name="Background" type="ColorRect" parent="home" unique_id=1523889380]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -59,7 +59,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0666667, 0.380392, 0.603922, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="home"]
+[node name="VBoxContainer" type="VBoxContainer" parent="home" unique_id=2095883538]
 clip_contents = true
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,20 +67,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopMargin" type="MarginContainer" parent="home/VBoxContainer"]
+[node name="TopMargin" type="MarginContainer" parent="home/VBoxContainer" unique_id=2032681306]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 
-[node name="Quit" type="Button" parent="home/VBoxContainer/TopMargin"]
+[node name="Quit" type="Button" parent="home/VBoxContainer/TopMargin" unique_id=1651493126]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 text = "Quit"
 icon = ExtResource("4_xg3hy")
 
-[node name="settings" type="Button" parent="home/VBoxContainer/TopMargin"]
+[node name="settings" type="Button" parent="home/VBoxContainer/TopMargin" unique_id=1951720854]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -96,29 +96,29 @@ disabled = true
 text = "  Settings  "
 icon = ExtResource("3_utat4")
 
-[node name="MarginContainer" type="MarginContainer" parent="home/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="home/VBoxContainer" unique_id=623928139]
 layout_mode = 2
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="TitleMargin" type="MarginContainer" parent="home/VBoxContainer"]
+[node name="TitleMargin" type="MarginContainer" parent="home/VBoxContainer" unique_id=710818797]
 layout_mode = 2
 theme_override_constants/margin_top = 10
 
-[node name="Label" type="Label" parent="home/VBoxContainer/TitleMargin"]
+[node name="Label" type="Label" parent="home/VBoxContainer/TitleMargin" unique_id=668105425]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 75
 text = "Santorini"
 horizontal_alignment = 1
 
-[node name="GamemodeMargin" type="MarginContainer" parent="home/VBoxContainer"]
+[node name="GamemodeMargin" type="MarginContainer" parent="home/VBoxContainer" unique_id=2045199907]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="gamemode" type="OptionButton" parent="home/VBoxContainer/GamemodeMargin"]
+[node name="gamemode" type="OptionButton" parent="home/VBoxContainer/GamemodeMargin" unique_id=1030664936]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -142,38 +142,38 @@ popup/item_2/text = "Intellectual Deathmatch with a Sicilian"
 popup/item_2/id = 2
 popup/item_2/disabled = true
 
-[node name="NetworkMargin" type="MarginContainer" parent="home/VBoxContainer"]
+[node name="NetworkMargin" type="MarginContainer" parent="home/VBoxContainer" unique_id=1101290689]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="container" type="HBoxContainer" parent="home/VBoxContainer/NetworkMargin"]
+[node name="container" type="HBoxContainer" parent="home/VBoxContainer/NetworkMargin" unique_id=367728331]
 layout_mode = 2
 alignment = 1
 
-[node name="label" type="Label" parent="home/VBoxContainer/NetworkMargin/container"]
+[node name="label" type="Label" parent="home/VBoxContainer/NetworkMargin/container" unique_id=2043873497]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
 text = "Enter an address:"
 
-[node name="line_edit" type="LineEdit" parent="home/VBoxContainer/NetworkMargin/container"]
+[node name="line_edit" type="LineEdit" parent="home/VBoxContainer/NetworkMargin/container" unique_id=1279431178]
 layout_mode = 2
-theme_override_colors/font_placeholder_color = Color(0.370364, 0.370364, 0.370364, 1)
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
+theme_override_colors/font_placeholder_color = Color(0.370364, 0.370364, 0.370364, 1)
 placeholder_text = "127.0.0.1"
 expand_to_text_length = true
 
-[node name="join" type="Button" parent="home/VBoxContainer/NetworkMargin/container"]
+[node name="join" type="Button" parent="home/VBoxContainer/NetworkMargin/container" unique_id=281161462]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
 text = "Join"
 
-[node name="StartMargin" type="MarginContainer" parent="home/VBoxContainer"]
+[node name="StartMargin" type="MarginContainer" parent="home/VBoxContainer" unique_id=927204264]
 layout_mode = 2
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="start" type="Button" parent="home/VBoxContainer/StartMargin"]
+[node name="start" type="Button" parent="home/VBoxContainer/StartMargin" unique_id=1920347928]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
@@ -187,13 +187,13 @@ theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
 theme_override_font_sizes/font_size = 75
 text = "  Start  "
 
-[node name="BottomMargin" type="MarginContainer" parent="home/VBoxContainer"]
+[node name="BottomMargin" type="MarginContainer" parent="home/VBoxContainer" unique_id=989381881]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Info" type="Button" parent="home/VBoxContainer/BottomMargin"]
+[node name="Info" type="Button" parent="home/VBoxContainer/BottomMargin" unique_id=80377922]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -207,17 +207,17 @@ theme_override_font_sizes/font_size = 20
 text = "Info"
 icon = ExtResource("2_ih6wq")
 
-[node name="Credits" type="Button" parent="home/VBoxContainer/BottomMargin"]
+[node name="Credits" type="Button" parent="home/VBoxContainer/BottomMargin" unique_id=476354402]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 20
 text = " Credits "
 
-[node name="settings" type="CanvasLayer" parent="."]
+[node name="settings" type="CanvasLayer" parent="." unique_id=561149880]
 visible = false
 script = ExtResource("2")
 
-[node name="color_rect" type="ColorRect" parent="settings"]
+[node name="color_rect" type="ColorRect" parent="settings" unique_id=817696777]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -231,7 +231,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.313726, 0.247059, 0.2, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="settings"]
+[node name="VBoxContainer" type="VBoxContainer" parent="settings" unique_id=984999046]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -239,87 +239,87 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="HSeparator7" type="HSeparator" parent="settings/VBoxContainer"]
+[node name="HSeparator7" type="HSeparator" parent="settings/VBoxContainer" unique_id=2046362076]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HSeparator" type="HSeparator" parent="settings/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="settings/VBoxContainer" unique_id=204250493]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="settings/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="settings/VBoxContainer" unique_id=666488302]
 layout_mode = 2
 
-[node name="VSeparator3" type="VSeparator" parent="settings/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VSeparator" type="VSeparator" parent="settings/VBoxContainer/HBoxContainer3"]
+[node name="VSeparator3" type="VSeparator" parent="settings/VBoxContainer/HBoxContainer3" unique_id=1230799425]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="exit" type="Button" parent="settings/VBoxContainer/HBoxContainer3"]
+[node name="VSeparator" type="VSeparator" parent="settings/VBoxContainer/HBoxContainer3" unique_id=1514169355]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="exit" type="Button" parent="settings/VBoxContainer/HBoxContainer3" unique_id=101839545]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 25
 text = "Exit"
 icon = ExtResource("4_xg3hy")
 
-[node name="VSeparator2" type="VSeparator" parent="settings/VBoxContainer/HBoxContainer3"]
+[node name="VSeparator2" type="VSeparator" parent="settings/VBoxContainer/HBoxContainer3" unique_id=1682538245]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HSeparator2" type="HSeparator" parent="settings/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="settings/VBoxContainer" unique_id=1880941749]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="settings/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="settings/VBoxContainer" unique_id=515148587]
 layout_mode = 2
 alignment = 1
 
-[node name="label" type="Label" parent="settings/VBoxContainer/HBoxContainer"]
+[node name="label" type="Label" parent="settings/VBoxContainer/HBoxContainer" unique_id=2044466775]
 layout_mode = 2
 text = "Width of arena:"
 
-[node name="width" type="SpinBox" parent="settings/VBoxContainer/HBoxContainer"]
+[node name="width" type="SpinBox" parent="settings/VBoxContainer/HBoxContainer" unique_id=1727052375]
 layout_mode = 2
 min_value = 1.0
 max_value = 10.0
 value = 5.0
 rounded = true
 
-[node name="HSeparator3" type="HSeparator" parent="settings/VBoxContainer"]
+[node name="HSeparator3" type="HSeparator" parent="settings/VBoxContainer" unique_id=1131019616]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="settings/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="settings/VBoxContainer" unique_id=1772971174]
 layout_mode = 2
 alignment = 1
 
-[node name="label" type="Label" parent="settings/VBoxContainer/HBoxContainer2"]
+[node name="label" type="Label" parent="settings/VBoxContainer/HBoxContainer2" unique_id=2013609023]
 layout_mode = 2
 text = "Length of arena:"
 
-[node name="length" type="SpinBox" parent="settings/VBoxContainer/HBoxContainer2"]
+[node name="length" type="SpinBox" parent="settings/VBoxContainer/HBoxContainer2" unique_id=1526719235]
 layout_mode = 2
 min_value = 1.0
 max_value = 10.0
 value = 5.0
 rounded = true
 
-[node name="HSeparator4" type="HSeparator" parent="settings/VBoxContainer"]
+[node name="HSeparator4" type="HSeparator" parent="settings/VBoxContainer" unique_id=307671439]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer2" type="HBoxContainer" parent="settings/VBoxContainer"]
+[node name="VBoxContainer2" type="HBoxContainer" parent="settings/VBoxContainer" unique_id=1755455680]
 layout_mode = 2
 alignment = 1
 
-[node name="label" type="Label" parent="settings/VBoxContainer/VBoxContainer2"]
+[node name="label" type="Label" parent="settings/VBoxContainer/VBoxContainer2" unique_id=296843560]
 layout_mode = 2
 text = "Graphics level:"
 
-[node name="graphics_level" type="OptionButton" parent="settings/VBoxContainer/VBoxContainer2"]
+[node name="graphics_level" type="OptionButton" parent="settings/VBoxContainer/VBoxContainer2" unique_id=1498436777]
 layout_mode = 2
 item_count = 3
 popup/item_0/text = "Low"
@@ -329,31 +329,31 @@ popup/item_1/id = 1
 popup/item_2/text = "High"
 popup/item_2/id = 2
 
-[node name="HSeparator6" type="HSeparator" parent="settings/VBoxContainer"]
+[node name="HSeparator6" type="HSeparator" parent="settings/VBoxContainer" unique_id=22746012]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HSeparator5" type="HSeparator" parent="settings/VBoxContainer"]
+[node name="HSeparator5" type="HSeparator" parent="settings/VBoxContainer" unique_id=1458288609]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="game" type="CanvasLayer" parent="."]
+[node name="game" type="CanvasLayer" parent="." unique_id=2002538878]
 visible = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="game"]
+[node name="VBoxContainer" type="VBoxContainer" parent="game" unique_id=1470380285]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="game/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="game/VBoxContainer" unique_id=1649699721]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 5
 
-[node name="Label" type="Label" parent="game/VBoxContainer/MarginContainer"]
+[node name="Label" type="Label" parent="game/VBoxContainer/MarginContainer" unique_id=227837494]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 55
@@ -361,15 +361,13 @@ text = "Setup"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="game"]
-libraries = {
-&"": SubResource("AnimationLibrary_ubalh")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="game" unique_id=361769909]
+libraries/ = SubResource("AnimationLibrary_ubalh")
 
-[node name="info" type="CanvasLayer" parent="."]
+[node name="info" type="CanvasLayer" parent="." unique_id=1988097007]
 visible = false
 
-[node name="Background" type="ColorRect" parent="info"]
+[node name="Background" type="ColorRect" parent="info" unique_id=1446475731]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -377,55 +375,55 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.335201, 0.603974, 0.502532, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="info"]
+[node name="VBoxContainer" type="VBoxContainer" parent="info" unique_id=852978166]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginExit" type="MarginContainer" parent="info/VBoxContainer"]
+[node name="MarginExit" type="MarginContainer" parent="info/VBoxContainer" unique_id=1497722489]
 layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 
-[node name="close" type="Button" parent="info/VBoxContainer/MarginExit"]
+[node name="close" type="Button" parent="info/VBoxContainer/MarginExit" unique_id=1477287549]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 20
 text = "Exit"
 icon = ExtResource("4_xg3hy")
 
-[node name="MarginTitle" type="MarginContainer" parent="info/VBoxContainer"]
+[node name="MarginTitle" type="MarginContainer" parent="info/VBoxContainer" unique_id=1168199039]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 40
 
-[node name="Title" type="Label" parent="info/VBoxContainer/MarginTitle"]
+[node name="Title" type="Label" parent="info/VBoxContainer/MarginTitle" unique_id=252997505]
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "How to play"
 horizontal_alignment = 1
 
-[node name="MarginTabs" type="MarginContainer" parent="info/VBoxContainer"]
+[node name="MarginTabs" type="MarginContainer" parent="info/VBoxContainer" unique_id=1942586996]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 100
 
-[node name="TabContainer" type="TabContainer" parent="info/VBoxContainer/MarginTabs"]
+[node name="TabContainer" type="TabContainer" parent="info/VBoxContainer/MarginTabs" unique_id=1687974018]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 current_tab = 0
 
-[node name="Rules" type="TabBar" parent="info/VBoxContainer/MarginTabs/TabContainer"]
+[node name="Rules" type="TabBar" parent="info/VBoxContainer/MarginTabs/TabContainer" unique_id=861665461]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 metadata/_tab_index = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules"]
+[node name="ScrollContainer" type="ScrollContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules" unique_id=2063058377]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -434,28 +432,28 @@ offset_bottom = 457.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer" unique_id=1939498038]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Background" type="ColorRect" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer"]
+[node name="Background" type="ColorRect" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer" unique_id=2039718138]
 layout_mode = 2
 color = Color(0.3286, 0.522867, 0.62, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer" unique_id=215505753]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer" unique_id=2010874405]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="setup" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="setup" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer" unique_id=611776375]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Setup"
 
-[node name="desc-setup" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="desc-setup" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer" unique_id=273613765]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Each player gets 2 workers for the game.
@@ -463,34 +461,34 @@ Starting with Player 1, each player takes turn placing a worker on an available 
 You can place your workers as close to each other as you wish, but no two workers can occupy the same square.
 After placing both of your workers, the game begins!"
 
-[node name="gameplay" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="gameplay" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer" unique_id=550175630]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Gameplay"
 
-[node name="desc-gameplay-intro" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="desc-gameplay-intro" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer" unique_id=1851695999]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "With your workers in place, you can begin building your way to victory!
 Each turn has two steps: Moving, and Building, both of which are mandatory."
 
-[node name="moving" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="moving" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer" unique_id=2147470166]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Moving"
 
-[node name="desc-moving" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="desc-moving" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer" unique_id=1718396854]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "After selecting one of your workers, you may move it to any adjacent unoccupied square, including diagonal.
 You can move your worker up only one story, but you may move it down from as high as you wish."
 
-[node name="building" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="building" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer" unique_id=370692601]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Building"
 
-[node name="desc-building" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="desc-building" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer" unique_id=2134634602]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "After moving your worker, you must build on any adjacent square, including diagonal.  You must build with the worker you just moved.
@@ -499,34 +497,34 @@ Worker height does not matter in building.  You can build from the top or the bo
 You cannot build on any other worker, or under yourself.
 You may build on towers that other players have started."
 
-[node name="winning" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="winning" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer" unique_id=919457112]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Winning"
 
-[node name="desc-win" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="desc-win" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer" unique_id=995759471]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Move your worker to the third level of a building, finish your turn by building, and you win!"
 
-[node name="losing" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="losing" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer" unique_id=1962282807]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Losing"
 
-[node name="desc-lose" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="desc-lose" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Rules/ScrollContainer/MarginContainer/MarginContainer/VBoxContainer" unique_id=1030604038]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "You lose if the other person wins.
 You lose if you are unable to move a worker on your turn.
 You lose if, after moving a worker, you are unable to build on your turn. (this is actually impossible)"
 
-[node name="Controls" type="TabBar" parent="info/VBoxContainer/MarginTabs/TabContainer"]
+[node name="Controls" type="TabBar" parent="info/VBoxContainer/MarginTabs/TabContainer" unique_id=1822195533]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls"]
+[node name="ScrollContainer" type="ScrollContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls" unique_id=1138402498]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -535,16 +533,16 @@ offset_bottom = 457.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer" unique_id=2091449141]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ColorRect" type="ColorRect" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer" unique_id=920206232]
 layout_mode = 2
 color = Color(0.3534, 0.57, 0.40394, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect"]
+[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect" unique_id=1007707554]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -553,101 +551,101 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer" unique_id=578170377]
 layout_mode = 2
 
-[node name="controls" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+[node name="controls" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=343581588]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Controls:"
 
-[node name="rot" type="HBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+[node name="rot" type="HBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=1649535777]
 layout_mode = 2
 
-[node name="Rotate" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/rot"]
+[node name="Rotate" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/rot" unique_id=665806619]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Rotate:"
 
-[node name="Label" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/rot"]
+[node name="Label" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/rot" unique_id=293407378]
 layout_mode = 2
 theme = ExtResource("6_b4jil")
 text = "Middle mouse"
 
-[node name="pan" type="HBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+[node name="pan" type="HBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=233377058]
 layout_mode = 2
 
-[node name="Pan" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/pan"]
+[node name="Pan" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/pan" unique_id=1195296665]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Pan:"
 
-[node name="Label" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/pan"]
+[node name="Label" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/pan" unique_id=2086607364]
 layout_mode = 2
 theme = ExtResource("6_b4jil")
 text = "Shift + Middle mouse"
 
-[node name="zoom" type="HBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+[node name="zoom" type="HBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=1155443011]
 layout_mode = 2
 
-[node name="zoom" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/zoom"]
+[node name="zoom" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/zoom" unique_id=1401412052]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 text = "Zoom:"
 
-[node name="Label" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/zoom"]
+[node name="Label" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/zoom" unique_id=394084126]
 layout_mode = 2
 theme = ExtResource("6_b4jil")
 text = "Scroll wheel"
 
-[node name="quit" type="HBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+[node name="quit" type="HBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=28557043]
 layout_mode = 2
 
-[node name="Quit" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/quit"]
+[node name="Quit" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/quit" unique_id=1489899705]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Quit:"
 
-[node name="Label" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/quit"]
+[node name="Label" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/quit" unique_id=456340608]
 layout_mode = 2
 theme = ExtResource("6_b4jil")
 text = "Q"
 
-[node name="move" type="HBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+[node name="move" type="HBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=614871366]
 layout_mode = 2
 
-[node name="move" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/move"]
+[node name="move" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/move" unique_id=1571072283]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 text = "Move worker:"
 
-[node name="Label" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/move"]
+[node name="Label" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/move" unique_id=1054140162]
 layout_mode = 2
 theme = ExtResource("6_b4jil")
 text = "Left click"
 
-[node name="place" type="HBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+[node name="place" type="HBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=211135144]
 layout_mode = 2
 
-[node name="put" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/place"]
+[node name="put" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/place" unique_id=478390821]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 text = "Place worker:"
 
-[node name="Label" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/place"]
+[node name="Label" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Controls/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/place" unique_id=1266748416]
 layout_mode = 2
 theme = ExtResource("6_b4jil")
 text = "Left click"
 
-[node name="Tips" type="TabBar" parent="info/VBoxContainer/MarginTabs/TabContainer"]
+[node name="Tips" type="TabBar" parent="info/VBoxContainer/MarginTabs/TabContainer" unique_id=778551139]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips"]
+[node name="ScrollContainer" type="ScrollContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips" unique_id=823324275]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -656,16 +654,16 @@ offset_bottom = 457.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips/ScrollContainer" unique_id=1511424780]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ColorRect" type="ColorRect" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips/ScrollContainer/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips/ScrollContainer/MarginContainer" unique_id=2091747067]
 layout_mode = 2
 color = Color(0.211765, 0.270588, 0.309804, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect"]
+[node name="MarginContainer" type="MarginContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect" unique_id=172933315]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -674,15 +672,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect/MarginContainer" unique_id=827658412]
 layout_mode = 2
 
-[node name="stragety" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+[node name="stragety" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=1854640734]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Stragety:"
 
-[node name="desc-stragety" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+[node name="desc-stragety" type="Label" parent="info/VBoxContainer/MarginTabs/TabContainer/Tips/ScrollContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=481400285]
 layout_mode = 2
 text = "Keep an eye on your opponent's workers.  A sneaky win could happen at any moment!
 Try to keep a worker within building distance of any tower that your opponent might be trying to complete.
@@ -691,7 +689,7 @@ Make use of towers that other players have started!  Work smarter, not harder.
 Don't forget that your workers can jump down from any height.
 Always keep your workers mobile.  If one gets stuck, you've lost half of your workforce!"
 
-[node name="credits" type="CanvasLayer" parent="."]
+[node name="credits" type="CanvasLayer" parent="." unique_id=817388537]
 visible = false
 
 [connection signal="pressed" from="home/VBoxContainer/TopMargin/Quit" to="." method="_on_quit_button_pressed"]
