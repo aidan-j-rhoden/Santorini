@@ -1,16 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://boxrw6byaxd6o"]
+[gd_scene format=3 uid="uid://boxrw6byaxd6o"]
 
 [ext_resource type="Script" uid="uid://jtvl5dgr2dam" path="res://player/camera_controller.gd" id="1_rr467"]
 
-[node name="CameraController" type="Node3D"]
+[node name="CameraController" type="Node3D" unique_id=1035433984]
 script = ExtResource("1_rr467")
 
-[node name="Y_Rot" type="Node3D" parent="."]
+[node name="Y_Rot" type="Node3D" parent="." unique_id=263236322]
 
-[node name="X_Rot" type="Node3D" parent="Y_Rot"]
+[node name="X_Rot" type="Node3D" parent="Y_Rot" unique_id=1935783672]
 
-[node name="Camera3D" type="Camera3D" parent="Y_Rot/X_Rot"]
+[node name="Camera3D" type="Camera3D" parent="Y_Rot/X_Rot" unique_id=89054980]
 near = 1.0
 far = 11000.0
 
-[node name="Position_Target" type="Node3D" parent="."]
+[node name="Position_Target" type="Node3D" parent="." unique_id=738376786]

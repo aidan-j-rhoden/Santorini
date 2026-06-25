@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bkb1m6yre6atw"]
+[gd_scene format=3 uid="uid://bkb1m6yre6atw"]
 
 [ext_resource type="Script" uid="uid://bb3t0di05mgdy" path="res://worker/worker.gd" id="1_di2g5"]
 [ext_resource type="Material" uid="uid://cwip18ffq3h5x" path="res://materials/worker-glow.tres" id="2_yadlq"]
@@ -193,40 +193,38 @@ _data = {
 &"win": SubResource("Animation_mpwdv")
 }
 
-[node name="WorkerMale" type="Node3D"]
+[node name="WorkerMale" type="Node3D" unique_id=1745358847]
 script = ExtResource("1_di2g5")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=927767632]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.51834, 0)
 mesh = SubResource("CapsuleMesh_k80i6")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=61839458]
 transform = Transform3D(0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0, 1, 0.544, 0.00472927, 1.75821)
 mesh = SubResource("CylinderMesh_7hhtl")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D2" unique_id=1167381403]
 transform = Transform3D(-2.98023e-08, 1, 0, -1, -2.98023e-08, 0, 0, 0, 1, -0.0269723, 1.81244, 0)
 mesh = SubResource("CylinderMesh_0crme")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=1979532486]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.145, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=774824573]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
 shape = SubResource("BoxShape3D_c5brd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=1380596219]
 mesh = SubResource("BoxMesh_udgkb")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Area3D"]
-libraries = {
-&"": SubResource("AnimationLibrary_o2snj")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area3D" unique_id=1654179571]
+libraries/ = SubResource("AnimationLibrary_o2snj")
 
-[node name="Control" type="CanvasLayer" parent="."]
+[node name="Control" type="CanvasLayer" parent="." unique_id=1341014373]
 
-[node name="MoveHint" type="Label" parent="Control"]
+[node name="MoveHint" type="Label" parent="Control" unique_id=495705890]
 visible = false
 anchors_preset = 7
 anchor_left = 0.5
@@ -243,7 +241,7 @@ theme_override_font_sizes/font_size = 40
 text = "Left click to move, Escape to cancel selection"
 horizontal_alignment = 1
 
-[node name="BuildHint" type="Label" parent="Control"]
+[node name="BuildHint" type="Label" parent="Control" unique_id=39630654]
 visible = false
 anchors_preset = 7
 anchor_left = 0.5
@@ -260,8 +258,7 @@ theme_override_font_sizes/font_size = 40
 text = "Left click to build"
 horizontal_alignment = 1
 
-[node name="Win" type="Control" parent="Control"]
-visible = false
+[node name="Win" type="Control" parent="Control" unique_id=1515733726]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -269,7 +266,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="Control/Win"]
+[node name="Control" type="Control" parent="Control/Win" unique_id=1334619302]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -278,7 +275,7 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Control/Win/Control"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Control/Win/Control" unique_id=1363423047]
 position = Vector2(40, 0)
 emitting = false
 amount = 50
@@ -287,7 +284,7 @@ one_shot = true
 explosiveness = 0.95
 process_material = SubResource("ParticleProcessMaterial_mlr2b")
 
-[node name="Control2" type="Control" parent="Control/Win"]
+[node name="Control2" type="Control" parent="Control/Win" unique_id=22524704]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -299,7 +296,7 @@ offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Control/Win/Control2"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Control/Win/Control2" unique_id=374340880]
 emitting = false
 amount = 50
 lifetime = 5.0
@@ -307,12 +304,10 @@ one_shot = true
 explosiveness = 0.95
 process_material = SubResource("ParticleProcessMaterial_bog2s")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Win"]
-libraries = {
-&"": SubResource("AnimationLibrary_jobl3")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Win" unique_id=2033403926]
+libraries/ = SubResource("AnimationLibrary_jobl3")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/Win"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Win" unique_id=569146787]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -320,19 +315,19 @@ offset_bottom = 71.0
 grow_horizontal = 2
 alignment = 1
 
-[node name="Label2" type="Label" parent="Control/Win/HBoxContainer"]
+[node name="Label2" type="Label" parent="Control/Win/HBoxContainer" unique_id=1534468202]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Player "
 horizontal_alignment = 1
 
-[node name="player" type="Label" parent="Control/Win/HBoxContainer"]
+[node name="player" type="Label" parent="Control/Win/HBoxContainer" unique_id=1819490590]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "1"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Control/Win/HBoxContainer"]
+[node name="Label" type="Label" parent="Control/Win/HBoxContainer" unique_id=1771388485]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = " won! (Q to quit)"
