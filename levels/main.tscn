@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ddrbtqxkhbi34"]
+[gd_scene format=3 uid="uid://ddrbtqxkhbi34"]
 
 [ext_resource type="Script" uid="uid://b6up1vlhgb8gm" path="res://scripts/levels/main.gd" id="1_aq87o"]
 [ext_resource type="Environment" uid="uid://bekiwxqt2tf0d" path="res://levels/enviroment.tres" id="2_n1j7u"]
@@ -70,9 +70,9 @@ frequency = 0.02
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ys8k8"]
 width = 1024
 height = 1024
+noise = SubResource("FastNoiseLite_ub4vc")
 seamless = true
 as_normal_map = true
-noise = SubResource("FastNoiseLite_ub4vc")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_d7nwj"]
 noise_type = 3
@@ -80,9 +80,9 @@ noise_type = 3
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g1ql7"]
 width = 2048
 height = 2048
+noise = SubResource("FastNoiseLite_d7nwj")
 seamless = true
 as_normal_map = true
-noise = SubResource("FastNoiseLite_d7nwj")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gtpfh"]
 render_priority = 0
@@ -115,34 +115,34 @@ albedo_color = Color(0.654902, 0.643137, 0.470588, 1)
 material = SubResource("StandardMaterial3D_jxmkq")
 size = Vector2(8000, 8000)
 
-[node name="level" type="Node3D"]
+[node name="level" type="Node3D" unique_id=444731655]
 script = ExtResource("1_aq87o")
 
-[node name="Enviroment" type="Node" parent="."]
+[node name="Enviroment" type="Node" parent="." unique_id=1142980542]
 
-[node name="Sky3D" type="WorldEnvironment" parent="Enviroment"]
+[node name="Sky3D" type="WorldEnvironment" parent="Enviroment" unique_id=337888809]
 environment = ExtResource("2_n1j7u")
 camera_attributes = SubResource("CameraAttributesPractical_4gg2c")
 script = ExtResource("3_qtqw2")
 enable_editor_time = false
 minutes_per_day = 20.0
 
-[node name="SunLight" type="DirectionalLight3D" parent="Enviroment/Sky3D"]
+[node name="SunLight" type="DirectionalLight3D" parent="Enviroment/Sky3D" unique_id=63501210]
 transform = Transform3D(0, -0.625152, 0.780503, -0.814791, 0.4525, 0.362435, -0.579754, -0.635947, -0.509369, 0.780503, 0.362435, -0.509369)
-light_color = Color(0.994497, 0.868763, 0.805758, 1)
+light_color = Color(0.9944974, 0.8687628, 0.80575794, 1)
 shadow_enabled = true
 directional_shadow_mode = 1
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 2048.0
 
-[node name="MoonLight" type="DirectionalLight3D" parent="Enviroment/Sky3D"]
+[node name="MoonLight" type="DirectionalLight3D" parent="Enviroment/Sky3D" unique_id=2003889598]
 transform = Transform3D(0, -0.499216, -0.866477, 0.79439, -0.526305, 0.303228, -0.607408, -0.688321, 0.396572, -0.866477, 0.303228, 0.396573)
 visible = false
 light_color = Color(0.572549, 0.776471, 0.956863, 1)
 light_energy = 0.0
 shadow_enabled = true
 
-[node name="TimeOfDay" type="Node" parent="Enviroment/Sky3D"]
+[node name="TimeOfDay" type="Node" parent="Enviroment/Sky3D" unique_id=254015484]
 script = ExtResource("4_f6nvd")
 update_in_editor = false
 dome_path = NodePath("../Skydome")
@@ -160,7 +160,7 @@ longitude = 108.0
 utc = 7.0
 celestials_update_time = 0.0
 
-[node name="Skydome" type="Node" parent="Enviroment/Sky3D"]
+[node name="Skydome" type="Node" parent="Enviroment/Sky3D" unique_id=693281667]
 script = ExtResource("5_icv1j")
 sky_visible = true
 dome_radius = 10.0
@@ -170,8 +170,8 @@ ground_color = Color(0.3, 0.3, 0.3, 1)
 sky_layers = 4
 sky_render_priority = -128
 horizon_level = 0.0
-sun_altitude = 68.7502
-sun_azimuth = 123.129
+sun_altitude = 68.75016382984693
+sun_azimuth = 123.1290632341348
 sun_disk_color = Color(0.996094, 0.541334, 0.140076, 1)
 sun_disk_intensity = 2.0
 sun_disk_size = 0.015
@@ -179,8 +179,8 @@ sun_light_path = NodePath("../SunLight")
 sun_light_color = Color(1, 1, 1, 1)
 sun_horizon_light_color = Color(0.98, 0.523, 0.294, 1)
 sun_light_energy = 1.0
-moon_altitude = 106.811
-moon_azimuth = 306.363
+moon_altitude = 106.81109244272906
+moon_azimuth = 306.36332669779443
 moon_color = Color(1, 1, 1, 1)
 moon_size = 0.07
 enable_set_moon_texture = false
@@ -250,17 +250,17 @@ clouds_cumulus_speed = 0.05
 set_clouds_cumulus_texture = false
 environment = ExtResource("2_n1j7u")
 
-[node name="Players" type="Node3D" parent="."]
+[node name="Players" type="Node3D" parent="." unique_id=1578218404]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
 
-[node name="P1_W" type="Node3D" parent="Players"]
+[node name="P1_W" type="Node3D" parent="Players" unique_id=157459141]
 
-[node name="P2_W" type="Node3D" parent="Players"]
+[node name="P2_W" type="Node3D" parent="Players" unique_id=92942655]
 
-[node name="Cameras" type="Node3D" parent="."]
+[node name="Cameras" type="Node3D" parent="." unique_id=691441382]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.4993, 0)
 
-[node name="TopDown" type="Camera3D" parent="Cameras"]
+[node name="TopDown" type="Camera3D" parent="Cameras" unique_id=274597680]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0)
 projection = 1
 current = true
@@ -268,104 +268,104 @@ size = 90.0
 near = 10.0
 far = 18.0
 
-[node name="ground" parent="." instance=ExtResource("3_6tau7")]
+[node name="ground" parent="." unique_id=353826605 instance=ExtResource("3_6tau7")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="ground"]
+[node name="StaticBody3D" type="StaticBody3D" parent="ground" unique_id=1384925661]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ground/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground/StaticBody3D" unique_id=659604630]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.68512, -2.78271, 0.161636)
 shape = SubResource("BoxShape3D_naaym")
 
-[node name="Grid" type="Node3D" parent="."]
+[node name="Grid" type="Node3D" parent="." unique_id=36899846]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Grid"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Grid" unique_id=1790551172]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 7.5)
 mesh = SubResource("CylinderMesh_o41lh")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Grid"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Grid" unique_id=1151853591]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 22.4)
 mesh = SubResource("CylinderMesh_o41lh")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Grid"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Grid" unique_id=1047149102]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -22.4)
 mesh = SubResource("CylinderMesh_o41lh")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Grid"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Grid" unique_id=1927214370]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -37)
 mesh = SubResource("CylinderMesh_o41lh")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Grid"]
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Grid" unique_id=1904134489]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 37)
 mesh = SubResource("CylinderMesh_o41lh")
 
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="Grid"]
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Grid" unique_id=1131129827]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -7.5)
 mesh = SubResource("CylinderMesh_o41lh")
 
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="Grid"]
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Grid" unique_id=1825206643]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 7.5, 0, 0)
 mesh = SubResource("CylinderMesh_o41lh")
 
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="Grid"]
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Grid" unique_id=1602727250]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 22.4, 0, 0)
 mesh = SubResource("CylinderMesh_o41lh")
 
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="Grid"]
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Grid" unique_id=583762130]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -22.4, 0, 0)
 mesh = SubResource("CylinderMesh_o41lh")
 
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="Grid"]
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Grid" unique_id=259667353]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -37, 0, 0)
 mesh = SubResource("CylinderMesh_o41lh")
 
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="Grid"]
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Grid" unique_id=1987467656]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 37, 0, 0)
 mesh = SubResource("CylinderMesh_o41lh")
 
-[node name="MeshInstance3D13" type="MeshInstance3D" parent="Grid"]
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Grid" unique_id=801762186]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -7.5, 0, 0)
 mesh = SubResource("CylinderMesh_o41lh")
 
-[node name="Guides" type="Node3D" parent="."]
+[node name="Guides" type="Node3D" parent="." unique_id=693656962]
 
-[node name="Buildings" type="Node3D" parent="."]
+[node name="Buildings" type="Node3D" parent="." unique_id=1307902341]
 
-[node name="Props" type="Node3D" parent="."]
+[node name="Props" type="Node3D" parent="." unique_id=1639024500]
 
-[node name="Vegitation" type="Node3D" parent="Props"]
+[node name="Vegitation" type="Node3D" parent="Props" unique_id=301591555]
 
-[node name="Control" type="CanvasLayer" parent="."]
+[node name="Control" type="CanvasLayer" parent="." unique_id=1435092682]
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=689847196]
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="Control/MarginContainer"]
+[node name="Label" type="Label" parent="Control/MarginContainer" unique_id=201678843]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Player 1"
 
-[node name="game" type="CanvasLayer" parent="."]
+[node name="game" type="CanvasLayer" parent="." unique_id=1545779537]
 visible = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="game"]
+[node name="VBoxContainer" type="VBoxContainer" parent="game" unique_id=1490872987]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="game/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="game/VBoxContainer" unique_id=497701491]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 5
 
-[node name="Label" type="Label" parent="game/VBoxContainer/MarginContainer"]
+[node name="Label" type="Label" parent="game/VBoxContainer/MarginContainer" unique_id=1028667166]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 55
@@ -373,23 +373,21 @@ text = "Setup"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="game"]
-libraries = {
-&"": SubResource("AnimationLibrary_ubalh")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="game" unique_id=1111078701]
+libraries/ = SubResource("AnimationLibrary_ubalh")
 
-[node name="Set" type="Node3D" parent="."]
+[node name="Set" type="Node3D" parent="." unique_id=460750498]
 
-[node name="Waterplane" type="MeshInstance3D" parent="Set"]
+[node name="Waterplane" type="MeshInstance3D" parent="Set" unique_id=917716589]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1249.81, -218, -1300.05)
 mesh = SubResource("PlaneMesh_hehm0")
 
-[node name="underwaterground" parent="Set" instance=ExtResource("6_b7ei6")]
+[node name="underwaterground" parent="Set" unique_id=1609739533 instance=ExtResource("6_b7ei6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -216, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Set"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Set" unique_id=1599193476]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 808.157, -355.461, -1252.95)
 mesh = SubResource("PlaneMesh_6hcj0")
 
-[node name="enviroment" parent="Set" instance=ExtResource("10_rh6u1")]
+[node name="enviroment" parent="Set" unique_id=1580342885 instance=ExtResource("10_rh6u1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -281.209, 0)

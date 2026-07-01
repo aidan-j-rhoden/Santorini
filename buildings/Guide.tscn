@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://chefc0uq7effh"]
+[gd_scene format=3 uid="uid://chefc0uq7effh"]
 
 [ext_resource type="Script" uid="uid://d1blhnjsr2w4h" path="res://scripts/building/guide.gd" id="1_bw8su"]
 [ext_resource type="Material" uid="uid://ds1t3drps4s5l" path="res://materials/transparent_glowing.tres" id="2_klpuy"]
@@ -10,16 +10,16 @@ size = Vector3(14, 2, 14)
 material = ExtResource("2_klpuy")
 size = Vector3(14, 0.5, 14)
 
-[node name="Guide" type="Node3D"]
+[node name="Guide" type="Node3D" unique_id=152624498]
 script = ExtResource("1_bw8su")
 
-[node name="Guide" type="Area3D" parent="."]
+[node name="Guide" type="Area3D" parent="." unique_id=2086407927]
 input_capture_on_drag = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Guide"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Guide" unique_id=699477654]
 shape = SubResource("BoxShape3D_fy6xi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Guide"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Guide" unique_id=1555110303]
 mesh = SubResource("BoxMesh_i0hw6")
 skeleton = NodePath("../../..")
 

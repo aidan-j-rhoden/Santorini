@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhao4agt1wogb"]
+[gd_scene format=3 uid="uid://dhao4agt1wogb"]
 
 [ext_resource type="Script" uid="uid://cw6u47w6rcryy" path="res://player/player.gd" id="1_ly1ca"]
 [ext_resource type="Script" uid="uid://c6p6ovbxlfcwe" path="res://player/hud.gd" id="2_8or5v"]
@@ -166,30 +166,28 @@ _data = {
 &"die": SubResource("Animation_07lft")
 }
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" unique_id=235096380]
 collision_layer = 65
 collision_mask = 65
 script = ExtResource("1_ly1ca")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=358806552]
 mesh = SubResource("CapsuleMesh_6mwvw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=737199318]
 shape = SubResource("CapsuleShape3D_cmw18")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1682142471]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664626, 0)
 far = 12000.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_gk77t")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=755623984]
+libraries/ = SubResource("AnimationLibrary_gk77t")
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=852993823]
 script = ExtResource("2_8or5v")
 
-[node name="Crosshair" type="Control" parent="HUD"]
+[node name="Crosshair" type="Control" parent="HUD" unique_id=311309033]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -199,42 +197,42 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="top" type="ColorRect" parent="HUD/Crosshair"]
+[node name="top" type="ColorRect" parent="HUD/Crosshair" unique_id=580571866]
 layout_mode = 0
 offset_left = -2.0
 offset_top = -24.0
 offset_right = 2.0
 offset_bottom = -8.0
 
-[node name="bottom" type="ColorRect" parent="HUD/Crosshair"]
+[node name="bottom" type="ColorRect" parent="HUD/Crosshair" unique_id=341104219]
 layout_mode = 0
 offset_left = -2.0
 offset_top = 8.0
 offset_right = 2.0
 offset_bottom = 24.0
 
-[node name="left" type="ColorRect" parent="HUD/Crosshair"]
+[node name="left" type="ColorRect" parent="HUD/Crosshair" unique_id=130864763]
 layout_mode = 0
 offset_left = -24.0
 offset_top = -2.0
 offset_right = -8.0
 offset_bottom = 2.0
 
-[node name="right" type="ColorRect" parent="HUD/Crosshair"]
+[node name="right" type="ColorRect" parent="HUD/Crosshair" unique_id=1098296498]
 layout_mode = 0
 offset_left = 8.0
 offset_top = -2.0
 offset_right = 24.0
 offset_bottom = 2.0
 
-[node name="center" type="ColorRect" parent="HUD/Crosshair"]
+[node name="center" type="ColorRect" parent="HUD/Crosshair" unique_id=2087049817]
 layout_mode = 0
 offset_left = -2.0
 offset_top = -2.0
 offset_right = 2.0
 offset_bottom = 2.0
 
-[node name="Health" type="ProgressBar" parent="HUD"]
+[node name="Health" type="ProgressBar" parent="HUD" unique_id=261785300]
 offset_left = 19.0
 offset_top = 17.0
 offset_right = 176.0
@@ -242,7 +240,7 @@ offset_bottom = 44.0
 value = 1.0
 rounded = true
 
-[node name="DeathRect" type="ColorRect" parent="HUD"]
+[node name="DeathRect" type="ColorRect" parent="HUD" unique_id=2038485831]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -251,16 +249,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/DeathRect"]
-libraries = {
-&"": SubResource("AnimationLibrary_rtdva")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/DeathRect" unique_id=764128247]
+libraries/ = SubResource("AnimationLibrary_rtdva")
 
-[node name="Settings" type="CanvasLayer" parent="HUD"]
+[node name="Settings" type="CanvasLayer" parent="HUD" unique_id=1902082429]
 layer = 2
 visible = false
 
-[node name="TransparentBackground" type="ColorRect" parent="HUD/Settings"]
+[node name="TransparentBackground" type="ColorRect" parent="HUD/Settings" unique_id=1548441122]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -268,7 +264,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.407843)
 
-[node name="Background" type="ColorRect" parent="HUD/Settings"]
+[node name="Background" type="ColorRect" parent="HUD/Settings" unique_id=910574812]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -282,7 +278,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.4158, 0.42, 0.399, 1)
 
-[node name="Container" type="VBoxContainer" parent="HUD/Settings/Background"]
+[node name="Container" type="VBoxContainer" parent="HUD/Settings/Background" unique_id=1720981330]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -297,77 +293,77 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Crosshair_Color" type="HBoxContainer" parent="HUD/Settings/Background/Container"]
+[node name="Crosshair_Color" type="HBoxContainer" parent="HUD/Settings/Background/Container" unique_id=2083650303]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="HUD/Settings/Background/Container/Crosshair_Color"]
+[node name="Label" type="Label" parent="HUD/Settings/Background/Container/Crosshair_Color" unique_id=545064847]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 text = "Crosshair color: "
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Settings/Background/Container/Crosshair_Color"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Settings/Background/Container/Crosshair_Color" unique_id=1541599078]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Labels" type="VBoxContainer" parent="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer"]
+[node name="Labels" type="VBoxContainer" parent="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer" unique_id=957498753]
 layout_mode = 2
 alignment = 1
 
-[node name="Red" type="Label" parent="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer/Labels"]
+[node name="Red" type="Label" parent="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer/Labels" unique_id=1457062509]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "Red:"
 
-[node name="Green" type="Label" parent="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer/Labels"]
+[node name="Green" type="Label" parent="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer/Labels" unique_id=1178903851]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 text = "Green:"
 
-[node name="Blue" type="Label" parent="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer/Labels"]
+[node name="Blue" type="Label" parent="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer/Labels" unique_id=1550997541]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 1, 1)
 text = "Blue:"
 
-[node name="Sliders" type="VBoxContainer" parent="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer"]
+[node name="Sliders" type="VBoxContainer" parent="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer" unique_id=1091890869]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 14
 alignment = 1
 
-[node name="RSlider" type="HSlider" parent="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer/Sliders"]
+[node name="RSlider" type="HSlider" parent="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer/Sliders" unique_id=628602504]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 255.0
 value = 255.0
 rounded = true
 
-[node name="GSlider" type="HSlider" parent="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer/Sliders"]
+[node name="GSlider" type="HSlider" parent="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer/Sliders" unique_id=614316064]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 255.0
 rounded = true
 
-[node name="BSlider" type="HSlider" parent="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer/Sliders"]
+[node name="BSlider" type="HSlider" parent="HUD/Settings/Background/Container/Crosshair_Color/HBoxContainer/Sliders" unique_id=1820817405]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 255.0
 rounded = true
 
-[node name="Crosshair_Thickness" type="HBoxContainer" parent="HUD/Settings/Background/Container"]
+[node name="Crosshair_Thickness" type="HBoxContainer" parent="HUD/Settings/Background/Container" unique_id=1334088077]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="HUD/Settings/Background/Container/Crosshair_Thickness"]
+[node name="Label" type="Label" parent="HUD/Settings/Background/Container/Crosshair_Thickness" unique_id=1245910317]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 text = "Crosshair Thickness: "
 
-[node name="thickness" type="HSlider" parent="HUD/Settings/Background/Container/Crosshair_Thickness"]
+[node name="thickness" type="HSlider" parent="HUD/Settings/Background/Container/Crosshair_Thickness" unique_id=1810015475]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -375,27 +371,27 @@ min_value = 1.0
 max_value = 16.0
 value = 4.0
 
-[node name="Mouse_Sensitivity" type="HBoxContainer" parent="HUD/Settings/Background/Container"]
+[node name="Mouse_Sensitivity" type="HBoxContainer" parent="HUD/Settings/Background/Container" unique_id=135536307]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="HUD/Settings/Background/Container/Mouse_Sensitivity"]
+[node name="Label" type="Label" parent="HUD/Settings/Background/Container/Mouse_Sensitivity" unique_id=501275309]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 text = "Mouse Sensitivity: "
 
-[node name="sensitivity" type="HSlider" parent="HUD/Settings/Background/Container/Mouse_Sensitivity"]
+[node name="sensitivity" type="HSlider" parent="HUD/Settings/Background/Container/Mouse_Sensitivity" unique_id=832399876]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 min_value = 1.0
 value = 80.0
 
-[node name="Button3" type="Button" parent="HUD/Settings/Background/Container"]
+[node name="Button3" type="Button" parent="HUD/Settings/Background/Container" unique_id=1912713477]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button4" type="Button" parent="HUD/Settings/Background/Container"]
+[node name="Button4" type="Button" parent="HUD/Settings/Background/Container" unique_id=761444427]
 layout_mode = 2
 size_flags_vertical = 3
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6x0hj2bant83"]
+[gd_scene format=3 uid="uid://c6x0hj2bant83"]
 
 [ext_resource type="Shader" uid="uid://de1yvfy81s4kq" path="res://enviroment/water.gdshader" id="1_2ivh7"]
 
@@ -6,17 +6,17 @@
 noise_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_14fd0"]
+noise = SubResource("FastNoiseLite_c04io")
 seamless = true
 as_normal_map = true
-noise = SubResource("FastNoiseLite_c04io")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_l5lhn"]
 noise_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jfgsx"]
+noise = SubResource("FastNoiseLite_l5lhn")
 seamless = true
 as_normal_map = true
-noise = SubResource("FastNoiseLite_l5lhn")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fjpxj"]
 render_priority = 0
@@ -39,5 +39,5 @@ shader_parameter/refraction_strength = 0.08
 [sub_resource type="PlaneMesh" id="PlaneMesh_xl1jr"]
 material = SubResource("ShaderMaterial_fjpxj")
 
-[node name="Waterplane" type="MeshInstance3D"]
+[node name="Waterplane" type="MeshInstance3D" unique_id=48484119]
 mesh = SubResource("PlaneMesh_xl1jr")
