@@ -108,14 +108,15 @@ theme_override_constants/margin_top = 10
 [node name="Label" type="Label" parent="home/VBoxContainer/TitleMargin" unique_id=668105425]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 75
+theme_override_font_sizes/font_size = 90
 text = "Santorini"
 horizontal_alignment = 1
 
 [node name="GamemodeMargin" type="MarginContainer" parent="home/VBoxContainer" unique_id=2045199907]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_top = 40
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 120
 theme_override_constants/margin_bottom = 40
 
 [node name="gamemode" type="OptionButton" parent="home/VBoxContainer/GamemodeMargin" unique_id=1030664936]
@@ -124,9 +125,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_neighbor_left = NodePath("../../TopMargin/settings")
 focus_neighbor_top = NodePath("../../TopMargin/settings")
-focus_neighbor_right = NodePath("../../StartMargin/start")
-focus_neighbor_bottom = NodePath("../../StartMargin/start")
-focus_next = NodePath("../../StartMargin/start")
+focus_neighbor_right = NodePath("../../HBoxContainer/StartMargin/start")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/StartMargin/start")
+focus_next = NodePath("../../HBoxContainer/StartMargin/start")
 focus_previous = NodePath("../../TopMargin/settings")
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
 theme_override_font_sizes/font_size = 35
@@ -142,53 +143,64 @@ popup/item_2/text = "Intellectual Deathmatch with a Sicilian"
 popup/item_2/id = 2
 popup/item_2/disabled = true
 
-[node name="NetworkMargin" type="MarginContainer" parent="home/VBoxContainer" unique_id=1101290689]
+[node name="HBoxContainer" type="HBoxContainer" parent="home/VBoxContainer" unique_id=2018771814]
 layout_mode = 2
+theme_override_constants/separation = 149
+alignment = 1
+
+[node name="NetworkMargin" type="MarginContainer" parent="home/VBoxContainer/HBoxContainer" unique_id=1101290689]
+layout_mode = 2
+size_flags_vertical = 4
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="home/VBoxContainer/NetworkMargin" unique_id=1579270358]
+[node name="VBoxContainer" type="VBoxContainer" parent="home/VBoxContainer/HBoxContainer/NetworkMargin" unique_id=1579270358]
 layout_mode = 2
+theme_override_constants/separation = 8
 
-[node name="hostcontainer" type="HBoxContainer" parent="home/VBoxContainer/NetworkMargin/VBoxContainer" unique_id=1922271869]
+[node name="hostcontainer" type="HBoxContainer" parent="home/VBoxContainer/HBoxContainer/NetworkMargin/VBoxContainer" unique_id=1922271869]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="host" type="Button" parent="home/VBoxContainer/NetworkMargin/VBoxContainer/hostcontainer" unique_id=1237807631]
+[node name="host" type="Button" parent="home/VBoxContainer/HBoxContainer/NetworkMargin/VBoxContainer/hostcontainer" unique_id=1237807631]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
+theme_override_font_sizes/font_size = 28
 text = " Host a server "
 
-[node name="label" type="Label" parent="home/VBoxContainer/NetworkMargin/VBoxContainer/hostcontainer" unique_id=1354445561]
+[node name="label" type="Label" parent="home/VBoxContainer/HBoxContainer/NetworkMargin/VBoxContainer/hostcontainer" unique_id=1354445561]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
 text = "Max clients:"
 
-[node name="line_edit" type="SpinBox" parent="home/VBoxContainer/NetworkMargin/VBoxContainer/hostcontainer" unique_id=429292518]
+[node name="line_edit" type="SpinBox" parent="home/VBoxContainer/HBoxContainer/NetworkMargin/VBoxContainer/hostcontainer" unique_id=429292518]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 max_value = 2.0
 value = 1.0
 alignment = 1
 
-[node name="joincontainer" type="HBoxContainer" parent="home/VBoxContainer/NetworkMargin/VBoxContainer" unique_id=367728331]
+[node name="joincontainer" type="HBoxContainer" parent="home/VBoxContainer/HBoxContainer/NetworkMargin/VBoxContainer" unique_id=367728331]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="join" type="Button" parent="home/VBoxContainer/NetworkMargin/VBoxContainer/joincontainer" unique_id=281161462]
+[node name="join" type="Button" parent="home/VBoxContainer/HBoxContainer/NetworkMargin/VBoxContainer/joincontainer" unique_id=281161462]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
+theme_override_font_sizes/font_size = 28
 text = " Join "
 
-[node name="label" type="Label" parent="home/VBoxContainer/NetworkMargin/VBoxContainer/joincontainer" unique_id=2043873497]
+[node name="label" type="Label" parent="home/VBoxContainer/HBoxContainer/NetworkMargin/VBoxContainer/joincontainer" unique_id=2043873497]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
 text = "Enter an address:"
 
-[node name="line_edit" type="LineEdit" parent="home/VBoxContainer/NetworkMargin/VBoxContainer/joincontainer" unique_id=1279431178]
+[node name="line_edit" type="LineEdit" parent="home/VBoxContainer/HBoxContainer/NetworkMargin/VBoxContainer/joincontainer" unique_id=1279431178]
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
 theme_override_colors/font_placeholder_color = Color(0.370364, 0.370364, 0.370364, 1)
 text = "127.0.0.1"
@@ -196,27 +208,28 @@ placeholder_text = "127.0.0.1"
 expand_to_text_length = true
 select_all_on_focus = true
 
-[node name="StartMargin" type="MarginContainer" parent="home/VBoxContainer" unique_id=927204264]
+[node name="StartMargin" type="MarginContainer" parent="home/VBoxContainer/HBoxContainer" unique_id=927204264]
 layout_mode = 2
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="start" type="Button" parent="home/VBoxContainer/StartMargin" unique_id=1920347928]
+[node name="start" type="Button" parent="home/VBoxContainer/HBoxContainer/StartMargin" unique_id=1920347928]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
-focus_neighbor_left = NodePath("../../GamemodeMargin/gamemode")
-focus_neighbor_top = NodePath("../../GamemodeMargin/gamemode")
-focus_neighbor_right = NodePath("../../BottomMargin/Info")
-focus_neighbor_bottom = NodePath("../../BottomMargin/Info")
-focus_next = NodePath("../../BottomMargin/Info")
-focus_previous = NodePath("../../GamemodeMargin/gamemode")
+focus_neighbor_left = NodePath("../../../GamemodeMargin/gamemode")
+focus_neighbor_top = NodePath("../../../GamemodeMargin/gamemode")
+focus_neighbor_right = NodePath("../../../BottomMargin/Info")
+focus_neighbor_bottom = NodePath("../../../BottomMargin/Info")
+focus_next = NodePath("../../../BottomMargin/Info")
+focus_previous = NodePath("../../../GamemodeMargin/gamemode")
 theme_override_colors/font_color = Color(0.87451, 0.894118, 0.905882, 1)
-theme_override_font_sizes/font_size = 75
-text = "  Start  "
+theme_override_font_sizes/font_size = 65
+text = " Play Local "
 
 [node name="BottomMargin" type="MarginContainer" parent="home/VBoxContainer" unique_id=989381881]
 layout_mode = 2
+size_flags_vertical = 10
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
@@ -226,11 +239,11 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_neighbor_left = NodePath("../../TopMargin/settings")
-focus_neighbor_top = NodePath("../../StartMargin/start")
+focus_neighbor_top = NodePath("../../HBoxContainer/StartMargin/start")
 focus_neighbor_right = NodePath("../../TopMargin/settings")
 focus_neighbor_bottom = NodePath("../../GamemodeMargin/gamemode")
 focus_next = NodePath("../../TopMargin/settings")
-focus_previous = NodePath("../../StartMargin/start")
+focus_previous = NodePath("../../HBoxContainer/StartMargin/start")
 theme_override_font_sizes/font_size = 20
 text = "Info"
 icon = ExtResource("2_ih6wq")
@@ -722,7 +735,7 @@ visible = false
 
 [connection signal="pressed" from="home/VBoxContainer/TopMargin/Quit" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="home/VBoxContainer/TopMargin/settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="home/VBoxContainer/StartMargin/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="home/VBoxContainer/HBoxContainer/StartMargin/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="home/VBoxContainer/BottomMargin/Info" to="." method="_on_info_pressed"]
 [connection signal="pressed" from="settings/VBoxContainer/HBoxContainer3/exit" to="." method="_on_exit_pressed"]
 [connection signal="value_changed" from="settings/VBoxContainer/HBoxContainer/width" to="settings" method="_on_width_value_changed"]
